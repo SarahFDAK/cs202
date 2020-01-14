@@ -1,6 +1,12 @@
 # Prerequisites
 *.d
 
+*.gch
+*.pch
+*.xcuserstate
+*.DS_Store
+*.pdf
+
 # Compiled Object files
 *.slo
 *.lo
