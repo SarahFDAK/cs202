@@ -7,21 +7,22 @@
 //
 
 #include <iostream>
+#include <cstdlib>
 #include <vector>
 #include <sstream>
+#include <charconv>
 
 using std::cout;
 using std::cin;
 using std::endl;
 
 double cpp_ftoc(const char* str){
-    std::stringstream read;
-    double F = 0.0;
-    read << str;
-    if(read >> F)
-        cout << F << endl;
-    double C = ((F - 32.0) * (5/9));
-    return C;
+    std::istringstream convert(str);
+    double f;
+    convert >> f;
+    cout << f << endl;
+    double c = (f - 32.0) / 1.8;
+    return c;
 }
 
 int main(int argc, const char * argv[]) {
