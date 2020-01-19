@@ -73,7 +73,8 @@ int main(int argc, const char * argv[]) {
     //Check if user specifies ctof
     if(argc >= 2 && (args[1] == "--ctof" || args[1] == "-ctof" || args[1]
                      == "ctof")){
-        //Use istringstream to check temp existence
+        //Use istringstream to check temp existence, and confirm temperature
+        //was entered as digits and not text.
         std::istringstream checkc(args[2].c_str());
         double azc;
         if(checkc >> azc){
