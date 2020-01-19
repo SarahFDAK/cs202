@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
         std::istringstream checkc(args[2].c_str());
         double azf;
         checkc >> azf;
-        if(azf <= -459.67){
+        if(azf < -459.67){
             cout << "That temperature does not exist." << endl;
             return 0;
         }
@@ -52,7 +52,7 @@ int main(int argc, const char * argv[]) {
         std::istringstream checkc(args[2].c_str());
         double azc;
         checkc >> azc;
-        if(azc <= -273.15){
+        if(azc < -273.15){
             cout << "That temperature does not exist." << endl;
             return 0;
         }
