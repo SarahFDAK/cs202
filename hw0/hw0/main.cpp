@@ -7,8 +7,13 @@
 //
 
 #include <iostream>
+#include <vector>
 
 int main(int argc, const char * argv[]) {
-    
+    std::vector <std::string> args;
+    for(int index = 0; index < argc; index++){
+        args.push_back(argv[index]);
+        std::cout << args[index] << std::endl;
+    }
     return 0;
 }
