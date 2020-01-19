@@ -15,10 +15,12 @@ using std::cin;
 using std::endl;
 
 double cpp_ftoc(const char* str){
+    std::stringstream read;
     double F = 0.0;
-    std::istringstream convert(str);
-    convert >> F;
-    double C = (F - 32) * (5/9);
+    read << str;
+    if(read >> F)
+        cout << F << endl;
+    double C = ((F - 32.0) * (5/9));
     return C;
 }
 
