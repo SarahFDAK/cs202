@@ -29,7 +29,7 @@ int main(int argc, const char * argv[]) {
         args.push_back(argv[index]);
     }
     if(argc >= 2 and args[1] == "--ftoc"){
-        cout << args[2] << " Fahrenheit = " << "" << " Celcius." << endl;
+        cout << args[2] << " Fahrenheit = " << cpp_ftoc(args[2].c_str()) << " Celcius." << endl;
     }
     return 0;
 }
