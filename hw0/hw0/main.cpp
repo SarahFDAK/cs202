@@ -24,9 +24,12 @@ double cpp_ftoc(const char* str){
     return c;
 }
 
-//double c_ctof(const char* str){
-//
-//}
+double c_ctof(const char* str){
+    char* end;
+    double cel = strtod(str, &end);
+    double f = (cel * 1.8) + 32.0;
+    return f;
+}
 
 int main(int argc, const char * argv[]) {
     std::vector <std::string> args;
@@ -34,15 +37,27 @@ int main(int argc, const char * argv[]) {
     for(int index = 0; index < argc; index++){
         args.push_back(argv[index]);
     }
-    if(argc >= 2 and args[1] == "--ftoc"){
-        std::istringstream check(args[2].c_str());
-        double z;
-        check >> z;
-        if(z <= -459.67){
+    if(argc >= 2 && args[1] == "--ftoc"){
+        std::istringstream checkc(args[2].c_str());
+        double azf;
+        checkc >> azf;
+        if(azf <= -459.67){
             cout << "That temperature does not exist." << endl;
             return 0;
         }
-        cout << args[2] << " Fahrenheit = " << cpp_ftoc(args[2].c_str()) << " Celcius." << endl;
+        cout << args[2] << " Fahrenheit = " << cpp_ftoc(args[2].c_str()) << " Celcius."
+        << endl;
+    }
+    if(argc >= 2 && args[1] == "--ctof"){
+        std::istringstream checkc(args[2].c_str());
+        double azc;
+        checkc >> azc;
+        if(azc <= -273.15){
+            cout << "That temperature does not exist." << endl;
+            return 0;
+        }
+        cout << args[2] << " Celcius = " << c_ctof(args[2].c_str()) << " Fahrenheit."
+        << endl;
     }
     return 0;
 }
