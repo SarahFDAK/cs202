@@ -27,12 +27,13 @@ string paragraph(istream &in){
     int linecount = 0;
     while(getline(in, line)){
         linecount++;
-        while(linecount <= 20){
-            if(blank(line))
-                break;
+        if(blank(line)){
+            if(linecount <= 20)
+                continue;
+            break;
+        }
             else
                 concat += (line + "\n");
-        }
     }
     return concat;
 }
@@ -43,9 +44,7 @@ string choice(){
     <<"1 - A Tale of Two Cities by Charles Dickens\n"
     <<"2 - Pride And Prejudice by Jane Austen\n"
     <<"3 - The Raven by Edgar Allen Poe\n"
-    <<"4 - MacBeth by Shakespeare\n"
-    <<"If you make no choice, the automatic selection is The Brothers Grimm"
-    << endl;
+    <<"4 - MacBeth by Shakespeare\n" << endl;
     std::cin >> choice;
     string book;
     switch(choice){
@@ -60,9 +59,6 @@ string choice(){
             break;
         case 4:
             book = "pg2264.txt";
-            break;
-        default:
-            book = "52521-0.txt";
             break;
     }
     return book;
