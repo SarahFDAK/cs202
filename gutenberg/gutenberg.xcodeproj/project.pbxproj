@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B9C219B23D505C500E90228 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B9C219A23D505C500E90228 /* main.cpp */; };
+		3B9C219B23D505C500E90228 /* gutenberg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B9C219A23D505C500E90228 /* gutenberg.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		3B9C219723D505C500E90228 /* gutenberg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gutenberg; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B9C219A23D505C500E90228 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3B9C219A23D505C500E90228 /* gutenberg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gutenberg.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 		3B9C219923D505C500E90228 /* gutenberg */ = {
 			isa = PBXGroup;
 			children = (
-				3B9C219A23D505C500E90228 /* main.cpp */,
+				3B9C219A23D505C500E90228 /* gutenberg.cpp */,
 			);
 			path = gutenberg;
 			sourceTree = "<group>";
@@ -119,7 +119,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B9C219B23D505C500E90228 /* main.cpp in Sources */,
+				3B9C219B23D505C500E90228 /* gutenberg.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
