@@ -1,9 +1,10 @@
 //
 //  main.cpp
-//  hw0
-//
-//  Created by Sarah Carter on 1/18/20.
-//  Copyright © 2020 Sarah Carter. All rights reserved.
+//  Sarah Carter
+//  1/18/20
+//  This program reads user input from the command line and returns
+//  a conversion of their input from Fahrenheit to Celcius, or Celcius
+//  to Fahrenheit.
 //
 
 #include <iostream>
