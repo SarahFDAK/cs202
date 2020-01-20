@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cctype>
 
 using std::string;
 using std::cout;
@@ -17,12 +18,21 @@ using std::getline;
 using std::istream;
 using std::ifstream;
 
-string paragraph(const istream &in){
+bool blank(const string &line){
+    return std::all_of(line.begin(), line.end(), isspace);
+}
+
+string paragraph(istream &in){
     string line, concat;
-    while(getline(std::cin, line)){
-        if(line.empty())
-            break;
-        concat += (line + "\n");
+    int linecount = 0;
+    while(getline(in, line)){
+        linecount++;
+        while(linecount <= 20){
+            if(blank(line))
+                break;
+            else
+                concat += (line + "\n");
+        }
     }
     return concat;
 }
@@ -33,7 +43,7 @@ string choice(){
     <<"1 - A Tale of Two Cities by Charles Dickens\n"
     <<"2 - Pride And Prejudice by Jane Austen\n"
     <<"3 - The Raven by Edgar Allen Poe\n"
-    <<"4 - MacBeth by Shakespeare"
+    <<"4 - MacBeth by Shakespeare\n"
     <<"If you make no choice, the automatic selection is The Brothers Grimm"
     << endl;
     std::cin >> choice;
