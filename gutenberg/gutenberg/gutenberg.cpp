@@ -1,9 +1,9 @@
 //
-//  main.cpp
-//  gutenberg
-//
-//  Created by Sarah Carter on 1/19/20.
-//  Copyright © 2020 Sarah Carter. All rights reserved.
+//  gutenberg.cpp
+//  Sarah Carter
+//  1/19/20
+//  This program will ask a user to select one of four book choices and show
+//  them an excerpt of their selection.
 //
 
 #include <iostream>
@@ -76,14 +76,17 @@ string choice(){
 int main(int argc, const char * argv[]) {
     //Open the file chosen by the user
     ifstream file(choice());
+    //Check for errors on open
     if(!file){
-        if(eof())
+        if(file.eof())
             cout << "That is the end of the book." << endl;
         else{
             cout << "Error opening file." << endl;
             return 9;
         }
     }
+    //Send the chosen file to the paragraph function, close the file
+    //and print the resulting string containing the excerpt.
     string text = paragraph(file);
     file.close();
     
