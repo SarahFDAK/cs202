@@ -10,7 +10,16 @@
 #define StopWatch_hpp
 
 #include <stdio.h>
+#include <iostream>
 #include <chrono>
+#include <ctime>
 
+class StopWatch{
+public:
+    StopWatch();
+    
+private:
+    std::time_t _start;
+};
 
 #endif /* StopWatch_hpp */
