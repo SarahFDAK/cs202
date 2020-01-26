@@ -11,6 +11,10 @@
 #include "StopWatch.hpp"
 
 int main(int argc, const char * argv[]) {
+    StopWatch startTime;
+    std::cout << "Test" << std::endl;
+    auto endTime = startTime.start();
+    std::cout << endTime << std::endl;
 
     return 0;
 }

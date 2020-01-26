@@ -17,9 +17,11 @@
 class StopWatch{
 public:
     StopWatch();
-    
+    time_t start();
+    time_t stop();
 private:
     std::time_t _start;
+    std::time_t _end;
 };
 
 #endif /* StopWatch_hpp */
