@@ -13,11 +13,13 @@ void basicSort(std::vector<int> &holder){
 }
 
 bool sequentialSearch(std::vector<int> &holder, int randNum){
-    return std::search(holder.begin(), holder.end(), randNum) != holder.end();
+    return std::search(holder.begin(), holder.end(), [&](int n)
+    {return n == randNum;}) != holder.end();
 }
 
 bool binarySearch(std::vector<int> &holder, int randNum){
-    return std::binary_search(holder.begin(), holder.end(), randNum);
+    return std::binary_search(holder.begin(), holder.end(), [&](int n)
+    {return n == randNum;});
 }
 
 void reverse(std::vector<int> &holder){

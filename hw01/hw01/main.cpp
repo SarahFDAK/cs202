@@ -30,6 +30,12 @@ void reportResults(StopWatch myClock, int items){
 
 int main(int argc, const char * argv[]) {
     StopWatch myClock;
+    int ten = 10;
+    int hundred = 100;
+    int thousand = 1000;
+    int tenthousand = 10000;
+    int million = 1000000;
+    int tenmillion = 10000000;
     
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -37,23 +43,23 @@ int main(int argc, const char * argv[]) {
     
     std::vector<int> holder;
     
-    fillVector(gen, dis, 10, holder);
-    reportResults(myClock, 10);
+    fillVector(gen, dis, ten, holder);
+    reportResults(myClock, ten);
     
-    fillVector(gen, dis, 100, holder);
-    reportResults(myClock, 100);
+    fillVector(gen, dis, hundred, holder);
+    reportResults(myClock, hundred);
     
-    fillVector(gen, dis, 1000, holder);
-    reportResults(myClock, 1000);
+    fillVector(gen, dis, thousand, holder);
+    reportResults(myClock, thousand);
     
-    fillVector(gen, dis, 10000, holder);
-    reportResults(myClock, 10000);
+    fillVector(gen, dis, tenthousand, holder);
+    reportResults(myClock, tenthousand);
     
-    fillVector(gen, dis, 1000000, holder);
-    reportResults(myClock, 100000);
+    fillVector(gen, dis, million, holder);
+    reportResults(myClock, million);
     
-    fillVector(gen, dis, 10000000, holder);
-    reportResults(myClock, 10000000);
+    fillVector(gen, dis, tenmillion, holder);
+    reportResults(myClock, tenmillion);
     
     
     return 0;

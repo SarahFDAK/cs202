@@ -12,13 +12,12 @@
 #include <stdio.h>
 #include <algorithm>
 #include <vector>
-#include "StopWatch.hpp"
 
 using std::vector;
 
 void basicSort(vector<int> &holder);
 bool sequentialSearch(vector<int> &holder, int randNum);
-bool binarySearch(vector<int> &holder);
+bool binarySearch(vector<int> &holder, int randNum);
 void rotate(vector<int> &holder);
 
 #endif /* algorithms_hpp */
