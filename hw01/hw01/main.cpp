@@ -7,14 +7,20 @@
 //
 
 #include <iostream>
+#include <vector>
 
 #include "StopWatch.hpp"
 
 int main(int argc, const char * argv[]) {
-    StopWatch startTime;
-    std::cout << "Test" << std::endl;
-    auto endTime = startTime.start();
-    std::cout << endTime << std::endl;
-
+    StopWatch myClock;
+    auto s = std::chrono::system_clock::now();
+    std::vector<int> holder;
+    for(int i = 0; i < 500; i++){
+        holder.push_back(i);
+    }
+    auto e = std::chrono::system_clock::now();
+    std::chrono::duration<double> seconds = e - s;
+    std::time_t ending = std::chrono::system_clock::to_time_t(e);
+    std::cout << std::ctime(&ending) << " " << seconds.count() << std::endl;
     return 0;
 }
