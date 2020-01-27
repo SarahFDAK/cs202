@@ -9,7 +9,6 @@
 #include "StopWatch.hpp"
 
 StopWatch::StopWatch(): _start(){
-    std::cout << "Default constructor" << std::endl;
     _start = std::chrono::system_clock::now();
 };
 std::chrono::time_point<std::chrono::system_clock> StopWatch::setStart(){

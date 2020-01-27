@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B1179EF23DCF5C900851118 /* StopWatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B1179ED23DCF5C900851118 /* StopWatch.cpp */; };
+		3B1179F223DEB8A700851118 /* algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B1179F023DEB8A700851118 /* algorithms.cpp */; };
 		3BAC9C7D23DC011C00460CC7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9C7C23DC011C00460CC7 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		3B1179ED23DCF5C900851118 /* StopWatch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StopWatch.cpp; sourceTree = "<group>"; };
 		3B1179EE23DCF5C900851118 /* StopWatch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StopWatch.hpp; sourceTree = "<group>"; };
+		3B1179F023DEB8A700851118 /* algorithms.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = algorithms.cpp; sourceTree = "<group>"; };
+		3B1179F123DEB8A700851118 /* algorithms.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = algorithms.hpp; sourceTree = "<group>"; };
 		3BAC9C7923DC011C00460CC7 /* hw01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hw01; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BAC9C7C23DC011C00460CC7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				3BAC9C7C23DC011C00460CC7 /* main.cpp */,
+				3B1179F023DEB8A700851118 /* algorithms.cpp */,
+				3B1179F123DEB8A700851118 /* algorithms.hpp */,
 				3B1179ED23DCF5C900851118 /* StopWatch.cpp */,
 				3B1179EE23DCF5C900851118 /* StopWatch.hpp */,
 			);
@@ -126,6 +131,7 @@
 			files = (
 				3BAC9C7D23DC011C00460CC7 /* main.cpp in Sources */,
 				3B1179EF23DCF5C900851118 /* StopWatch.cpp in Sources */,
+				3B1179F223DEB8A700851118 /* algorithms.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
