@@ -7,33 +7,30 @@
 //
 
 #include "StopWatch.hpp"
-std::chrono::time_point<std::chrono::system_clock> timeStamp =
-    std::chrono::system_clock::now();
 
 StopWatch::StopWatch(): _start(){
     std::cout << "Default constructor" << std::endl;
-    _start = timeStamp;
+    _start = std::chrono::system_clock::now();
 };
 std::chrono::time_point<std::chrono::system_clock> StopWatch::setStart(){
-    _start = timeStamp;
+    _start = std::chrono::system_clock::now();
     return _start;
 }
 
 std::chrono::time_point<std::chrono::system_clock> StopWatch::setStop(){
-    _end = timeStamp;
+    _end = std::chrono::system_clock::now();
     return _end;
 }
 
 std::time_t StopWatch::stopTime(std::chrono::time_point<std::chrono::system_clock>
                                 end_read){
-    _end = end_read;
-    return std::chrono::system_clock::to_time_t(_end);
+    return std::chrono::system_clock::to_time_t(end_read);
 }
 
-//std::chrono::duration<double> StopWatch::getDiff(){
-//    _diff = _end -  _start;
-//    return _diff;
-//}
+std::chrono::duration<double> StopWatch::getDiff(std::chrono::time_point
+                                                 <std::chrono::system_clock> end){
+    return end - _start;
+}
 
 double StopWatch::seconds(std::chrono::duration<double> read_diff){
     return std::chrono::duration<double>(read_diff).count();

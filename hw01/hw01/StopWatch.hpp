@@ -20,13 +20,13 @@ public:
     std::chrono::time_point<std::chrono::system_clock> setStart();
     std::chrono::time_point<std::chrono::system_clock> setStop();
     std::time_t stopTime(std::chrono::time_point<std::chrono::system_clock> end_read);
-    std::chrono::duration<double> getDiff();
+    std::chrono::duration<double> getDiff(std::chrono::time_point
+                                          <std::chrono::system_clock> end);
     double seconds(std::chrono::duration<double> read_diff);
     double milliseconds(std::chrono::duration<double> read_diff);
 private:
     std::chrono::time_point<std::chrono::system_clock> _start;
     std::chrono::time_point<std::chrono::system_clock> _end;
-    std::chrono::duration<double> _diff;
 };
 
 #endif /* StopWatch_hpp */
