@@ -16,8 +16,8 @@
 using std::vector;
 
 void basicSort(vector<int> &holder);
-bool sequentialSearch(vector<int> &holder, int randNum);
-bool binarySearch(vector<int> &holder, int randNum);
-void rotate(vector<int> &holder);
+void sequentialSearch(vector<int> &holder, vector<int> &randNum);
+void binarySearch(vector<int> &holder, vector<int> &randNum);
+void reverse(vector<int> &holder);
 
 #endif /* algorithms_hpp */
