@@ -11,6 +11,25 @@
 
 #include <stdio.h>
 #include <algorithm>
+#include <vector>
 #include "StopWatch.hpp"
+
+using std::vector;
+
+void basicSort(vector<int> &holder){
+    
+}
+
+void sequentialSearch(vector<int> &holder){
+    
+}
+
+void binarySearch(vector<int> &holder){
+    
+}
+
+void rotate(vector<int> &holder){
+    
+}
 
 #endif /* algorithms_hpp */
