@@ -7,3 +7,19 @@
 //
 
 #include "algorithms.hpp"
+
+void basicSort(std::vector<int> &holder){
+    std::sort(holder.begin(), holder.end());
+}
+
+bool sequentialSearch(std::vector<int> &holder, int randNum){
+    return std::search(holder.begin(), holder.end(), randNum) != holder.end();
+}
+
+bool binarySearch(std::vector<int> &holder, int randNum){
+    return std::binary_search(holder.begin(), holder.end(), randNum);
+}
+
+void reverse(std::vector<int> &holder){
+    std::reverse(holder.begin(), holder.end());
+}
