@@ -19,7 +19,15 @@ using std::list;
 using std::deque;
 using std::ifstream;
 
-void fillVector(const string &book, vector<string> &textVector){
+void reportResults(StopWatch myClock, const string &book){
+    auto endTime = std::chrono::system_clock::to_time_t(myClock.setStop());
+    auto myDiff = myClock.getDiff(myClock.setStop());
+    double time_in_seconds = myClock.seconds(myDiff);
+    std::cout << "Completed " << book << " at: " << std::ctime(&endTime)
+    << " in " << time_in_seconds << " seconds" << std::endl;
+}
+
+void fillVector(const string &book, vector<string> &textVector, StopWatch &myClock){
     std::cout << "Vector\n";
     ifstream fin(book);
     if(!fin){
@@ -35,9 +43,10 @@ void fillVector(const string &book, vector<string> &textVector){
         iss >> word;
         textVector.push_back(word);
     }
+    reportResults(myClock, book);
 }
 
-void fillList(const string &book, list<string> &textList){
+void fillList(const string &book, list<string> &textList, StopWatch &myClock){
     std::cout << "List\n";
     ifstream fin(book);
     if(!fin){
@@ -53,10 +62,11 @@ void fillList(const string &book, list<string> &textList){
         iss >> word;
         textList.push_back(word);
     }
+    reportResults(myClock, book);
 }
 
 
-void fillDeque(const string &book, deque<string> &textDeque){
+void fillDeque(const string &book, deque<string> &textDeque, StopWatch &myClock){
     std::cout << "Deque\n";
     ifstream fin(book);
     if(!fin){
@@ -72,19 +82,43 @@ void fillDeque(const string &book, deque<string> &textDeque){
         iss >> word;
         textDeque.push_back(word);
     }
+    reportResults(myClock, book);
 }
 
-void findVector(vector<string> &textVector){
-    std::cout << "Find\n";
-    std::find(textVector.begin(), textVector.end(), "Hello");
+void findVector(vector<string> &textVector, const string &book, StopWatch &myClock){
+    std::cout << "Find Vector\n";
+    std::find(textVector.begin(), textVector.end(), "hello");
+    reportResults(myClock, book);
 }
 
-void reportResults(StopWatch myClock, string &book){
-    auto endTime = std::chrono::system_clock::to_time_t(myClock.setStop());
-    auto myDiff = myClock.getDiff(myClock.setStop());
-    double time_in_seconds = myClock.seconds(myDiff);
-    std::cout << "Completed " << book << " at: " << std::ctime(&endTime)
-    << " in " << time_in_seconds << " seconds" << std::endl;
+void findList(list<string> &textList, const string &book, StopWatch &myClock){
+    std::cout << "Find List\n";
+    std::find(textList.begin(), textList.end(), "hello");
+    reportResults(myClock, book);
+}
+
+void findDeque(deque<string> &textDeque, const string &book, StopWatch &myClock){
+    std::cout << "Find Deque\n";
+    std::find(textDeque.begin(), textDeque.end(), "hello");
+    reportResults(myClock, book);
+}
+
+void sortVector(vector<string> &textVector, const string &book, StopWatch &myClock){
+    std::cout << "Sort Vector\n";
+    std::sort(textVector.begin(), textVector.end());
+    reportResults(myClock, book);
+}
+
+void sortList(list<string> &textList, const string &book, StopWatch &myClock){
+    std::cout << "Sort List\n";
+    textList.sort();
+    reportResults(myClock, book);
+}
+
+void sortDeque(deque<string> &textDeque, const string &book, StopWatch &myClock){
+    std::cout << "Sort Deque\n";
+    std::sort(textDeque.begin(), textDeque.end());
+    reportResults(myClock, book);
 }
 
 int main(int argc, const char * argv[]) {
@@ -94,12 +128,15 @@ int main(int argc, const char * argv[]) {
     list<string> textList;
     deque<string> textDeque;
     for(size_t i = 0; i < books.size(); i++){
-        fillVector(books[i], textVector);
-        reportResults(myClock, books[i]);
-        fillList(books[i], textList);
-        reportResults(myClock, books[i]);
-        fillDeque(books[i], textDeque);
-        reportResults(myClock, books[i]);
+        fillVector(books[i], textVector, myClock);
+        fillList(books[i], textList, myClock);
+        fillDeque(books[i], textDeque, myClock);
+        findVector(textVector, books[i], myClock);
+        findList(textList, books[i], myClock);
+        findDeque(textDeque, books[i], myClock);
+        sortVector(textVector, books[i], myClock);
+        sortList(textList, books[i], myClock);
+        sortDeque(textDeque, books[i], myClock);
     }
     return 0;
 }
