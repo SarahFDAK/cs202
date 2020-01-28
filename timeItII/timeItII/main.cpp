@@ -20,6 +20,7 @@ using std::deque;
 using std::ifstream;
 
 void fillVector(const string &book, vector<string> &textVector){
+    std::cout << "Vector\n";
     ifstream fin(book);
     if(!fin){
         if(fin.eof()){
@@ -33,6 +34,43 @@ void fillVector(const string &book, vector<string> &textVector){
         std::istringstream iss(sentence);
         iss >> word;
         textVector.push_back(word);
+    }
+}
+
+void fillList(const string &book, list<string> &textList){
+    std::cout << "List\n";
+    ifstream fin(book);
+    if(!fin){
+        if(fin.eof()){
+            std::cout << "End of file." << std::endl;
+        }
+        else
+            std::cout << "Error reading file" << std::endl;
+    }
+    string sentence, word;
+    while(std::getline(fin, sentence)){
+        std::istringstream iss(sentence);
+        iss >> word;
+        textList.push_back(word);
+    }
+}
+
+
+void fillDeque(const string &book, deque<string> &textDeque){
+    std::cout << "Deque\n";
+    ifstream fin(book);
+    if(!fin){
+        if(fin.eof()){
+            std::cout << "End of file." << std::endl;
+        }
+        else
+            std::cout << "Error reading file" << std::endl;
+    }
+    string sentence, word;
+    while(std::getline(fin, sentence)){
+        std::istringstream iss(sentence);
+        iss >> word;
+        textDeque.push_back(word);
     }
 }
 
@@ -52,6 +90,10 @@ int main(int argc, const char * argv[]) {
     deque<string> textDeque;
     for(size_t i = 0; i < books.size(); i++){
         fillVector(books[i], textVector);
+        reportResults(myClock, books[i]);
+        fillList(books[i], textList);
+        reportResults(myClock, books[i]);
+        fillDeque(books[i], textDeque);
         reportResults(myClock, books[i]);
     }
     return 0;
