@@ -2,8 +2,7 @@
 //  algorithms.cpp
 //  hw01
 //
-//  Created by Sarah Carter on 1/26/20.
-//  Copyright © 2020 Sarah Carter. All rights reserved.
+//  This source file defines functions for each algorithm being used
 //
 
 #include "algorithms.hpp"
