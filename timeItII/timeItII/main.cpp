@@ -74,6 +74,11 @@ void fillDeque(const string &book, deque<string> &textDeque){
     }
 }
 
+void findVector(vector<string> &textVector){
+    std::cout << "Find\n";
+    std::find(textVector.begin(), textVector.end(), "Hello");
+}
+
 void reportResults(StopWatch myClock, string &book){
     auto endTime = std::chrono::system_clock::to_time_t(myClock.setStop());
     auto myDiff = myClock.getDiff(myClock.setStop());
