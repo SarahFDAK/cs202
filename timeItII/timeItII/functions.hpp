@@ -22,6 +22,7 @@ using std::list;
 using std::deque;
 using std::ifstream;
 
+//Declare all functions
 void reportResults(StopWatch myClock, const string &book);
 
 void fillVector(const string &book, vector<string> &textVector, StopWatch &myClock);

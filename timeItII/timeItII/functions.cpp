@@ -8,6 +8,8 @@
 
 #include "functions.hpp"
 
+//Stop the timer, calculate the duration, and report end time and duration
+//in seconds for each function operation.
 void reportResults(StopWatch myClock, const string &book){
     auto endTime = std::chrono::system_clock::to_time_t(myClock.setStop());
     auto myDiff = myClock.getDiff(myClock.setStop());
@@ -16,6 +18,9 @@ void reportResults(StopWatch myClock, const string &book){
     << " in " << time_in_seconds << " seconds" << std::endl;
 }
 
+//Fill the vector container from the book file, the run reportResults function
+//to stop the timer and report how long it took. Also report the number of elements
+//in each book to compare lengths.
 void fillVector(const string &book, vector<string> &textVector, StopWatch &myClock){
     std::cout << "Vector\n";
     myClock.setStart();
@@ -34,8 +39,10 @@ void fillVector(const string &book, vector<string> &textVector, StopWatch &myClo
         textVector.push_back(word);
     }
     reportResults(myClock, book);
+    std::cout << "Contains " << textVector.size() << " elements." << std:: endl;
 }
 
+//Fill the list container from the book file and report the times to read
 void fillList(const string &book, list<string> &textList, StopWatch &myClock){
     std::cout << "List\n";
     myClock.setStart();
@@ -56,7 +63,7 @@ void fillList(const string &book, list<string> &textList, StopWatch &myClock){
     reportResults(myClock, book);
 }
 
-
+//Fill the deque container and report the time it took to read
 void fillDeque(const string &book, deque<string> &textDeque, StopWatch &myClock){
     std::cout << "Deque\n";
     myClock.setStart();
@@ -77,6 +84,7 @@ void fillDeque(const string &book, deque<string> &textDeque, StopWatch &myClock)
     reportResults(myClock, book);
 }
 
+//Functions to apply find algorithm to each container, with a cloch restart method
 void findVector(vector<string> &textVector, const string &book, StopWatch &myClock){
     std::cout << "Find Vector\n";
     myClock.setStart();
@@ -98,6 +106,7 @@ void findDeque(deque<string> &textDeque, const string &book, StopWatch &myClock)
     reportResults(myClock, book);
 }
 
+//Functions to apply sort algorithm to each container, with a cloch restart method
 void sortVector(vector<string> &textVector, const string &book, StopWatch &myClock){
     std::cout << "Sort Vector\n";
     myClock.setStart();
