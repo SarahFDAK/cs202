@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B156D4523DFF95400CF83AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B156D4423DFF95400CF83AD /* main.cpp */; };
+		3B156D4523DFF95400CF83AD /* timeItII_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B156D4423DFF95400CF83AD /* timeItII_main.cpp */; };
 		3B156D4D23DFF96B00CF83AD /* StopWatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B156D4B23DFF96B00CF83AD /* StopWatch.cpp */; };
 		3B78E3F723E0FA1C00C5596A /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B78E3F523E0FA1C00C5596A /* functions.cpp */; };
 /* End PBXBuildFile section */
@@ -26,7 +26,7 @@
 
 /* Begin PBXFileReference section */
 		3B156D4123DFF95400CF83AD /* timeItII */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = timeItII; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B156D4423DFF95400CF83AD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3B156D4423DFF95400CF83AD /* timeItII_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = timeItII_main.cpp; sourceTree = "<group>"; };
 		3B156D4B23DFF96B00CF83AD /* StopWatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StopWatch.cpp; sourceTree = "<group>"; };
 		3B156D4C23DFF96B00CF83AD /* StopWatch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StopWatch.hpp; sourceTree = "<group>"; };
 		3B78E3F523E0FA1C00C5596A /* functions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = functions.cpp; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 			children = (
 				3B156D4B23DFF96B00CF83AD /* StopWatch.cpp */,
 				3B156D4C23DFF96B00CF83AD /* StopWatch.hpp */,
-				3B156D4423DFF95400CF83AD /* main.cpp */,
+				3B156D4423DFF95400CF83AD /* timeItII_main.cpp */,
 				3B78E3F523E0FA1C00C5596A /* functions.cpp */,
 				3B78E3F623E0FA1C00C5596A /* functions.hpp */,
 			);
@@ -129,7 +129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B156D4523DFF95400CF83AD /* main.cpp in Sources */,
+				3B156D4523DFF95400CF83AD /* timeItII_main.cpp in Sources */,
 				3B78E3F723E0FA1C00C5596A /* functions.cpp in Sources */,
 				3B156D4D23DFF96B00CF83AD /* StopWatch.cpp in Sources */,
 			);
