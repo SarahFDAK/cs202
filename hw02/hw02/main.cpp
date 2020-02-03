@@ -33,5 +33,5 @@ TEST_CASE("Does it work?", "[Riders]"){
     std::cout << "Removing pointers from the end of the list.\n\n";
     popStack(riders2020);
     std::cout << "Inserting pointer into list.\n\n";
-//    insert(riders2020, ValR, 1);
+    insertPtr(riders2020, ValR, riders2020.begin());
 }

@@ -27,7 +27,8 @@ void popStack(list<shared_ptr<Riders>> &riders2020){
     printList(riders2020);
 }
 
-void insert(list<shared_ptr<Riders>> &riders2020, const Riders &comp, list<shared_ptr<Riders>>::iterator n){
+void insertPtr(list<shared_ptr<Riders>> &riders2020, const Riders &comp, list<shared_ptr<Riders>>::iterator n){
+    n++;
     riders2020.insert(n, make_shared<Riders>(comp));
     printList(riders2020);
 }
