@@ -23,5 +23,11 @@ struct Riders{
 };
 void riderList();
 void push(std::list<std::shared_ptr<Riders>> &riders2020, const Riders &comp);
+void popQueue(std::list<std::shared_ptr<Riders>> &riders2020);
+void popStack(std::list<std::shared_ptr<Riders>> &riders2020);
+void insert(std::list<std::shared_ptr<Riders>> &riders2020, const
+            Riders &comp, std::list<std::shared_ptr<Riders>>::iterator n);
+void printList(std::list<std::shared_ptr<Riders>> &riders2020);
+
 
 #endif /* MotoGP_hpp */

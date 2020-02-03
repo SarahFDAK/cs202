@@ -27,3 +27,19 @@ void push(list<shared_ptr<Riders>> &riders2020, const Riders &comp){
     riders2020.push_back(make_shared<Riders>(comp));
 }
 
+void popQueue(list<shared_ptr<Riders>> &riders2020){
+    riders2020.pop_front();
+}
+
+void popStack(list<shared_ptr<Riders>> &riders2020){
+    riders2020.pop_back();
+}
+
+void insert(list<shared_ptr<Riders>> &riders2020, const Riders &comp,
+            list<shared_ptr<Riders>>::iterator n){
+    riders2020.insert(n, make_shared<Riders>(comp));
+}
+
+void printList(list<shared_ptr<Riders>> &riders2020){
+    
+}
