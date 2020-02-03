@@ -18,7 +18,22 @@ Riders TakN {"Takaaki", "Nakagami", "Honda", "Japan", 28, 30};
 
 TEST_CASE("Does it work?", "[Riders]"){
     std::list<std::shared_ptr<Riders>> riders2020;
+    std::cout << "Pushing pointers to the back of the list.\n\n";
     push(riders2020, ValR);
     push(riders2020, MarM);
+    push(riders2020, MavV);
+    push(riders2020, AndD);
     printList(riders2020);
+    std::cout << "Removing pointers from the beginning of the list.\n\n";
+    popQueue(riders2020);
+    printList(riders2020);
+    std::cout << "Add more pointers to the back of the list.\n\n";
+    push(riders2020, TakN);
+    push(riders2020, ValR);
+    printList(riders2020);
+    std::cout << "Removing pointers from the end of the list.\n\n";
+    popStack(riders2020);
+    printList(riders2020);
+    
+    
 }
