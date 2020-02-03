@@ -32,7 +32,7 @@ void insert(list<shared_ptr<Riders>> &riders2020, const Riders &comp, list<share
 void printList(list<shared_ptr<Riders>> &riders2020){
     for(auto i : riders2020){
         std::cout << (*i).firstName << " " << (*i).lastName << "\n" << (*i).country
-        << "age: " << (*i).riderAge << "\n" << (*i).team << " #" << (*i).riderNum
+        << " age: " << (*i).riderAge << "\n" << (*i).team << " #" << (*i).riderNum
         << std::endl;
     }
 }
