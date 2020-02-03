@@ -22,3 +22,8 @@ void riderList(){
     Riders TN = {"Takaaki", "Nakagami", "Japan", "Honda", 28, 30};
 }
 
+
+void push(list<shared_ptr<Riders>> &riders2020, const Riders &comp){
+    riders2020.push_back(make_shared<Riders>(comp));
+}
+

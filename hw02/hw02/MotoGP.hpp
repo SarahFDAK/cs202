@@ -22,5 +22,6 @@ struct Riders{
     int riderNum;
 };
 void riderList();
+void push(std::list<std::shared_ptr<Riders>> &riders2020, const Riders &comp);
 
 #endif /* MotoGP_hpp */
