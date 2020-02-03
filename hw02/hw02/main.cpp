@@ -6,11 +6,19 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
-#include <iostream>
+#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "MotoGP.hpp"
 
-int main(int argc, const char * argv[]) {
+Riders ValR {"Valentino", "Rossi", "Italy", "Yamaha", 40, 46};
+Riders MarM {"Marc", "Marquez", "Spain", "Honda", 27, 93};
+Riders AndD {"Andrea", "Dovizioso", "Italy", "Ducati", 33, 4};
+Riders MavV {"Maverick", "Viñales", "Spain", "Yamaha", 25, 12};
+Riders TakN {"Takaaki", "Nakagami", "Japan", "Honda", 28, 30};
 
-    return 0;
+TEST_CASE("Does it work?", "[Riders]"){
+    std::list<std::shared_ptr<Riders>> riders2020;
+    push(riders2020, ValR);
+    push(riders2020, MarM);
+    printList(riders2020);
 }
