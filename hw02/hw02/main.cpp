@@ -8,8 +8,9 @@
 
 #include <iostream>
 #include "catch.hpp"
+#include "MotoGP.hpp"
 
 int main(int argc, const char * argv[]) {
-    
+
     return 0;
 }

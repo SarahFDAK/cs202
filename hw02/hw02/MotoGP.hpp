@@ -11,13 +11,16 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <list>
 
 struct Riders{
     std::string firstName;
     std::string lastName;
-    std::string bikeBrand;
+    std::string team;
+    std::string country;
     int riderAge;
-    int bikeCC;    
+    int riderNum;
 };
+void riderList();
 
 #endif /* MotoGP_hpp */

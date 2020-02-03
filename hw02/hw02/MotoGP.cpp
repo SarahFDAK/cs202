@@ -6,9 +6,19 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
-#include <list>
+#include <sstream>
 #include "catch.hpp"
 #include "MotoGP.hpp"
 
-std::list<std::shared_ptr<Riders>> riders2020;
+using std::list;
+using std::shared_ptr;
+using std::make_shared;
+
+void riderList(){
+    Riders VR = {"Valentino", "Rossi", "Italy", "Yamaha", 40, 46};
+    Riders MM = {"Marc", "Marquez", "Spain", "Honda", 27, 93};
+    Riders AD = {"Andrea", "Dovizioso", "Italy", "Ducati", 33, 4};
+    Riders MV = {"Maverick", "Viñales", "Spain", "Yamaha", 25, 12};
+    Riders TN = {"Takaaki", "Nakagami", "Japan", "Honda", 28, 30};
+}
 
