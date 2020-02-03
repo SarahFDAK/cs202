@@ -26,14 +26,12 @@ TEST_CASE("Does it work?", "[Riders]"){
     printList(riders2020);
     std::cout << "Removing pointers from the beginning of the list.\n\n";
     popQueue(riders2020);
-    printList(riders2020);
     std::cout << "Add more pointers to the back of the list.\n\n";
     push(riders2020, TakN);
     push(riders2020, ValR);
     printList(riders2020);
     std::cout << "Removing pointers from the end of the list.\n\n";
     popStack(riders2020);
-    printList(riders2020);
-    
-    
+    std::cout << "Inserting pointer into list.\n\n";
+//    insert(riders2020, ValR, 1);
 }
