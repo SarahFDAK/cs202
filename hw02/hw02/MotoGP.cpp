@@ -20,12 +20,10 @@ void push(list<shared_ptr<Riders>> &riders2020, const Riders &comp){
 
 void popQueue(list<shared_ptr<Riders>> &riders2020){
     riders2020.pop_front();
-    printList(riders2020);
 }
 
 void popStack(list<shared_ptr<Riders>> &riders2020){
     riders2020.pop_back();
-    printList(riders2020);
 }
 
 void insertPtr(list<shared_ptr<Riders>> &riders2020, const Riders &comp1, const Riders &comp2){
@@ -34,15 +32,7 @@ void insertPtr(list<shared_ptr<Riders>> &riders2020, const Riders &comp1, const 
         return *x == comp1;
         });;
     riders2020.insert(n, make_shared<Riders>(comp2));
-    printList(riders2020);
 }
-
-//void find(list<shared_ptr<Riders>> &riders2020, const Riders &comp){
-////    std::lower_bound(riders2020.begin(), riders2020.end(), [&](auto a, auto b) {
-////        return a->lastName < b->lastName;
-////    });
-//    auto iter
-//}
 
 void printList(list<shared_ptr<Riders>> &riders2020){
     for(auto i : riders2020){
