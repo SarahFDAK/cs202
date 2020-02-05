@@ -22,11 +22,19 @@ struct Riders{
     int riderNum;
 };
 
+inline bool operator==(const Riders& a, const Riders& b) {
+    return (a.firstName == b.firstName) && (a.lastName == b.lastName);
+}
+inline bool operator!=(const Riders& a, const Riders& b) {
+    return !(a == b);
+}
+
 void riderList();
 void push(std::list<std::shared_ptr<Riders>> &riders2020, const Riders &comp);
 void popQueue(std::list<std::shared_ptr<Riders>> &riders2020);
 void popStack(std::list<std::shared_ptr<Riders>> &riders2020);
 void insertPtr(std::list<std::shared_ptr<Riders>> &riders2020, const Riders &comp, std::list<std::shared_ptr<Riders>>::iterator n);
+void find(std::list<std::shared_ptr<Riders>> &riders2020, const Riders &comp);
 void printList(std::list<std::shared_ptr<Riders>> &riders2020);
 
 

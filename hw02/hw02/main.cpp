@@ -20,7 +20,14 @@ TEST_CASE("Does it work?", "[Riders]"){
     std::list<std::shared_ptr<Riders>> riders2020;
     std::cout << "Pushing pointers to the back of the list.\n\n";
     push(riders2020, ValR);
+    REQUIRE(*riders2020.back() == ValR);
     push(riders2020, MarM);
+    REQUIRE(*riders2020.back() != ValR);
+
+    REQUIRE(*riders2020.front() == ValR);
+    riders2020.pop_front();
+    REQUIRE(*riders2020.front() != ValR);
+    
     push(riders2020, MavV);
     push(riders2020, AndD);
     printList(riders2020);
@@ -33,5 +40,6 @@ TEST_CASE("Does it work?", "[Riders]"){
     std::cout << "Removing pointers from the end of the list.\n\n";
     popStack(riders2020);
     std::cout << "Inserting pointer into list.\n\n";
+    find(riders2020, MarM);
     insertPtr(riders2020, ValR, riders2020.begin());
 }
