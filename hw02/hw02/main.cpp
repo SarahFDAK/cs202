@@ -23,23 +23,18 @@ TEST_CASE("Does it work?", "[Riders]"){
     REQUIRE(*riders2020.back() == ValR);
     push(riders2020, MarM);
     REQUIRE(*riders2020.back() != ValR);
-
-    REQUIRE(*riders2020.front() == ValR);
-    riders2020.pop_front();
-    REQUIRE(*riders2020.front() != ValR);
-    
     push(riders2020, MavV);
     push(riders2020, AndD);
-    printList(riders2020);
+    REQUIRE(*riders2020.front() == ValR);
     std::cout << "Removing pointers from the beginning of the list.\n\n";
     popQueue(riders2020);
+    REQUIRE(*riders2020.front() != ValR);
     std::cout << "Add more pointers to the back of the list.\n\n";
     push(riders2020, TakN);
     push(riders2020, ValR);
-    printList(riders2020);
     std::cout << "Removing pointers from the end of the list.\n\n";
     popStack(riders2020);
+    REQUIRE(*riders2020.back() != ValR);
     std::cout << "Inserting pointer into list.\n\n";
-    find(riders2020, MarM);
-    insertPtr(riders2020, ValR, riders2020.begin());
+    insertPtr(riders2020, AndD, ValR);
 }
