@@ -14,6 +14,10 @@ void to_lower(char* s){
             s[i]+=32;
             std::cout << s[i];
         }
+        else {
+            std::cout << s[i];
+            continue;
+        }
     }
 }
 
