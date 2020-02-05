@@ -22,6 +22,7 @@ struct Riders{
     int riderNum;
 };
 
+//Create overload operators to compare struct objects to each other
 inline bool operator==(const Riders& a, const Riders& b) {
     return (a.firstName == b.firstName) && (a.lastName == b.lastName);
 }
