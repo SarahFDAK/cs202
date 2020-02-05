@@ -22,5 +22,7 @@ int main(int argc, const char * argv[]) {
     char str[13] = "HelLo ThErE!";
     char* s;
     s = str;
+    to_lower(s);
+    std::cout << std::endl;
     return 0;
 }
