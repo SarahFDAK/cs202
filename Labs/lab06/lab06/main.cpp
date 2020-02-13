@@ -8,8 +8,17 @@
 
 #include <iostream>
 
+#include "names.hpp"
+
+//void foo(){
+//    std::cout << "This is just the function foo." << std::endl;
+//}
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    myNameSpace::foo();
+    ::foo();
+    NoName myNum;
+    myNum.aNum();
+//    foo();
     return 0;
 }

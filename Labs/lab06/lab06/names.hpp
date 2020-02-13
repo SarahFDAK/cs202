@@ -11,4 +11,21 @@
 
 #include <stdio.h>
 
+namespace myNameSpace{
+    void foo();
+}
+
+namespace {
+    void foo(){
+        std::cout << "Here is an anonymous namespace" << std::endl;
+    }
+}
+
+class NoName {
+private:
+    int x = 3;
+public:
+    void aNum();
+};
+
 #endif /* names_hpp */
