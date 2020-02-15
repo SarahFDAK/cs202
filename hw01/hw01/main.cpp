@@ -62,7 +62,7 @@ int main(int argc, const char * argv[]) {
     StopWatch myClock;
     //Create a vectoe to hold various ints representing number of items
     //to process
-    std::vector<int> items{10, 100, 1000, 10000, 1000000, 10000000};
+    std::vector<int> items{ 10, 100, 1000, 10000, 1000000, 10000000 };
     //declare and define the PRNG
     std::random_device rd;
     std::mt19937 gen(rd());
