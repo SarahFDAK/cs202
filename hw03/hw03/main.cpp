@@ -13,7 +13,8 @@
 
 void ReadFile(std::vector<std::string>& args, std::vector<std::string>& tokens, std::vector<std::pair<int,int> >& linecols){
     std::ifstream fin(args[2]);
-    if(args[2] == "--read"){
+    std::cout << "readfile\n";
+    if(args[1] == "--read"){
         if(!ReadLine(fin, tokens, linecols)){
             if(fin.eof()){
                 std::cout << "That's the end" << std::endl;
@@ -58,13 +59,17 @@ int main(int argc, const char * argv[]) {
     else{
         std::cout << "Please enter some text to be processed. It can be as much text as you'd like, with blank lines if desired.\n";
         std::string input;
-        std::istringstream iss(input);
-        while(std::getline(std::cin, input)){
-            while(input != "end" || input != "End" || input != "END"){
+        do{
+            std::getline(std::cin, input);
+//            if(input == "end" || input == "End" || input == "END")
+//                break;
+//            else {
+                std::istringstream iss(input);
                 ReadLine(iss, tokens, linecols);
                 PrintTokens(std::cout, tokens, linecols);
-            }
-        }
+                std::cin.ignore();
+//            }
+        }while(input != "end");
         std::cout << "Called console input" << std::endl;
     }
     return 0;
