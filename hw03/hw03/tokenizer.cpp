@@ -21,7 +21,7 @@ bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
 }
 
 bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
-              std::vector<std::pair<int, int>>& linecols){
+              std::vector<std::pair<int, int> >& linecols){
     std::string textLine;
     std::istringstream iss(textLine);
     std::string token;
