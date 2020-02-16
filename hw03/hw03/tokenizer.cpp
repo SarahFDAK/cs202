@@ -7,8 +7,11 @@
 //
 
 #include <sstream>
+#include <iomanip>
 
 #include "tokenizer.hpp"
+
+using std::setw;
 
 bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
     tokens.push_back(line);
@@ -41,5 +44,9 @@ bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
 
 void PrintTokens(std::ostream& os, const std::vector<std::string>& tokens,
                  const std::vector<std::pair<int, int>>& linecols){
+    for(size_t i = 0; i < tokens.size(); i++){
+        std::cout << "Line " << setw(3) << linecols[i].first << ", Column "
+        << setw(3) << linecols[i].second << ": \"" << tokens[i] << "\n";
+    }
     
 }
