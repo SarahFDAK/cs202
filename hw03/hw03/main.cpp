@@ -12,15 +12,20 @@
 
 void ReadFile(std::vector<std::string>& args, std::vector<std::string>& tokens, std::vector<std::pair<int,int>>& linecols){
     std::ifstream fin(args[2]);
-    if(!ReadLine(fin, tokens, linecols)){
-        if(fin.eof()){
-            std::cout << "That's the end" << std::endl;
+    if(args[2] == "--read"){
+        if(!ReadLine(fin, tokens, linecols)){
+            if(fin.eof()){
+                std::cout << "That's the end" << std::endl;
+            }
+            else
+                std::cout << "Error opening file" << std::endl;
         }
         else
-            std::cout << "Error opening file" << std::endl;
+            ReadLine(fin, tokens, linecols);
     }
-    else
-        ReadLine(fin, tokens, linecols);
+    else{
+        while(LineToTokens(<#const std::string &line#>, <#std::vector<std::string> &tokens#>))
+    }
 }
 
 int main(int argc, const char * argv[]) {
@@ -34,7 +39,10 @@ int main(int argc, const char * argv[]) {
         ReadFile(args, tokens, linecols);
     }
     else if(argc >= 2 && args[1] == "--lineonly"){
-        
+        LineToTokens(linecols, tokens)
+    }
+    else{
+        std::cout << "Please enter some text to be processed. It can be as much text as you'd like, with blank lines if desired.\n";
     }
     return 0;
 }

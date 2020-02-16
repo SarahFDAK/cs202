@@ -11,33 +11,34 @@
 #include "tokenizer.hpp"
 
 bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
-    if(line == "")
-        return false;
     tokens.push_back(line);
+    if(line == "\n")
+        return false;
     return true;
 }
+
 bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
               std::vector<std::pair<int, int>>& linecols){
     std::string textLine;
-    int lines = 0;
-    int columns = 0;
+    std::istringstream iss(textLine);
+    std::string token;
+    int lines = 1;
+    int columns = 1;
     if(!is){
-        if(is.eof()){
-            std::cout << "That's the end!" << std::endl;
-            return false;
-        }
         return false;
     }
-    while(is){
-        ++lines;
-        while(is >> textLine){
-            ++columns;
-            LineToTokens(textLine, tokens);
-            linecols.push_back(std::make_pair(lines, columns));
+    while(std::getline(is, textLine)){
+        lines++;
+        while(iss >> token){
+            columns++;
+            while(LineToTokens(token, tokens)){
+                linecols.push_back(std::make_pair(lines, columns));
+            }
         }
     }
     return true;
 }
+
 void PrintTokens(std::ostream& os, const std::vector<std::string>& tokens,
                  const std::vector<std::pair<int, int>>& linecols){
     
