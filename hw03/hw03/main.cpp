@@ -13,7 +13,6 @@
 
 void ReadFile(std::vector<std::string>& args, std::vector<std::string>& tokens, std::vector<std::pair<int,int> >& linecols){
     std::ifstream fin(args[2]);
-    std::cout << "readfile\n";
     if(args[1] == "--read"){
         if(!ReadLine(fin, tokens, linecols)){
             if(fin.eof()){
