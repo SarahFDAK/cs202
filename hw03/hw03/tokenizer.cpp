@@ -13,6 +13,7 @@
 
 using std::setw;
 
+//Fills tokens vector with each element read
 bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
     if(line == "\n"){
         tokens.push_back("Blank Line");
@@ -23,6 +24,8 @@ bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
     return true;
 }
 
+//Calls LineToTokens to fill the tokens vector, and also fills the linecols vector to report
+//which line and column each word was in
 bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
               std::vector<std::pair<int, int> >& linecols, int& lines){
     std::string textLine;
@@ -30,24 +33,25 @@ bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
         return false;
     }
     while(std::getline(is, textLine)){
-        std::cout << textLine << std::endl;
         if(textLine == "end")
             return false;
         lines++;
         int columns = 0;
+        //Create Blank Line entry in tokens vector
         if(textLine.empty()){
             LineToTokens("Blank Line", tokens);
             columns++;
             linecols.push_back(std::make_pair(lines, columns));
-//            continue;
         }
         std::string token;
         std::istringstream iss(textLine);
+        //Checks for space at beginning of line
         if(textLine[0] == ' '){
             LineToTokens(" ", tokens);
             columns++;
             linecols.push_back(std::make_pair(lines, columns));
         }
+        //Fill the tokens and linecols vectors from input stream
         while(iss >> token){
             columns++;
             LineToTokens(token, tokens);
@@ -57,11 +61,10 @@ bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
             linecols.push_back(std::make_pair(lines, columns));
         }
     }
-    for(auto i: linecols)
-        std::cout << i.first << " " << i.second << std::endl;
     return true;
 }
 
+//Prints a formatted list of the lines, columns, and words from the input stream
 void PrintTokens(std::ostream& os, const std::vector<std::string>& tokens,
                  const std::vector<std::pair<int, int>>& linecols){
     for(auto i = 0; i < tokens.size(); i++){

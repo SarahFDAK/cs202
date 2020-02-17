@@ -13,6 +13,7 @@
 #include <iostream>
 #include <vector>
 
+//Declare tokenizer functions
 bool LineToTokens(const std::string& line, std::vector<std::string>& tokens);
 bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
               std::vector<std::pair<int, int> >& linecols, int& lines);
