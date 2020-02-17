@@ -101,10 +101,12 @@ int main(int argc, const char * argv[]) {
         //Passes user input to ReadLine function
         do{
             std::getline(std::cin, input);
-            //Increments the line count if the user enters a blank line
+            //Increments the line count if the user enters a blank line and push the line and column 1
+            //to linecols vector
             if(input.empty()){
                 line++;
                 LineToTokens("Blank Line", tokens);
+                linecols.push_back(std::make_pair(line, 1));
             }
             std::istringstream iss(input);
             ReadLine(iss, tokens, linecols,line);
