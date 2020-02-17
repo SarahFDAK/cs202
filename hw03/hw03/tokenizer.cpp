@@ -51,18 +51,10 @@ bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
         while(iss >> token){
             columns++;
             LineToTokens(token, tokens);
+            linecols.push_back(std::make_pair(lines, columns));
+            columns++;
             LineToTokens(" ", tokens);
             linecols.push_back(std::make_pair(lines, columns));
-        }
-        for(char& c: textLine){
-            if(c == ' '){
-                columns++;
-                linecols.push_back(std::make_pair(lines, columns));
-            }
-//            else{
-//                continue;
-//            }
-
         }
     }
     for(auto i: linecols)
