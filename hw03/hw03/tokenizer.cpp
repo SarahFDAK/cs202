@@ -14,53 +14,65 @@
 using std::setw;
 
 bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
-//    if(line == "\n"){
-//        tokens.push_back("Blank Line");
-//        return false;
-//    }
-//    else
-    tokens.push_back(line);
+    if(line == "\n"){
+        tokens.push_back("Blank Line");
+        return false;
+    }
+    else
+        tokens.push_back(line);
     return true;
 }
 
 bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
-              std::vector<std::pair<int, int> >& linecols){
+              std::vector<std::pair<int, int> >& linecols, int& lines){
     std::string textLine;
-    int lines = 0;
     if(!is){
         return false;
     }
     while(std::getline(is, textLine)){
+        std::cout << textLine << std::endl;
         if(textLine == "end")
             return false;
         lines++;
+        int columns = 0;
         if(textLine.empty()){
             LineToTokens("Blank Line", tokens);
-            continue;
+            columns++;
+            linecols.push_back(std::make_pair(lines, columns));
+//            continue;
         }
-        int columns = 0;
         std::string token;
         std::istringstream iss(textLine);
-            while(iss >> token){
-                std::cout << token << std::endl;
-                columns++;
-                LineToTokens(token, tokens);
-            }
+        if(textLine[0] == ' '){
+            LineToTokens(" ", tokens);
+            columns++;
+            linecols.push_back(std::make_pair(lines, columns));
+        }
+        while(iss >> token){
+            columns++;
+            LineToTokens(token, tokens);
+            LineToTokens(" ", tokens);
+            linecols.push_back(std::make_pair(lines, columns));
+        }
         for(char& c: textLine){
             if(c == ' '){
                 columns++;
-                auto it = tokens.begin();
-                tokens.insert(it, columns, " ");
+                linecols.push_back(std::make_pair(lines, columns));
             }
-            linecols.push_back(std::make_pair(lines, columns));
+//            else{
+//                continue;
+//            }
+
         }
     }
+    for(auto i: linecols)
+        std::cout << i.first << " " << i.second << std::endl;
     return true;
 }
 
 void PrintTokens(std::ostream& os, const std::vector<std::string>& tokens,
                  const std::vector<std::pair<int, int>>& linecols){
-    for(size_t i = 0; i < tokens.size(); i++){
+    for(auto i = 0; i < tokens.size(); i++){
         if(tokens[i] != " "){
             std::cout << "Line " << setw(3) << linecols[i].first << ", Column "
             << setw(3) << linecols[i].second << ": \"" << tokens[i] << "\"\n";

@@ -13,8 +13,9 @@
 
 void ReadFile(std::vector<std::string>& args, std::vector<std::string>& tokens, std::vector<std::pair<int,int> >& linecols){
     std::ifstream fin(args[2]);
+    int line = 0;
     if(args[1] == "--read"){
-        if(!ReadLine(fin, tokens, linecols)){
+        if(!ReadLine(fin, tokens, linecols, line)){
             if(fin.eof()){
                 std::cout << "That's the end" << std::endl;
             }
@@ -22,7 +23,8 @@ void ReadFile(std::vector<std::string>& args, std::vector<std::string>& tokens, 
                 std::cout << "Error opening file" << std::endl;
         }
         else
-            ReadLine(fin, tokens, linecols);
+            line++;
+            ReadLine(fin, tokens, linecols, line);
     }
 }
 
@@ -38,7 +40,8 @@ void ReadFileLine(std::vector<std::string>& args, std::vector<std::string>& toke
         }
     }
     fin >> line;
-    while(LineToTokens(line, tokens));
+    LineToTokens(line, tokens);
+    std::cout << "Finished\n";
 }
 
 int main(int argc, const char * argv[]) {
@@ -56,18 +59,17 @@ int main(int argc, const char * argv[]) {
         ReadFileLine(args, tokens);
     }
     else{
-        std::cout << "Please enter some text to be processed. It can be as much text as you'd like, with blank lines if desired.\n";
+        std::cout << "Please enter some text to be processed. It can be as much text as you'd like, with blank lines if desired. Type \"end\" to exit.\n";
         std::string input;
+        int line = 0;
         do{
-            
-//            if(input == "end" || input == "End" || input == "END")
-//                break;
-//            else {
-//                std::istringstream iss(input);
-                ReadLine(std::getline(std::cin, input), tokens, linecols);
-                PrintTokens(std::cout, tokens, linecols);
-//            }
-        }while(input != "end");
+            std::getline(std::cin, input);
+            if(input.empty())
+                line++;
+            std::istringstream iss(input);
+            ReadLine(iss, tokens, linecols,line);
+        } while(input != "end");
+        PrintTokens(std::cout, tokens, linecols);
         std::cout << "Called console input" << std::endl;
     }
     return 0;
