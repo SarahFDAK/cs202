@@ -19,7 +19,7 @@ void ReadFile(std::vector<std::string>& args, std::vector<std::string>& tokens,
               std::vector<std::pair<int,int> >& linecols){
     std::ifstream fin(args[2]);
     int line = 0;
-    if(args[1] == "--read"){
+    if(args[1] == "--tokenize"){
         //Checks for errors in reading/opening the file
         if(!ReadLine(fin, tokens, linecols, line)){
             if(fin.eof()){
@@ -58,7 +58,7 @@ void reportResults(StopWatch myClock, double MB){
     double time_in_seconds = myClock.seconds(myDiff);
     double MBps = MB/time_in_seconds;
     std::cout << "Processed " << MB << " MB at: " << " in " << time_in_seconds << " seconds.\n"
-    << MBps << "ps" <<std::endl;
+    << MBps << " MBps" <<std::endl;
 }
 
 int main(int argc, const char * argv[]) {
@@ -71,7 +71,17 @@ int main(int argc, const char * argv[]) {
         args.push_back(argv[i]);
     }
     //Checks for user input in command prompt and calls the correct function
-    if(argc >=2 && args[1] == "--tokenize"){
+    if(argc >= 2 && args[3] == "--lineonly"){
+        std::ifstream fin(args[2]);
+        fin.seekg(0, std::ios_base::seekdir::end);
+        double MB = fin.tellg()/1000;
+        timer.setStart();
+        ReadFileLine(args, tokens);
+        timer.setStop();
+        reportResults(timer, MB);
+    }
+    //Checks for user input in command prompt and calls the correct function
+    else if(argc >=2 && args[1] == "--tokenize"){
         std::ifstream fin(args[2]);
         fin.seekg(0, std::ios_base::seekdir::end);
         double MB = fin.tellg()/1000;
@@ -81,16 +91,7 @@ int main(int argc, const char * argv[]) {
         timer.setStop();
         reportResults(timer, MB);
     }
-    //Checks for user input in command prompt and calls the correct function
-    else if(argc >= 3 && args[3] == "--lineonly"){
-        std::ifstream fin(args[2]);
-        fin.seekg(0, std::ios_base::seekdir::end);
-        double MB = fin.tellg()/1000;
-        timer.setStart();
-        ReadFileLine(args, tokens);
-        timer.setStop();
-        reportResults(timer, MB);
-    }
+
     //If the user only ran the program with no further specifcations, it requests user input in the console
     else{
         std::cout << "Please enter some text to be processed. It can be as much text "
