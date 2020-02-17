@@ -60,14 +60,13 @@ int main(int argc, const char * argv[]) {
         std::cout << "Please enter some text to be processed. It can be as much text as you'd like, with blank lines if desired.\n";
         std::string input;
         do{
-            std::getline(std::cin, input);
+            
 //            if(input == "end" || input == "End" || input == "END")
 //                break;
 //            else {
-                std::istringstream iss(input);
-                ReadLine(iss, tokens, linecols);
+//                std::istringstream iss(input);
+                ReadLine(std::getline(std::cin, input), tokens, linecols);
                 PrintTokens(std::cout, tokens, linecols);
-                std::cin.ignore();
 //            }
         }while(input != "end");
         std::cout << "Called console input" << std::endl;
