@@ -7,11 +7,41 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 #include "tokenizer.hpp"
 
+using std::cout;
+using std::endl;
+using std::string;
+
+bool openFile(std::ifstream& fin){
+    if(!fin){
+        if(fin.eof()){
+            cout << "End of file" << endl;
+            return true;
+        }
+        else{
+            cout << "Error opening file" << endl;
+            return false;
+        }
+    }
+    return true;
+}
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    std::ifstream fin("pAndP.txt");
+    string text;
+    std::vector<string> paragraphs;
+    std::vector<string> tokens;
+    while(openFile(fin)){
+        string words;
+        std::getline(fin, text);
+        std::istringstream iss(text);
+        while(iss >> words)
+            LineToTokens(words, tokens);
+    }
+    
     return 0;
 }
