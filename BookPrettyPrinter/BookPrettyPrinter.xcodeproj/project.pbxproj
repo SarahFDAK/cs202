@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B011DBE23FB8B7200CFA374 /* BPPmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B011DBD23FB8B7200CFA374 /* BPPmain.cpp */; };
-		3B011DC623FB8BB100CFA374 /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B011DC523FB8BB100CFA374 /* tokenizer.cpp */; };
+		3B011DC623FB8BB100CFA374 /* tokenizer2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B011DC523FB8BB100CFA374 /* tokenizer2.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,8 +26,8 @@
 /* Begin PBXFileReference section */
 		3B011DBA23FB8B7200CFA374 /* BookPrettyPrinter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BookPrettyPrinter; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B011DBD23FB8B7200CFA374 /* BPPmain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BPPmain.cpp; sourceTree = "<group>"; };
-		3B011DC423FB8BB100CFA374 /* tokenizer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tokenizer.hpp; sourceTree = "<group>"; };
-		3B011DC523FB8BB100CFA374 /* tokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tokenizer.cpp; sourceTree = "<group>"; };
+		3B011DC423FB8BB100CFA374 /* tokenizer2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tokenizer2.hpp; sourceTree = "<group>"; };
+		3B011DC523FB8BB100CFA374 /* tokenizer2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tokenizer2.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				3B011DBD23FB8B7200CFA374 /* BPPmain.cpp */,
-				3B011DC523FB8BB100CFA374 /* tokenizer.cpp */,
-				3B011DC423FB8BB100CFA374 /* tokenizer.hpp */,
+				3B011DC523FB8BB100CFA374 /* tokenizer2.cpp */,
+				3B011DC423FB8BB100CFA374 /* tokenizer2.hpp */,
 			);
 			path = BookPrettyPrinter;
 			sourceTree = "<group>";
@@ -125,7 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B011DBE23FB8B7200CFA374 /* BPPmain.cpp in Sources */,
-				3B011DC623FB8BB100CFA374 /* tokenizer.cpp in Sources */,
+				3B011DC623FB8BB100CFA374 /* tokenizer2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
