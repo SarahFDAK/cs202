@@ -32,13 +32,13 @@ bool ReadLine(std::istream& is, std::vector<std::string>& tokens){
         return false;
     }
     while(std::getline(is, textLine)){
-        if(textLine == "end")
-            return false;
+//        if(textLine == "end")
+//            return false;
 //        lines++;
 //        int columns = 0;
         //Create Blank Line entry in tokens vector
         if(textLine.empty()){
-            LineToTokens("\n", tokens);
+            LineToTokens("Blank Line", tokens);
 //            columns++;
 //            linecols.push_back(std::make_pair(lines, columns));
         }
@@ -51,7 +51,7 @@ bool ReadLine(std::istream& is, std::vector<std::string>& tokens){
 //            linecols.push_back(std::make_pair(lines, columns));
 //        }
         //Fill the tokens and linecols vectors from input stream
-        while(iss >> token){
+        while(std::getline(iss,token)){
 //            columns++;
             LineToTokens(token, tokens);
 //            linecols.push_back(std::make_pair(lines, columns));
