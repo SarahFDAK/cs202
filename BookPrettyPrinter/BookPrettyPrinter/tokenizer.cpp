@@ -15,6 +15,7 @@ using std::setw;
 
 //Fills tokens vector with each element read
 bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
+    //This doesn't seem to actually do anything
     if(line.empty()){
         tokens.push_back("Blank Line");
         return false;
@@ -26,38 +27,26 @@ bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
 
 //Calls LineToTokens to fill the tokens vector, and also fills the linecols vector to report
 //which line and column each word was in
+
+//Modified for the current program - does not count lines or columns
 bool ReadLine(std::istream& is, std::vector<std::string>& tokens){
     std::string textLine;
     if(!is){
         return false;
     }
     while(std::getline(is, textLine)){
-//        if(textLine == "end")
-//            return false;
-//        lines++;
-//        int columns = 0;
+
         //Create Blank Line entry in tokens vector
         if(textLine.empty()){
             LineToTokens("Blank Line", tokens);
-//            columns++;
-//            linecols.push_back(std::make_pair(lines, columns));
+
         }
         std::string token;
         std::istringstream iss(textLine);
-        //Checks for space at beginning of line
-//        if(textLine[0] == ' '){
-//            LineToTokens(" ", tokens);
-//            columns++;
-//            linecols.push_back(std::make_pair(lines, columns));
-//        }
         //Fill the tokens and linecols vectors from input stream
         while(std::getline(iss,token)){
-//            columns++;
             LineToTokens(token, tokens);
-//            linecols.push_back(std::make_pair(lines, columns));
-//            columns++;
-//            LineToTokens(" ", tokens);
-//            linecols.push_back(std::make_pair(lines, columns));
+
         }
     }
     return true;
