@@ -7,6 +7,10 @@
 //  it receives will be tokenized, and each word entered will be listed by line and column number.
 //  It also reports, if the user has it open a file, how many MB the file was and how quickly the
 //  requested operation was completed.
+//  For the read/print combination processing, the program processed 607 MB in 0.504721 seconds.
+//  at 1202.64 MBps.
+//  The lineonly processing handled the same file size in 8.5e-05 seconds.
+//  7.14118e+06 MBps
 
 #include <fstream>
 #include <sstream>
@@ -57,7 +61,7 @@ void reportResults(StopWatch myClock, double MB){
     auto myDiff = myClock.getDiff(myClock.setStop());
     double time_in_seconds = myClock.seconds(myDiff);
     double MBps = MB/time_in_seconds;
-    std::cout << "Processed " << MB << " MB at: " << " in " << time_in_seconds << " seconds.\n"
+    std::cout << "Processed " << MB << " MB in " << time_in_seconds << " seconds.\n"
     << MBps << " MBps" <<std::endl;
 }
 
