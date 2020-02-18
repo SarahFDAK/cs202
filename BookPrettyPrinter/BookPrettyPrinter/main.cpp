@@ -19,7 +19,6 @@ using std::string;
 bool openFile(std::ifstream& fin){
     if(!fin){
         if(fin.eof()){
-            cout << "End of file" << endl;
             return true;
         }
         else{
@@ -30,6 +29,11 @@ bool openFile(std::ifstream& fin){
     return true;
 }
 
+void printWrap(const std::vector<string>& paragraphs){
+    for(auto it:paragraphs){
+        cout << it << endl;
+    }
+}
 
 int main(int argc, const char * argv[]) {
     std::ifstream fin("pAndP.txt");
@@ -39,6 +43,6 @@ int main(int argc, const char * argv[]) {
             break;
         ReadLine(fin, paragraphs);
     }
-    
+    printWrap(paragraphs);
     return 0;
 }
