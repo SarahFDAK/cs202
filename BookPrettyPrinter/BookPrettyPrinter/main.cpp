@@ -30,18 +30,25 @@ bool openFile(std::ifstream& fin){
     return true;
 }
 
+void fillParagraphs(std::vector<string>& paragraphs, const std::vector<string>& tokens){
+    string par;
+    for(auto it:tokens){
+        cout << it << endl;
+    }
+}
+
 int main(int argc, const char * argv[]) {
     std::ifstream fin("pAndP.txt");
     string text;
     std::vector<string> paragraphs;
     std::vector<string> tokens;
     while(openFile(fin)){
+        if(fin.eof())
+            break;
         string words;
         std::getline(fin, text);
-        std::istringstream iss(text);
-        while(iss >> words)
-            LineToTokens(words, tokens);
+        ReadLine(fin, tokens)
     }
-    
+    fillParagraphs(paragraphs, tokens);
     return 0;
 }

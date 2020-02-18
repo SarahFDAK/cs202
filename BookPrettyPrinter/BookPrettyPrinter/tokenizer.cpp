@@ -15,7 +15,7 @@ using std::setw;
 
 //Fills tokens vector with each element read
 bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
-    if(line == "\n"){
+    if(line.empty()){
         tokens.push_back("Blank Line");
         return false;
     }
@@ -26,8 +26,7 @@ bool LineToTokens(const std::string& line, std::vector<std::string>& tokens){
 
 //Calls LineToTokens to fill the tokens vector, and also fills the linecols vector to report
 //which line and column each word was in
-bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
-              std::vector<std::pair<int, int> >& linecols, int& lines){
+bool ReadLine(std::istream& is, std::vector<std::string>& tokens){
     std::string textLine;
     if(!is){
         return false;
@@ -35,30 +34,30 @@ bool ReadLine(std::istream& is, std::vector<std::string>& tokens,
     while(std::getline(is, textLine)){
         if(textLine == "end")
             return false;
-        lines++;
-        int columns = 0;
+//        lines++;
+//        int columns = 0;
         //Create Blank Line entry in tokens vector
         if(textLine.empty()){
-            LineToTokens("Blank Line", tokens);
-            columns++;
-            linecols.push_back(std::make_pair(lines, columns));
+            LineToTokens("\n", tokens);
+//            columns++;
+//            linecols.push_back(std::make_pair(lines, columns));
         }
         std::string token;
         std::istringstream iss(textLine);
         //Checks for space at beginning of line
-        if(textLine[0] == ' '){
-            LineToTokens(" ", tokens);
-            columns++;
-            linecols.push_back(std::make_pair(lines, columns));
-        }
+//        if(textLine[0] == ' '){
+//            LineToTokens(" ", tokens);
+//            columns++;
+//            linecols.push_back(std::make_pair(lines, columns));
+//        }
         //Fill the tokens and linecols vectors from input stream
         while(iss >> token){
-            columns++;
+//            columns++;
             LineToTokens(token, tokens);
-            linecols.push_back(std::make_pair(lines, columns));
-            columns++;
-            LineToTokens(" ", tokens);
-            linecols.push_back(std::make_pair(lines, columns));
+//            linecols.push_back(std::make_pair(lines, columns));
+//            columns++;
+//            LineToTokens(" ", tokens);
+//            linecols.push_back(std::make_pair(lines, columns));
         }
     }
     return true;
