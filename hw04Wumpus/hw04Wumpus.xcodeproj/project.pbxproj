@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3BC125072404E3AB00CAFB74 /* wumpus-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BC125062404E3AB00CAFB74 /* wumpus-main.cpp */; };
+		3BC1250F2404F24500CAFB74 /* wumpHunt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1250D2404F24500CAFB74 /* wumpHunt.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		3BC125032404E3AB00CAFB74 /* hw04Wumpus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hw04Wumpus; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC125062404E3AB00CAFB74 /* wumpus-main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "wumpus-main.cpp"; sourceTree = "<group>"; };
+		3BC1250D2404F24500CAFB74 /* wumpHunt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = wumpHunt.cpp; sourceTree = "<group>"; };
+		3BC1250E2404F24500CAFB74 /* wumpHunt.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = wumpHunt.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				3BC125062404E3AB00CAFB74 /* wumpus-main.cpp */,
+				3BC1250D2404F24500CAFB74 /* wumpHunt.cpp */,
+				3BC1250E2404F24500CAFB74 /* wumpHunt.hpp */,
 			);
 			path = hw04Wumpus;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BC125072404E3AB00CAFB74 /* wumpus-main.cpp in Sources */,
+				3BC1250F2404F24500CAFB74 /* wumpHunt.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
