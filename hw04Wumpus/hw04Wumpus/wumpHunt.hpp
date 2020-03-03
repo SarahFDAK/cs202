@@ -10,14 +10,8 @@
 #define wumpHunt_hpp
 
 #include <stdio.h>
-#include <tuple>
+#include <map>
 
-class Rooms{
-public:
-    void setNeighborRooms(const int& n1, const int& n2, const int& n3);
-private:
-    int _roomNum;
-    std::tuple<char, char, char> _neighbors;
-};
+
 
 #endif /* wumpHunt_hpp */
