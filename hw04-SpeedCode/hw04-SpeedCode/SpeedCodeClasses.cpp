@@ -9,11 +9,15 @@
 #include "SpeedCodeClasses.hpp"
 
 void Streams::setStream(std::istream& input){
-    input >> _userString;
+    std::string holder;
+    while(input >> holder)
+        _userString+=holder;
 }
 
 std::ofstream Streams::Output(){
     std::ofstream fout("StreamsOutput.txt");
+    if(!fout)
+        std::cout << "Error opening file\n";
     fout << _userString;
     return fout;
 }
