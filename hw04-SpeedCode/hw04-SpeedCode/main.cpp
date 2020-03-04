@@ -6,10 +6,14 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
-#include <iostream>
+#include "SpeedCodeClasses.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    Streams myStream;
+    std::string myInput;
+    std::getline(std::cin, myInput);
+    std::istringstream iss(myInput);
+    myStream.setStream(iss);
+    myStream.Output();
     return 0;
 }
