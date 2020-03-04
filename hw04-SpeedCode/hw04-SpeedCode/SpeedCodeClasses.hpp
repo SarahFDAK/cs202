@@ -10,8 +10,19 @@
 #define SpeedCodeClasses_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <map>
+#include <sstream>
 
 class Streams {
+    
+};
+
+class Conatiners {
+    
+};
+
+class Memory {
     
 };
 #endif /* SpeedCodeClasses_hpp */
