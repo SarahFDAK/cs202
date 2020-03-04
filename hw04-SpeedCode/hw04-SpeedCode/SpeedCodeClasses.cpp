@@ -7,3 +7,13 @@
 //
 
 #include "SpeedCodeClasses.hpp"
+
+void Streams::setStream(std::istream& input){
+    input >> _userString;
+}
+
+std::ofstream Streams::Output(){
+    std::ofstream fout("StreamsOutput.txt");
+    fout << _userString;
+    return fout;
+}

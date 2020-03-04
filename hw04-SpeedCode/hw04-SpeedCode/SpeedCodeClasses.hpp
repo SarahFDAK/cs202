@@ -13,9 +13,14 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <fstream>
 
 class Streams {
-    
+public:
+    void setStream(std::istream& input);
+    std::ofstream Output();
+private:
+    std::string _userString;
 };
 
 class Conatiners {
