@@ -29,5 +29,6 @@ int main(int argc, const char * argv[]) {
         std::getline(std::cin, myInput);
         myContainer.addWords(i, myInput);
     }
+    
     return 0;
 }

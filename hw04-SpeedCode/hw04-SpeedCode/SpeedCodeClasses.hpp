@@ -28,6 +28,7 @@ public:
     void setEntries(int& userNum);
     void addWords(int& entryNum, std::string& mapEntry);
     int getEntries() const;
+    void printWords();
 private:
     std::map<int, std::string> _myMap;
     int _entries;

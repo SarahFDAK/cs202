@@ -33,3 +33,8 @@ void Containers::addWords(int& entryNum, std::string& mapEntry){
 int Containers::getEntries() const{
     return _entries;
 }
+
+void Containers::printWords(){
+    for(auto j: _myMap)
+        std::cout << j.second << std::endl;
+}
