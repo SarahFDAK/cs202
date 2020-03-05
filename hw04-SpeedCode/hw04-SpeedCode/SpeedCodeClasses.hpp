@@ -24,7 +24,13 @@ private:
 };
 
 class Containers {
-    
+public:
+    void setEntries(int& userNum);
+    void addWords(int& entryNum, std::string& mapEntry);
+    int getEntries() const;
+private:
+    std::map<int, std::string> _myMap;
+    int _entries;
 };
 
 class Memory {

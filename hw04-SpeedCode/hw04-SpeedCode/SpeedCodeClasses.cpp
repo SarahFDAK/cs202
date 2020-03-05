@@ -21,3 +21,15 @@ std::ofstream Streams::Output(){
     fout << _userString;
     return fout;
 }
+
+void Containers::setEntries(int& userNum){
+    _entries = userNum;
+}
+
+void Containers::addWords(int& entryNum, std::string& mapEntry){
+    _myMap[entryNum] = mapEntry;
+}
+
+int Containers::getEntries() const{
+    return _entries;
+}
