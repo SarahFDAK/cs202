@@ -11,7 +11,7 @@
 void Streams::setStream(std::istream& input){
     std::string holder;
     while(input >> holder)
-        _userString+=holder;
+        _userString+=(holder + " ");
 }
 
 std::ofstream Streams::Output(){
