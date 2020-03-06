@@ -8,7 +8,7 @@
 
 #include "SpeedCodeClasses.hpp"
 
-void Streams::setStream(std::istream& input){
+void Streams::setStream(const std::istream& input){
     std::string holder;
     while(input >> holder)
         _userString+=(holder + " ");
