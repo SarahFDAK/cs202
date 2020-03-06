@@ -22,11 +22,11 @@ std::ofstream Streams::Output(){
     return fout;
 }
 
-void Containers::setEntries(int& userNum){
+void Containers::setEntries(const int& userNum){
     _entries = userNum;
 }
 
-void Containers::addWords(int& entryNum, std::string& mapEntry){
+void Containers::addWords(const int& entryNum, const std::string& mapEntry){
     _myMap[entryNum] = mapEntry;
 }
 
@@ -34,7 +34,7 @@ int Containers::getEntries() const{
     return _entries;
 }
 
-void Containers::printWords(){
+void Containers::printWords() const{
     for(auto j: _myMap)
         std::cout << j.second << std::endl;
 }

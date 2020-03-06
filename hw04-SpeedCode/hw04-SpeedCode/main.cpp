@@ -19,16 +19,18 @@ int main(int argc, const char * argv[]) {
     Containers myContainer;
     int myEntryNum = 0;
     std::cout << "How many entries do you want to make?\n";
-    while(!std::cin >> myEntryNum){
+    std::cin >> myEntryNum;
+    while(!std::cin){
         std::cout << "Please enter an integer: \n";
         std::cin.ignore();
     }
     myContainer.setEntries(myEntryNum);
+    std::cin.ignore();
     for(int i = 0; i < myEntryNum; i++){
         std::cout << "Word entry " << i << ": ";
         std::getline(std::cin, myInput);
         myContainer.addWords(i, myInput);
     }
-    
+    myContainer.printWords();
     return 0;
 }

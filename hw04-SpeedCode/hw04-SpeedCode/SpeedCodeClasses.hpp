@@ -17,7 +17,7 @@
 
 class Streams {
 public:
-    void setStream(std::istream& input);
+    void setStream(const std::istream& input);
     std::ofstream Output();
 private:
     std::string _userString;
@@ -25,10 +25,10 @@ private:
 
 class Containers {
 public:
-    void setEntries(int& userNum);
-    void addWords(int& entryNum, std::string& mapEntry);
+    void setEntries(const int& userNum);
+    void addWords(const int& entryNum, const std::string& mapEntry);
     int getEntries() const;
-    void printWords();
+    void printWords() const;
 private:
     std::map<int, std::string> _myMap;
     int _entries;
