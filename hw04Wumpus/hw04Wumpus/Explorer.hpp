@@ -10,5 +10,21 @@
 #define Explorer_hpp
 
 #include <stdio.h>
+#include "Cave.hpp"
+
+class Explorer {
+    int _lifeStat = 0;
+    int _yourRoom = 0;
+    int _arrows = 5;
+    
+public:
+    void setCurrentRoom(const Cave& cave);
+    void setLifeStat(const int alive);
+    void missed(const int usedArrow);
+    
+    int getExplorerLife() const;
+    int getExplorerRoom() const;
+    int getArrowNum() const;
+};
 
 #endif /* Explorer_hpp */
