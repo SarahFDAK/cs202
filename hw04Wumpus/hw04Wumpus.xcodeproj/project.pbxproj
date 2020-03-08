@@ -11,6 +11,7 @@
 		3BC1250F2404F24500CAFB74 /* Cave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1250D2404F24500CAFB74 /* Cave.cpp */; };
 		3BE88FE3241591DB00AA42EA /* Explorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BE88FE1241591DB00AA42EA /* Explorer.cpp */; };
 		3BE88FE62415921300AA42EA /* Wumpus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BE88FE42415921300AA42EA /* Wumpus.cpp */; };
+		3BE88FE92415922A00AA42EA /* Hazards.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BE88FE72415922A00AA42EA /* Hazards.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		3BE88FE2241591DB00AA42EA /* Explorer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Explorer.hpp; sourceTree = "<group>"; };
 		3BE88FE42415921300AA42EA /* Wumpus.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wumpus.cpp; sourceTree = "<group>"; };
 		3BE88FE52415921300AA42EA /* Wumpus.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Wumpus.hpp; sourceTree = "<group>"; };
+		3BE88FE72415922A00AA42EA /* Hazards.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Hazards.cpp; sourceTree = "<group>"; };
+		3BE88FE82415922A00AA42EA /* Hazards.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Hazards.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				3BE88FE2241591DB00AA42EA /* Explorer.hpp */,
 				3BE88FE42415921300AA42EA /* Wumpus.cpp */,
 				3BE88FE52415921300AA42EA /* Wumpus.hpp */,
+				3BE88FE72415922A00AA42EA /* Hazards.cpp */,
+				3BE88FE82415922A00AA42EA /* Hazards.hpp */,
 				3BC1250E2404F24500CAFB74 /* Cave.hpp */,
 			);
 			path = hw04Wumpus;
@@ -138,6 +143,7 @@
 				3BC125072404E3AB00CAFB74 /* wumpus-main.cpp in Sources */,
 				3BE88FE3241591DB00AA42EA /* Explorer.cpp in Sources */,
 				3BC1250F2404F24500CAFB74 /* Cave.cpp in Sources */,
+				3BE88FE92415922A00AA42EA /* Hazards.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
