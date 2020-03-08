@@ -17,8 +17,9 @@
 
 class Streams {
 public:
-    void setStream(const std::istream& input);
+    void setStream(std::istream& input);
     std::ofstream Output();
+    ~Streams();
 private:
     std::string _userString;
 };
@@ -29,6 +30,7 @@ public:
     void addWords(const int& entryNum, const std::string& mapEntry);
     int getEntries() const;
     void printWords() const;
+    ~Containers();
 private:
     std::map<int, std::string> _myMap;
     int _entries;
