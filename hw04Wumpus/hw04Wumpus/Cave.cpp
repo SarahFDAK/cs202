@@ -6,6 +6,7 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
+
 #include "Cave.hpp"
 
 Cave::Cave(){};
@@ -41,3 +42,5 @@ void Cave::setWilson2(const Cave &room){
 void Cave::setWilson3(const Cave &room){
     _wilson3 = room.getRoom();
 }
+
+
