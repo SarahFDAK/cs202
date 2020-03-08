@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3BC125072404E3AB00CAFB74 /* wumpus-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BC125062404E3AB00CAFB74 /* wumpus-main.cpp */; };
 		3BC1250F2404F24500CAFB74 /* Cave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1250D2404F24500CAFB74 /* Cave.cpp */; };
+		3BE88FE3241591DB00AA42EA /* Explorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BE88FE1241591DB00AA42EA /* Explorer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		3BC125062404E3AB00CAFB74 /* wumpus-main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "wumpus-main.cpp"; sourceTree = "<group>"; };
 		3BC1250D2404F24500CAFB74 /* Cave.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cave.cpp; sourceTree = "<group>"; };
 		3BC1250E2404F24500CAFB74 /* Cave.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cave.hpp; sourceTree = "<group>"; };
+		3BE88FE1241591DB00AA42EA /* Explorer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Explorer.cpp; sourceTree = "<group>"; };
+		3BE88FE2241591DB00AA42EA /* Explorer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Explorer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 			children = (
 				3BC125062404E3AB00CAFB74 /* wumpus-main.cpp */,
 				3BC1250D2404F24500CAFB74 /* Cave.cpp */,
+				3BE88FE1241591DB00AA42EA /* Explorer.cpp */,
+				3BE88FE2241591DB00AA42EA /* Explorer.hpp */,
 				3BC1250E2404F24500CAFB74 /* Cave.hpp */,
 			);
 			path = hw04Wumpus;
@@ -125,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BC125072404E3AB00CAFB74 /* wumpus-main.cpp in Sources */,
+				3BE88FE3241591DB00AA42EA /* Explorer.cpp in Sources */,
 				3BC1250F2404F24500CAFB74 /* Cave.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
