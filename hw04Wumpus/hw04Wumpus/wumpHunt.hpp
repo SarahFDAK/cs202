@@ -10,7 +10,6 @@
 #define wumpHunt_hpp
 
 #include <stdio.h>
-#include <map>
 #include <vector>
 
 //Cave map:
@@ -54,9 +53,9 @@ public:
     void setWilson3(const Cave& cave);
     
     int getRoom() const;
-    char getWilson1() const;
-    char getWilson2() const;
-    char getWilson3() const;
+    int getWilson1() const;
+    int getWilson2() const;
+    int getWilson3() const;
 };
 
 std::vector<int> rooms { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
