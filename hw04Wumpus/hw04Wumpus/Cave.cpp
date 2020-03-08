@@ -6,7 +6,7 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
-#include "wumpHunt.hpp"
+#include "Cave.hpp"
 
 Cave::Cave(){};
 
