@@ -7,3 +7,17 @@
 //
 
 #include "Wumpus.hpp"
+
+void Wumpus::setWumpRoom(const Cave& cave) {
+    _wumpRoom = cave.getRoom();
+};
+void Wumpus::setWumpLife(const bool& wumpStat) {
+    _itsAlive = wumpStat;
+};
+
+int Wumpus::getWumpRoom() const {
+    return _wumpRoom;
+};
+bool Wumpus::getWumpStat() const {
+    return _itsAlive;
+};
