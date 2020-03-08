@@ -12,16 +12,22 @@
 #include <stdio.h>
 #include "Cave.hpp"
 
-class Bats {
+class Hazards {
     int _bat1Room = 0;
     int _bat2Room = 0;
+    int _pit1Room = 0;
+    int _pit2Room = 0;
   
 public:
     void setBat1Room(const Cave& cave);
     void setBat2Room(const Cave& cave);
+    void setPit1Room(const Cave& cave);
+    void setPit2Room(const Cave& cave);
     
     int getBat1Room() const;
     int getBat2Room() const;
+    int getPit1Room() const;
+    int getPit2Room() const;
 };
 
 #endif /* Hazards_hpp */
