@@ -48,27 +48,27 @@ std::map<int, int> roomNums {
     {20, 0}
 };
 
-std::tuple<int, int, int> roomNeighbors(const int roomNum){
-    if(roomNum == 1) return std::make_tuple(2, 5, 6);
-    if(roomNum == 2) return std::make_tuple(1, 3, 8);
-    if(roomNum == 3) return std::make_tuple(2, 4, 10);
-    if(roomNum == 4) return std::make_tuple(3, 5, 12);
-    if(roomNum == 5) return std::make_tuple(1, 4, 14);
-    if(roomNum == 6) return std::make_tuple(1, 7, 15);
-    if(roomNum == 7) return std::make_tuple(6, 8, 16);
-    if(roomNum == 8) return std::make_tuple(2, 7, 9);
-    if(roomNum == 9) return std::make_tuple(8, 10, 17);
-    if(roomNum == 10) return std::make_tuple(3, 9, 11);
-    if(roomNum == 11) return std::make_tuple(10, 12, 18);
-    if(roomNum == 12) return std::make_tuple(4, 11, 13);
-    if(roomNum == 13) return std::make_tuple(12, 14, 19);
-    if(roomNum == 14) return std::make_tuple(5, 13, 15);
-    if(roomNum == 15) return std::make_tuple(6, 14, 20);
-    if(roomNum == 16) return std::make_tuple(7, 17, 20);
-    if(roomNum == 17) return std::make_tuple(9, 16, 18);
-    if(roomNum == 18) return std::make_tuple(11, 17, 19);
-    if(roomNum == 19) return std::make_tuple(13, 18, 20);
-    else return std::make_tuple(15, 15, 19);
+std::tuple<int, int, int> roomNeighbors(int roomNum){
+    if(roomNum == 1) return std::make_tuple(roomNums[2], roomNums[5], roomNums[6]);
+    if(roomNum == 2) return std::make_tuple(roomNums[1], roomNums[3], roomNums[8]);
+    if(roomNum == 3) return std::make_tuple(roomNums[2], roomNums[4], roomNums[10]);
+    if(roomNum == 4) return std::make_tuple(roomNums[3], roomNums[5], roomNums[12]);
+    if(roomNum == 5) return std::make_tuple(roomNums[1], roomNums[4], roomNums[14]);
+    if(roomNum == 6) return std::make_tuple(roomNums[1], roomNums[7], roomNums[15]);
+    if(roomNum == 7) return std::make_tuple(roomNums[6], roomNums[8], roomNums[16]);
+    if(roomNum == 8) return std::make_tuple(roomNums[2], roomNums[7], roomNums[9]);
+    if(roomNum == 9) return std::make_tuple(roomNums[8], roomNums[10], roomNums[17]);
+    if(roomNum == 10) return std::make_tuple(roomNums[3], roomNums[9], roomNums[11]);
+    if(roomNum == 11) return std::make_tuple(roomNums[10], roomNums[12], roomNums[18]);
+    if(roomNum == 12) return std::make_tuple(roomNums[4], roomNums[11], roomNums[13]);
+    if(roomNum == 13) return std::make_tuple(roomNums[12], roomNums[14], roomNums[19]);
+    if(roomNum == 14) return std::make_tuple(roomNums[5], roomNums[13], roomNums[15]);
+    if(roomNum == 15) return std::make_tuple(roomNums[6], roomNums[14], roomNums[20]);
+    if(roomNum == 16) return std::make_tuple(roomNums[7], roomNums[17], roomNums[20]);
+    if(roomNum == 17) return std::make_tuple(roomNums[9], roomNums[16], roomNums[18]);
+    if(roomNum == 18) return std::make_tuple(roomNums[11], roomNums[17], roomNums[19]);
+    if(roomNum == 19) return std::make_tuple(roomNums[13], roomNums[18], roomNums[20]);
+    else return std::make_tuple(roomNums[15], roomNums[15], roomNums[19]);
     
 };
 //Cave map:
@@ -98,11 +98,15 @@ int main(int argc, const char * argv[]) {
     std::vector<Cave> rooms;
     for(int i = 0; i < 20; i++){
         Cave room(i+1);
-        rooms.push_back(room);
+//        rooms.push_back(room);
         roomNums[i+1] = randNum(1, 20);
         
+        rooms[i+1].setWilson1(std::get<0>(roomNums[roomNeighbors(i+1)));
+        rooms[i+1].setWilson2(std::get<1>(roomNeighbors(i+1)));
+        rooms[i+1].setWilson3(std::get<2>(roomNeighbors(i+1)));
+        std::cout << room.getRoom() << ", " << room.getWilson1() << ", " <<
+        room.getWilson2() << ", " << room.getWilson3() << std::endl;
     }
-    //rooms[1].setWilson1(rooms[2]);
     
     return 0;
 }
