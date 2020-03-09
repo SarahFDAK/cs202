@@ -6,8 +6,6 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
-#include <random>
-
 #include "Cave.hpp"
 
 Cave::Cave(){};

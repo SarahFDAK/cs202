@@ -19,9 +19,10 @@ class Explorer {
     
 public:
     Explorer();
-    Explorer(int life);
+    Explorer(const Cave& cave);
     
     void setCurrentRoom(const Cave& cave);
+    void move(const Cave& cave);
     void setLifeStat(const int alive);
     void missed(const int usedArrow);
     
