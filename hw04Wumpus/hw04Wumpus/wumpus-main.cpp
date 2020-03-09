@@ -9,6 +9,7 @@
 #include <iostream>
 #include <random>
 #include <map>
+#include <algorithm>
 #include <tuple>
 
 #include "Hazards.hpp"
@@ -18,12 +19,12 @@
 using std::cout;
 using std::endl;
 
-int randNum(int a, int b){
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dist(a, b);
-    return dist(gen);
-}
+//int randNum(int a, int b){
+//    std::random_device rd;
+//    std::mt19937 gen(rd());
+//    std::uniform_int_distribution<> dist(a, b);
+//    return dist(gen);
+//}
 
 std::map<int, int> roomNums {
     {1, 0},
@@ -68,9 +69,10 @@ std::tuple<int, int, int> roomNeighbors(int roomNum){
     if(roomNum == 17) return std::make_tuple(roomNums[9], roomNums[16], roomNums[18]);
     if(roomNum == 18) return std::make_tuple(roomNums[11], roomNums[17], roomNums[19]);
     if(roomNum == 19) return std::make_tuple(roomNums[13], roomNums[18], roomNums[20]);
-    else return std::make_tuple(roomNums[15], roomNums[15], roomNums[19]);
+    else return std::make_tuple(roomNums[15], roomNums[16], roomNums[19]);
     
 };
+
 //Cave map:
 //Room  Neighbors
 //1 A    B, E, F
@@ -95,17 +97,29 @@ std::tuple<int, int, int> roomNeighbors(int roomNum){
 //20T    O, P, S
 
 int main(int argc, const char * argv[]) {
-    std::vector<Cave> rooms;
+    std::vector<int> rooms;
+    std::vector<Cave> caves;
+
     for(int i = 0; i < 20; i++){
+        rooms.push_back(i+1);
         Cave room(i+1);
-//        rooms.push_back(room);
-        roomNums[i+1] = randNum(1, 20);
-        
-        rooms[i+1].setWilson1(std::get<0>(roomNums[roomNeighbors(i+1)));
-        rooms[i+1].setWilson2(std::get<1>(roomNeighbors(i+1)));
-        rooms[i+1].setWilson3(std::get<2>(roomNeighbors(i+1)));
-        std::cout << room.getRoom() << ", " << room.getWilson1() << ", " <<
-        room.getWilson2() << ", " << room.getWilson3() << std::endl;
+        caves.push_back(room);
+    }
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::shuffle(rooms.begin(), rooms.end(), gen);
+    for(int j = 0; j < 20; j++){
+        roomNums[j+1] = rooms[j];
+        std::cout << j + 1 << " " << roomNums[j+1] << std::endl;
+    }
+    for(int k = 0; k < 20; k++){
+        int room1, room2, room3;
+        std::tie(room1, room2, room3) = roomNeighbors(k+1);
+        caves[k].setWilson1(room1);
+        caves[k].setWilson2(room2);
+        caves[k].setWilson3(room3);
+        std::cout << caves[k].getRoom() << " " << caves[k].getWilson1() << " " <<
+        caves[k].getWilson2() << " " << caves[k].getWilson3() << std::endl;
     }
     
     return 0;

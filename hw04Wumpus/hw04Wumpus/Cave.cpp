@@ -31,16 +31,16 @@ int Cave::getWilson3() const {
     return _wilson3;
 }
 
-void Cave::setWilson1(const Cave &room){
-    _wilson1 = room.getRoom();
+void Cave::setWilson1(const int room){
+    _wilson1 = room;
 }
 
-void Cave::setWilson2(const Cave &room){
-    _wilson2 = room.getRoom();
+void Cave::setWilson2(const int room){
+    _wilson2 = room;
 }
 
-void Cave::setWilson3(const Cave &room){
-    _wilson3 = room.getRoom();
+void Cave::setWilson3(const int room){
+    _wilson3 = room;
 }
 
 

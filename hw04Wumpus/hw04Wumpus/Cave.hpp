@@ -27,9 +27,9 @@ public:
     Cave();
     Cave(int _roomNum);
     
-    void setWilson1(const Cave& cave);
-    void setWilson2(const Cave& cave);
-    void setWilson3(const Cave& cave);
+    void setWilson1(const int room);
+    void setWilson2(const int room);
+    void setWilson3(const int room);
     
     int getRoom() const;
     int getWilson1() const;
