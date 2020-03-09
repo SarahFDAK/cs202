@@ -26,6 +26,7 @@ using std::endl;
 //    return dist(gen);
 //}
 
+//Initialize roomNums map to fill with randomized numbers between 1 and 20
 std::map<int, int> roomNums {
     {1, 0},
     {2, 0},
@@ -49,6 +50,7 @@ std::map<int, int> roomNums {
     {20, 0}
 };
 
+//Create cave map associating each room number with its 3 neighbors
 std::tuple<int, int, int> roomNeighbors(int roomNum){
     if(roomNum == 1) return std::make_tuple(roomNums[2], roomNums[5], roomNums[6]);
     if(roomNum == 2) return std::make_tuple(roomNums[1], roomNums[3], roomNums[8]);
@@ -97,21 +99,28 @@ std::tuple<int, int, int> roomNeighbors(int roomNum){
 //20T    O, P, S
 
 int main(int argc, const char * argv[]) {
+    //Create vector to hold numbers 1 through 20 to shuffle randomly for distribution
+    //later; create vector to hold cave room numbers
     std::vector<int> rooms;
     std::vector<Cave> caves;
-
+    
+    //Populate room numbers vector and Caves vector
     for(int i = 0; i < 20; i++){
         rooms.push_back(i+1);
         Cave room(i+1);
         caves.push_back(room);
     }
+    
+    //Randomly shuffle rooms 1-20, then push them to the room numbers map
     std::random_device rd;
     std::mt19937 gen(rd());
     std::shuffle(rooms.begin(), rooms.end(), gen);
     for(int j = 0; j < 20; j++){
         roomNums[j+1] = rooms[j];
-        std::cout << j + 1 << " " << roomNums[j+1] << std::endl;
     }
+    
+    //Create neighbor rooms for each cave using the roomNums map and the roomNeighbors
+    //tuple.
     for(int k = 0; k < 20; k++){
         int room1, room2, room3;
         std::tie(room1, room2, room3) = roomNeighbors(k+1);
