@@ -52,7 +52,7 @@ void Explorer::move(const Cave& cave){
 };
 
 int Explorer::event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
-                     const Hazards& pit1, const Hazards &pit2, const Wumpus &wompa){
+                     const Hazards& pit1, const Hazards &pit2, Wumpus &wompa){
     if(cave.getRoom() == bat1.getHazardRoom() ||
        cave.getRoom() == bat2.getHazardRoom()){
         std::cout << "A giant bat grabbed you and carried you off!\n";
@@ -60,44 +60,44 @@ int Explorer::event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
             _yourRoom = randInt(1, 20);
         return 1;
     }
-    if(cave.getRoom() == pit1.getHazardRoom() ||
-       cave.getRoom() == pit2.getHazardRoom()){
+    else if(cave.getRoom() == pit1.getHazardRoom() ||
+            cave.getRoom() == pit2.getHazardRoom()){
         std::cout << "Oh no, you fell in a pit!\n";
         return 2;
     }
-    if(cave.getRoom() == wompa.getWumpRoom()){
+    else if(cave.getRoom() == wompa.getWumpRoom()){
         std::cout << "GLOMP! The Wumpus just had you for snacks!\n";
         return 3;
     }
-    return 4;
+    return 1;
 }
 
 void Explorer::shoot(Cave& cave, Wumpus &wompa){
     std::cout << "Which room do you want to shoot into?\n" << cave.getWilson1() <<
                 ", " << cave.getWilson2() << ", " << cave.getWilson3() << std::endl;
     std::string input;
-    int choice = 0;
-    int count = 0;
+    int choice;
+//    int count = 0;
     std::getline(std::cin, input);
     std::istringstream iss(input);
-    while(count < 3){
+//    while(count < 3){
         if(iss >> choice){
             if(choice == cave.getWilson1()){
                 if(wompa.getWumpRoom() == cave.getWilson1()){
                     wompa.setWumpLife(false);
-                    break;
+                    std::cout << "You got the Wumpus! Congrats!\n";
                 }
                 else if(wompa.getWumpRoom() == cave.getWilson2() ||
                         wompa.getWumpRoom() == cave.getWilson3()){
                     std::cout << "You woke up the Wumpus...\n";
                     wompa.moveWumpus(1, 20);
+                    //count ++;
                 }
             }
         }
-        std::cout << "Please enter a room number:\n";
-        std::getline(std::cin, input);
-    }
-    
+//        std::cout << "Please enter a room number:\n";
+//        std::getline(std::cin, input);
+//    }
     
 }
     

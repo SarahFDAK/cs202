@@ -29,7 +29,7 @@ public:
     void missed(const int usedArrow);
     void shoot(Cave& cave, Wumpus& wompa);
     int event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
-               const Hazards& pit1, const Hazards& pit2, const Wumpus& wompa);
+               const Hazards& pit1, const Hazards& pit2, Wumpus& wompa);
     
     int getExplorerLife() const;
     int getExplorerRoom() const;
