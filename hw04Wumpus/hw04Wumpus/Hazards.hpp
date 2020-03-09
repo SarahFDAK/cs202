@@ -22,7 +22,7 @@ public:
     Hazards();
     Hazards(int type);
     
-    void setHazardRoom(const Cave& cave);
+    void setHazardRoom(const int room);
     
     int getHazardRoom() const;
 };

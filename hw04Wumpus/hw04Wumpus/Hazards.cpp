@@ -13,8 +13,8 @@ Hazards::Hazards(int type){
     _type = type;
 };
 
-void Hazards::setHazardRoom(const Cave& cave){
-    _hazRoom = cave.getRoom();
+void Hazards::setHazardRoom(const int room){
+    _hazRoom = room;
 }
 
 int Hazards::getHazardRoom() const {

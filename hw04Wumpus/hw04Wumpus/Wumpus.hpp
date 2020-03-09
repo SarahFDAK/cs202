@@ -20,7 +20,7 @@ public:
     Wumpus();
     Wumpus(int room);
     
-    void setWumpRoom(const Cave& cave);
+    void setWumpRoom(const int room);
     void setWumpLife(const bool& wumpStat);
     void moveWumpus(int low, int high);
     

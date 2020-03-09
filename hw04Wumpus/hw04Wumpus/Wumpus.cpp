@@ -14,8 +14,8 @@ Wumpus::Wumpus(int room){
     _wumpRoom = room;
 }
 
-void Wumpus::setWumpRoom(const Cave& cave) {
-    _wumpRoom = cave.getRoom();
+void Wumpus::setWumpRoom(const int room) {
+    _wumpRoom = room;
 };
 void Wumpus::setWumpLife(const bool& wumpStat) {
     _itsAlive = wumpStat;

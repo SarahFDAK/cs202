@@ -118,29 +118,29 @@ int main(int argc, const char * argv[]) {
     //Set starting room for Wumpus and hazards
     while(wompa.getWumpRoom()==0 ||
           wompa.getWumpRoom() == player.getExplorerRoom())
-        wompa.setWumpRoom(caves[randInt(1,20)]);
+        wompa.setWumpRoom(randInt(1,20));
     while(bat1.getHazardRoom() == 0 ||
           bat1.getHazardRoom() == wompa.getWumpRoom() ||
           bat1.getHazardRoom() == player.getExplorerRoom())
-        bat1.setHazardRoom(caves[randInt(1, 20)]);
+        bat1.setHazardRoom(randInt(1, 20));
     while(bat2.getHazardRoom() == 0 ||
           bat2.getHazardRoom() == player.getExplorerRoom() ||
           bat2.getHazardRoom() == wompa.getWumpRoom() ||
           bat2.getHazardRoom() == bat1.getHazardRoom())
-        bat2.setHazardRoom(caves[randInt(1, 20)]);
+        bat2.setHazardRoom(randInt(1, 20));
     while(pit1.getHazardRoom() == 0 ||
           pit1.getHazardRoom() == player.getExplorerRoom() ||
           pit1.getHazardRoom() == wompa.getWumpRoom() ||
           pit1.getHazardRoom() == bat1.getHazardRoom() ||
           pit1.getHazardRoom() == bat2.getHazardRoom())
-        pit1.setHazardRoom(caves[randInt(1, 20)]);
+        pit1.setHazardRoom(randInt(1, 20));
     while(pit2.getHazardRoom() == 0 ||
           pit2.getHazardRoom() == player.getExplorerRoom() ||
           pit2.getHazardRoom() == wompa.getWumpRoom() ||
           pit2.getHazardRoom() == bat1.getHazardRoom() ||
           pit2.getHazardRoom() == bat2.getHazardRoom() ||
           pit2.getHazardRoom() == pit1.getHazardRoom())
-        pit2.setHazardRoom(caves[randInt(1, 20)]);
+        pit2.setHazardRoom(randInt(1, 20));
     
     std::cout << player.getExplorerRoom()<< " " << wompa.getWumpRoom() << " " << bat1.getHazardRoom() << " " << bat2.getHazardRoom() << " " << pit1.getHazardRoom() << " " << pit2.getHazardRoom() << std::endl;
     
