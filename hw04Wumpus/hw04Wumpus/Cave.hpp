@@ -37,5 +37,6 @@ public:
     int getWilson3() const;
 };
 
+int randInt(int low, int high);
 
 #endif /* wumpHunt_hpp */

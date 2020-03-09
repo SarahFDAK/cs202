@@ -6,6 +6,7 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
+#include <random>
 
 #include "Cave.hpp"
 
@@ -43,4 +44,10 @@ void Cave::setWilson3(const int room){
     _wilson3 = room;
 }
 
+int randInt(int low, int high){
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dist(1,20);
+    return dist(gen);
+}
 
