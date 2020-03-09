@@ -145,7 +145,7 @@ int main(int argc, const char * argv[]) {
     std::cout << player.getExplorerRoom()<< " " << wompa.getWumpRoom() << " " << bat1.getHazardRoom() << " " << bat2.getHazardRoom() << " " << pit1.getHazardRoom() << " " << pit2.getHazardRoom() << std::endl;
     
     while(player.getExplorerLife() == 0 && player.getArrowNum() > 0){
-        Cave nextDoor = caves[player.getExplorerRoom()];
+        Cave nextDoor = caves[player.getExplorerRoom()-1];
         std::cout << "You are in room " << player.getExplorerRoom() << ". You have " <<
         player.getArrowNum() << " arrows left. The adjoining rooms are " <<
         nextDoor.getWilson1() << ", " <<
@@ -155,15 +155,19 @@ int main(int argc, const char * argv[]) {
            wompa.getWumpRoom() == nextDoor.getWilson2() ||
            wompa.getWumpRoom() == nextDoor.getWilson3())
             std::cout << "This room smells AWFUL!!\n";
-        else if(bat1.getHazardRoom() ==
-                (nextDoor.getWilson1() || nextDoor.getWilson2() || nextDoor.getWilson3())
-                || bat2.getHazardRoom() ==
-                (nextDoor.getWilson1() || nextDoor.getWilson2() || nextDoor.getWilson3()))
+        else if((bat1.getHazardRoom() == nextDoor.getWilson1() ||
+                bat1.getHazardRoom() == nextDoor.getWilson2() ||
+                bat1.getHazardRoom() == nextDoor.getWilson3()) ||
+                (bat2.getHazardRoom() == nextDoor.getWilson1() ||
+                 bat2.getHazardRoom() == nextDoor.getWilson2() ||
+                 bat2.getHazardRoom() == nextDoor.getWilson3()))
             std:cout << "I hear a bat...\n";
-        else if(pit1.getHazardRoom() ==
-                (nextDoor.getWilson3() || nextDoor.getWilson2() || nextDoor.getWilson1())
-                || pit2.getHazardRoom() ==
-                (nextDoor.getWilson3() || nextDoor.getWilson2() || nextDoor.getWilson1()))
+        else if((pit1.getHazardRoom() == nextDoor.getWilson3() ||
+                 pit1.getHazardRoom() == nextDoor.getWilson2() ||
+                 pit1.getHazardRoom() == nextDoor.getWilson1()) ||
+                (pit2.getHazardRoom() == nextDoor.getWilson3() ||
+                 pit2.getHazardRoom() == nextDoor.getWilson2() ||
+                 pit2.getHazardRoom() == nextDoor.getWilson1()))
             std::cout << "I feel a cold breeze...\n";
         std::cout << "Do you want to move (m) or shoot (s) an arrow?\n";
         std::string choice;
