@@ -72,12 +72,14 @@ int Explorer::event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
     return 1;
 }
 
+//Shoot function 
 void Explorer::shoot(Cave& cave, Wumpus &wompa){
     std::cout << "Which room do you want to shoot into?\n" << cave.getWilson1() <<
                 ", " << cave.getWilson2() << ", " << cave.getWilson3() << std::endl;
     std::string input;
     int choice;
 //    int count = 0;
+    std::cin.ignore();
     std::getline(std::cin, input);
     std::istringstream iss(input);
 //    while(count < 3){
@@ -91,9 +93,50 @@ void Explorer::shoot(Cave& cave, Wumpus &wompa){
                         wompa.getWumpRoom() == cave.getWilson3()){
                     std::cout << "You woke up the Wumpus...\n";
                     wompa.moveWumpus(1, 20);
+                    _arrows--;
                     //count ++;
                 }
+                else{
+                    std::cout << "You didn't hit anything...\n";
+                    _arrows--;
+                }
             }
+            else if(choice == cave.getWilson2()){
+                if(wompa.getWumpRoom() == cave.getWilson2()){
+                    wompa.setWumpLife(false);
+                    std::cout << "You got the Wumpus! Congrats!\n";
+                }
+                else if(wompa.getWumpRoom() == cave.getWilson1() ||
+                        wompa.getWumpRoom() == cave.getWilson3()){
+                    std::cout << "You woke up the Wumpus...\n";
+                    wompa.moveWumpus(1, 20);
+                    _arrows--;
+                    //count ++;
+                }
+                else{
+                    std::cout << "You didn't hit anything...\n";
+                    _arrows--;
+                }
+            }
+            else if(choice == cave.getWilson3()){
+                if(wompa.getWumpRoom() == cave.getWilson3()){
+                    wompa.setWumpLife(false);
+                    std::cout << "You got the Wumpus! Congrats!\n";
+                }
+                else if(wompa.getWumpRoom() == cave.getWilson1() ||
+                        wompa.getWumpRoom() == cave.getWilson2()){
+                    std::cout << "You woke up the Wumpus...\n";
+                    wompa.moveWumpus(1, 20);
+                    _arrows--;
+                    //count ++;
+                }
+                else{
+                    std::cout << "You didn't hit anything...\n";
+                    _arrows--;
+                }
+            }
+            else
+                std::cout << "That isn't one of the options...\n";
         }
 //        std::cout << "Please enter a room number:\n";
 //        std::getline(std::cin, input);

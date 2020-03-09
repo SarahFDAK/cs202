@@ -18,6 +18,7 @@
 using std::cout;
 using std::endl;
 
+//Create random number generator
 std::mt19937 PRNG(){
     std::random_device rd1;
     std::mt19937 gen1(rd1());
@@ -139,14 +140,19 @@ int main(int argc, const char * argv[]) {
           pit2.getHazardRoom() == pit1.getHazardRoom())
         pit2.setHazardRoom(randInt(1, 20));
     
+    //Start game loop
     while(player.getExplorerLife() == 0 && player.getArrowNum() > 0){
         std::cout << "Your room: " << player.getExplorerRoom()<< " Wumpus " << wompa.getWumpRoom() << " bat " << bat1.getHazardRoom() << " bat " << bat2.getHazardRoom() << " pit " << pit1.getHazardRoom() << " pit " << pit2.getHazardRoom() << std::endl;
+        
+        //Set Cave object to allow for shorter member function calls
         Cave nextDoor = caves[player.getExplorerRoom()-1];
+        //Report player location, number of arrows, and neighboring rooms
         std::cout << "You are in room " << player.getExplorerRoom() << ". You have " <<
         player.getArrowNum() << " arrows left. The adjoining rooms are " <<
         nextDoor.getWilson1() << ", " <<
         nextDoor.getWilson2() << ", and " <<
         nextDoor.getWilson3() << ".\n";
+        //Report to player if Wumpus, bats, or pits are nearby
         if(wompa.getWumpRoom() == nextDoor.getWilson1() ||
            wompa.getWumpRoom() == nextDoor.getWilson2() ||
            wompa.getWumpRoom() == nextDoor.getWilson3())
@@ -165,12 +171,15 @@ int main(int argc, const char * argv[]) {
            pit2.getHazardRoom() == nextDoor.getWilson2() ||
            pit2.getHazardRoom() == nextDoor.getWilson1())
             std::cout << "I feel a cold breeze...\n";
+        
+        //As for player to choose action
         std::cout << "Do you want to move (m) or shoot (s) an arrow?\n";
         std::string choice;
         std::cin >> choice;
+        //Move the player - end the game if they die
         if(choice == "m" || choice == "M"){
             player.move(nextDoor);
-            int event = player.event(player.getExplorerRoom(), bat1, bat2, pit1, pit2, wompa);
+            int event = player.event(player.getExplorerRoom()-1, bat1, bat2, pit1, pit2, wompa);
             if(event == 1)
                 continue;
             else if(event == 2)
@@ -180,8 +189,9 @@ int main(int argc, const char * argv[]) {
             else
                 continue;
             }
+        //Try to let the palyer shoot - this isn't working for some reason
         if(choice == "s" || choice == "S"){
-            player.shoot(caves[player.getExplorerRoom()], wompa);
+            player.shoot(caves[player.getExplorerRoom()-1], wompa);
             if(wompa.getWumpStat() == false)
                 return 0;
         }
