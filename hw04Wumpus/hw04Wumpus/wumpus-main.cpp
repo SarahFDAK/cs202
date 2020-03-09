@@ -28,26 +28,9 @@ using std::endl;
 
 //Initialize roomNums map to fill with randomized numbers between 1 and 20
 std::map<int, int> roomNums {
-    {1, 0},
-    {2, 0},
-    {3, 0},
-    {4, 0},
-    {5, 0},
-    {6, 0},
-    {7, 0},
-    {8, 0},
-    {9, 0},
-    {10, 0},
-    {11, 0},
-    {12, 0},
-    {13, 0},
-    {14, 0},
-    {15, 0},
-    {16, 0},
-    {17, 0},
-    {18, 0},
-    {19, 0},
-    {20, 0}
+    {1, 0}, {2, 0}, {3, 0}, {4, 0}, {5, 0}, {6, 0}, {7, 0}, {8, 0}, {9, 0},
+    {10, 0}, {11, 0}, {12, 0}, {13, 0}, {14, 0}, {15, 0}, {16, 0}, {17, 0},
+    {18, 0}, {19, 0}, {20, 0}
 };
 
 //Create cave map associating each room number with its 3 neighbors

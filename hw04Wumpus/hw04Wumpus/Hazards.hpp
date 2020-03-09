@@ -19,6 +19,9 @@ class Hazards {
     int _pit2Room = 0;
   
 public:
+    Hazards();
+    Hazards(int bat1, int bat2, int pit1, int pit2);
+    
     void setBat1Room(const Cave& cave);
     void setBat2Room(const Cave& cave);
     void setPit1Room(const Cave& cave);
