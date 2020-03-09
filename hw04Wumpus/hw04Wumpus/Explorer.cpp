@@ -48,6 +48,25 @@ void Explorer::move(const Cave& cave){
         std::cout << "That wasn't an option! Please try again: \n";
     }
 };
+
+int Explorer::event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
+                     const Hazards& pit1, const Hazards &pit2, const Wumpus &wompa){
+    if(cave.getRoom() == (bat1.getHazardRoom() || bat2.getHazardRoom())){
+        std::cout << "A giant bat grabbed you and carried you off!\n";
+        while(_yourRoom == cave.getRoom())
+            _yourRoom = randInt(1, 20);
+        return 1;
+    }
+    if(cave.getRoom() == (pit1.getHazardRoom() || pit2.getHazardRoom())){
+        std::cout << "Oh no, you fell in a pit!\n";
+        return 2;
+    }
+    if(cave.getRoom() == wompa.getWumpRoom()){
+        std::cout << "GLOMP! The Wumpus just had you for snacks!\n";
+        return 3;
+    }
+    return 4;
+}
     
 void Explorer::missed(const int usedArrow) {
     if(_arrows > 1)
@@ -65,4 +84,5 @@ int Explorer::getExplorerRoom() const {
 int Explorer::getArrowNum() const {
     return _arrows;
 };
+
 

@@ -158,6 +158,7 @@ int main(int argc, const char * argv[]) {
         std::cin >> choice;
         if(choice == "m" || choice == "M"){
             player.move(player.getExplorerRoom());
+            if(player.getExplorerRoom() == 
                 
     }
     

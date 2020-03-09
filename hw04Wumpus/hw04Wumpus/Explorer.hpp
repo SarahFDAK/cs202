@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 #include "Cave.hpp"
+#include "Hazards.hpp"
+#include "Wumpus.hpp"
 
 class Explorer {
     int _lifeStat = 0;
@@ -25,6 +27,8 @@ public:
     void move(const Cave& cave);
     void setLifeStat(const int alive);
     void missed(const int usedArrow);
+    int event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
+               const Hazards& pit1, const Hazards& pit2, const Wumpus& wompa);
     
     int getExplorerLife() const;
     int getExplorerRoom() const;
