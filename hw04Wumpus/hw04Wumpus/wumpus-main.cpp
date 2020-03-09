@@ -179,7 +179,7 @@ int main(int argc, const char * argv[]) {
         //Move the player - end the game if they die
         if(choice == "m" || choice == "M"){
             player.move(nextDoor);
-            int event = player.event(player.getExplorerRoom()-1, bat1, bat2, pit1, pit2, wompa);
+            int event = player.event(player.getExplorerRoom(), bat1, bat2, pit1, pit2, wompa);
             if(event == 1)
                 continue;
             else if(event == 2)
