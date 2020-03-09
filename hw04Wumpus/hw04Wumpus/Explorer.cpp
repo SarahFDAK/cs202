@@ -12,12 +12,12 @@
 
 Explorer::Explorer(){};
 
-Explorer::Explorer(const Cave& cave){
-    _yourRoom = cave.getRoom();
+Explorer::Explorer(const int room){
+    _yourRoom = room;
 }
 
-void Explorer::setCurrentRoom(const Cave& cave) {
-    _yourRoom = cave.getRoom();
+void Explorer::setCurrentRoom(const int room) {
+    _yourRoom = room;
 };
 
 void Explorer::setLifeStat(const int alive){
@@ -68,6 +68,35 @@ int Explorer::event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
         return 3;
     }
     return 4;
+}
+
+void Explorer::shoot(Cave& cave, Wumpus &wompa){
+    std::cout << "Which room do you want to shoot into?\n" << cave.getWilson1() <<
+                ", " << cave.getWilson2() << ", " << cave.getWilson3() << std::endl;
+    std::string input;
+    int choice = 0;
+    int count = 0;
+    std::getline(std::cin, input);
+    std::istringstream iss(input);
+    while(count < 3){
+        if(iss >> choice){
+            if(choice == cave.getWilson1()){
+                if(wompa.getWumpRoom() == cave.getWilson1()){
+                    wompa.setWumpLife(false);
+                    break;
+                }
+                else if(wompa.getWumpRoom() == cave.getWilson2() ||
+                        wompa.getWumpRoom() == cave.getWilson3()){
+                    std::cout << "You woke up the Wumpus...\n";
+                    wompa.moveWumpus(1, 20);
+                }
+            }
+        }
+        std::cout << "Please enter a room number:\n";
+        std::getline(std::cin, input);
+    }
+    
+    
 }
     
 void Explorer::missed(const int usedArrow) {

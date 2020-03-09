@@ -21,6 +21,10 @@ void Wumpus::setWumpLife(const bool& wumpStat) {
     _itsAlive = wumpStat;
 };
 
+void Wumpus::moveWumpus(int low, int high){
+    _wumpRoom = randInt(low, high);
+}
+
 int Wumpus::getWumpRoom() const {
     return _wumpRoom;
 };

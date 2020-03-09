@@ -21,12 +21,13 @@ class Explorer {
     
 public:
     Explorer();
-    Explorer(const Cave& cave);
+    Explorer(const int room);
     
-    void setCurrentRoom(const Cave& cave);
+    void setCurrentRoom(const int room);
     void move(const Cave& cave);
     void setLifeStat(const int alive);
     void missed(const int usedArrow);
+    void shoot(Cave& cave, Wumpus& wompa);
     int event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
                const Hazards& pit1, const Hazards& pit2, const Wumpus& wompa);
     

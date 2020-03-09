@@ -22,6 +22,7 @@ public:
     
     void setWumpRoom(const Cave& cave);
     void setWumpLife(const bool& wumpStat);
+    void moveWumpus(int low, int high);
     
     int getWumpRoom() const;
     bool getWumpStat() const;
