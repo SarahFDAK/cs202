@@ -13,24 +13,18 @@
 #include "Cave.hpp"
 
 class Hazards {
-    int _bat1Room = 0;
-    int _bat2Room = 0;
-    int _pit1Room = 0;
-    int _pit2Room = 0;
+    int _hazRoom = 0;
+    
+    //bats are type 1, pits are type 2
+    int _type;
   
 public:
     Hazards();
-    Hazards(int bat1, int bat2, int pit1, int pit2);
+    Hazards(int type);
     
-    void setBat1Room(const Cave& cave);
-    void setBat2Room(const Cave& cave);
-    void setPit1Room(const Cave& cave);
-    void setPit2Room(const Cave& cave);
+    void setHazardRoom(const Cave& cave);
     
-    int getBat1Room() const;
-    int getBat2Room() const;
-    int getPit1Room() const;
-    int getPit2Room() const;
+    int getHazardRoom() const;
 };
 
 #endif /* Hazards_hpp */

@@ -9,6 +9,12 @@
 
 #include "Explorer.hpp"
 
+Explorer::Explorer(){};
+
+Explorer::Explorer(int life){
+    _lifeStat = life;
+}
+
 void Explorer::setCurrentRoom(const Cave& cave) {
     _yourRoom = cave.getRoom();
 };

@@ -18,7 +18,7 @@ class Wumpus {
     
 public:
     Wumpus();
-    Wumpus(bool life);
+    Wumpus(int room);
     
     void setWumpRoom(const Cave& cave);
     void setWumpLife(const bool& wumpStat);

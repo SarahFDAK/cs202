@@ -19,12 +19,11 @@
 using std::cout;
 using std::endl;
 
-//int randNum(int a, int b){
-//    std::random_device rd;
-//    std::mt19937 gen(rd());
-//    std::uniform_int_distribution<> dist(a, b);
-//    return dist(gen);
-//}
+std::mt19937 PRNG(){
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    return gen;
+}
 
 //Initialize roomNums map to fill with randomized numbers between 1 and 20
 std::map<int, int> roomNums {
@@ -32,6 +31,11 @@ std::map<int, int> roomNums {
     {10, 0}, {11, 0}, {12, 0}, {13, 0}, {14, 0}, {15, 0}, {16, 0}, {17, 0},
     {18, 0}, {19, 0}, {20, 0}
 };
+
+int randNum(std::mt19937& gen, int low, int high){
+    std::uniform_int_distribution<int> dist(low, high);
+    return dist(gen);
+}
 
 //Create cave map associating each room number with its 3 neighbors
 std::tuple<int, int, int> roomNeighbors(int roomNum){
@@ -97,7 +101,7 @@ int main(int argc, const char * argv[]) {
     //Randomly shuffle rooms 1-20, then push them to the room numbers map
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::shuffle(rooms.begin(), rooms.end(), gen);
+    std::shuffle(rooms.begin(), rooms.end(), PRNG());
     for(int j = 0; j < 20; j++){
         roomNums[j+1] = rooms[j];
     }
@@ -110,9 +114,16 @@ int main(int argc, const char * argv[]) {
         caves[k].setWilson1(room1);
         caves[k].setWilson2(room2);
         caves[k].setWilson3(room3);
-        std::cout << caves[k].getRoom() << " " << caves[k].getWilson1() << " " <<
-        caves[k].getWilson2() << " " << caves[k].getWilson3() << std::endl;
     }
+    
+    Explorer player;
+    Wumpus  wompa(true);
+    Hazards bat1;
+    Hazards bat2;
+    Hazards pit1;
+    Hazards pit2;
+    
+    wompa.setWumpRoom(caves[randNum(PRNG(), 1, 20)]);
     
     return 0;
 }

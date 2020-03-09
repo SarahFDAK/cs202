@@ -8,6 +8,12 @@
 
 #include "Wumpus.hpp"
 
+Wumpus::Wumpus(){};
+
+Wumpus::Wumpus(int room){
+    _wumpRoom = room;
+}
+
 void Wumpus::setWumpRoom(const Cave& cave) {
     _wumpRoom = cave.getRoom();
 };
