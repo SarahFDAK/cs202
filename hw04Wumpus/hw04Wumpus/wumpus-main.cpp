@@ -90,12 +90,14 @@ int main(int argc, const char * argv[]) {
         rooms.push_back(i+1);
         Cave room(i+1);
         caves.push_back(room);
+        std::cout << caves[i].getRoom() << std::endl;
     }
 
     //Randomly shuffle rooms 1-20, then push them to the room numbers map
     std::shuffle(rooms.begin(), rooms.end(), PRNG());
     for(int j = 0; j < 20; j++){
         roomNums[j+1] = rooms[j];
+        std::cout << j+1 << " " << roomNums[j+1] << std::endl;
     }
     
     //Create neighbor rooms for each cave using the roomNums map and the roomNeighbors
@@ -106,16 +108,17 @@ int main(int argc, const char * argv[]) {
         caves[k].setWilson1(room1);
         caves[k].setWilson2(room2);
         caves[k].setWilson3(room3);
+        std::cout << "Room " << caves[k].getRoom() << ", " << caves[k].getWilson1() << ", " << caves[k].getWilson2() << ", " << caves[k].getWilson3() << std::endl;
     }
     
     //Declare and initialize player, wumpus, and hazards
-    Explorer player(caves[1]);
+    Explorer player(caves[0]);
     Wumpus wompa(0);
     Hazards bat1(1);
     Hazards bat2(1);
     Hazards pit1(2);
     Hazards pit2(2);
-    Cave nextDoor = caves[player.getExplorerRoom()];
+    
     //Set starting room for Wumpus and hazards
     while(wompa.getWumpRoom()==0)
         wompa.setWumpRoom(caves[randInt(2,20)]);
@@ -138,28 +141,45 @@ int main(int argc, const char * argv[]) {
           pit2.getHazardRoom() == pit1.getHazardRoom())
         pit2.setHazardRoom(caves[randInt(2, 20)]);
     
+    std::cout << wompa.getWumpRoom() << " " << bat1.getHazardRoom() << " " << bat2.getHazardRoom() << " " << pit1.getHazardRoom() << " " << pit2.getHazardRoom() << std::endl;
+    
     while(player.getExplorerLife() == 0){
+        Cave nextDoor = caves[player.getExplorerRoom()];
         std::cout << "You are in room " << player.getExplorerRoom() << ". You have " <<
         player.getArrowNum() << " arrows left. The adjoining rooms are " <<
         nextDoor.getWilson1() << ", " <<
         nextDoor.getWilson2() << ", and " <<
         nextDoor.getWilson3() << ".\n";
-        if(wompa.getWumpRoom() == (nextDoor.getWilson1() || nextDoor.getWilson2() ||
-                                   nextDoor.getWilson3()))
+        if(wompa.getWumpRoom() == nextDoor.getWilson1() ||
+           wompa.getWumpRoom() == nextDoor.getWilson2() ||
+           wompa.getWumpRoom() == nextDoor.getWilson3())
             std::cout << "This room smells AWFUL!!\n";
-        else if((bat1.getHazardRoom() || bat2.getHazardRoom()) ==
+        else if(bat1.getHazardRoom() ==
+                (nextDoor.getWilson1() || nextDoor.getWilson2() || nextDoor.getWilson3())
+                || bat2.getHazardRoom() ==
                 (nextDoor.getWilson1() || nextDoor.getWilson2() || nextDoor.getWilson3()))
             std:cout << "I hear a bat...\n";
-        else if((pit1.getHazardRoom() || pit2.getHazardRoom()) ==
+        else if(pit1.getHazardRoom() ==
+                (nextDoor.getWilson3() || nextDoor.getWilson2() || nextDoor.getWilson1())
+                || pit2.getHazardRoom() ==
                 (nextDoor.getWilson3() || nextDoor.getWilson2() || nextDoor.getWilson1()))
             std::cout << "I feel a cold breeze...\n";
         std::cout << "Do you want to move (m) or shoot (s) an arrow?\n";
         std::string choice;
         std::cin >> choice;
         if(choice == "m" || choice == "M"){
-            player.move(player.getExplorerRoom());
-            if(player.getExplorerRoom() == 
-                
+            player.move(nextDoor);
+            switch(player.event(player.getExplorerRoom(), bat1, bat2, pit1, pit2, wompa)){
+                case 1:
+                    continue;
+                case 2:
+                case 3:
+                    std::cout << "Better luck next time.\n";
+                    return 0;
+                case 4:
+                    continue;
+            }
+        }
     }
     
     return 0;

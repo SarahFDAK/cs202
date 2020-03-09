@@ -29,12 +29,13 @@ void Explorer::move(const Cave& cave){
                 cave.getWilson2() << ", or " << cave.getWilson3() << " ?\n";
     std::string newRoom;
     int choice;
-    while(std::getline(std::cin, newRoom)){
+    while(true){
+        std::getline(std::cin, newRoom);
         std::istringstream iss(newRoom);
         if(iss >> choice){
             if(choice == cave.getWilson1()){
                 _yourRoom = cave.getWilson1();
-                break;
+               break;
             }
             else if(choice == cave.getWilson2()){
                 _yourRoom = cave.getWilson2();
@@ -44,8 +45,9 @@ void Explorer::move(const Cave& cave){
                 _yourRoom = cave.getWilson3();
                 break;
             }
+            else
+                std::cout << "That wasn't an option! Please try again: \n";
         }
-        std::cout << "That wasn't an option! Please try again: \n";
     }
 };
 
