@@ -155,14 +155,14 @@ int main(int argc, const char * argv[]) {
            wompa.getWumpRoom() == nextDoor.getWilson2() ||
            wompa.getWumpRoom() == nextDoor.getWilson3())
             std::cout << "This room smells AWFUL!!\n";
-        else if((bat1.getHazardRoom() == nextDoor.getWilson1() ||
+        if((bat1.getHazardRoom() == nextDoor.getWilson1() ||
                 bat1.getHazardRoom() == nextDoor.getWilson2() ||
                 bat1.getHazardRoom() == nextDoor.getWilson3()) ||
                 (bat2.getHazardRoom() == nextDoor.getWilson1() ||
                  bat2.getHazardRoom() == nextDoor.getWilson2() ||
                  bat2.getHazardRoom() == nextDoor.getWilson3()))
             std:cout << "I hear a bat...\n";
-        else if((pit1.getHazardRoom() == nextDoor.getWilson3() ||
+        if((pit1.getHazardRoom() == nextDoor.getWilson3() ||
                  pit1.getHazardRoom() == nextDoor.getWilson2() ||
                  pit1.getHazardRoom() == nextDoor.getWilson1()) ||
                 (pit2.getHazardRoom() == nextDoor.getWilson3() ||

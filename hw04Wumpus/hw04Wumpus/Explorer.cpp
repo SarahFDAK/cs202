@@ -53,13 +53,15 @@ void Explorer::move(const Cave& cave){
 
 int Explorer::event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
                      const Hazards& pit1, const Hazards &pit2, const Wumpus &wompa){
-    if(cave.getRoom() == (bat1.getHazardRoom() || bat2.getHazardRoom())){
+    if(cave.getRoom() == bat1.getHazardRoom() ||
+       cave.getRoom() == bat2.getHazardRoom()){
         std::cout << "A giant bat grabbed you and carried you off!\n";
         while(_yourRoom == cave.getRoom())
             _yourRoom = randInt(1, 20);
         return 1;
     }
-    if(cave.getRoom() == (pit1.getHazardRoom() || pit2.getHazardRoom())){
+    if(cave.getRoom() == pit1.getHazardRoom() ||
+       cave.getRoom() == pit2.getHazardRoom()){
         std::cout << "Oh no, you fell in a pit!\n";
         return 2;
     }
