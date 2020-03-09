@@ -74,6 +74,8 @@ int Explorer::event(const Cave& cave, const Hazards& bat1, const Hazards& bat2,
 
 //Shoot function 
 void Explorer::shoot(Cave& cave, Wumpus &wompa){
+    if(_arrows == 0)
+        std::cout << "Sorry, you're out of arrows...\n";
     std::cout << "Which room do you want to shoot into?\n" << cave.getWilson1() <<
                 ", " << cave.getWilson2() << ", " << cave.getWilson3() << std::endl;
     std::string input;
@@ -83,12 +85,16 @@ void Explorer::shoot(Cave& cave, Wumpus &wompa){
     std::getline(std::cin, input);
     std::istringstream iss(input);
 //    while(count < 3){
+    //check if user input is an integer
         if(iss >> choice){
+            //check which neighboring cave it went to and see if the wumpus is there
             if(choice == cave.getWilson1()){
                 if(wompa.getWumpRoom() == cave.getWilson1()){
                     wompa.setWumpLife(false);
                     std::cout << "You got the Wumpus! Congrats!\n";
                 }
+                //if the wumpus is in a different connected room, wake it up and
+                //move it and decrease arrow count
                 else if(wompa.getWumpRoom() == cave.getWilson2() ||
                         wompa.getWumpRoom() == cave.getWilson3()){
                     std::cout << "You woke up the Wumpus...\n";
@@ -96,6 +102,7 @@ void Explorer::shoot(Cave& cave, Wumpus &wompa){
                     _arrows--;
                     //count ++;
                 }
+                //Else just lose an arrow
                 else{
                     std::cout << "You didn't hit anything...\n";
                     _arrows--;
