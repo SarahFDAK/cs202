@@ -22,4 +22,6 @@ private:
     double snowFall_{ 8000.0 };
 };
 
+std::ostream& operator<<(std::ostream& os, const SnowDump& snowDump);
+
 #endif /* SnowDump_hpp */

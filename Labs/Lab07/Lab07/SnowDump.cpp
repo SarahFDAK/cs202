@@ -7,3 +7,10 @@
 //
 
 #include "SnowDump.hpp"
+
+
+SnowDump::SnowDump(){};
+
+std::ostream& operator<<(std::ostream& os, const SnowDump& snowDump){
+    return os;
+}
