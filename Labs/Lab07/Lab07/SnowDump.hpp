@@ -1,0 +1,25 @@
+//
+//  SnowDump.hpp
+//  Lab07
+//
+//  Created by Sarah Carter on 3/25/20.
+//  Copyright © 2020 Sarah Carter. All rights reserved.
+//
+
+#ifndef SnowDump_hpp
+#define SnowDump_hpp
+
+#include <stdio.h>
+#include <iostream>
+#include <string>
+
+class SnowDump {
+public:
+    SnowDump(){};
+private:
+    std::string cityName_;
+    std::string stateName_;
+    double snowFall_;
+};
+
+#endif /* SnowDump_hpp */
