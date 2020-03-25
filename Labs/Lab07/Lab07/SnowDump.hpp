@@ -17,6 +17,8 @@ class SnowDump {
 public:
     SnowDump();
     
+    SnowDump& operator=(const SnowDump& other);
+    
     const std::string& cityName() const { return cityName_; }
     const std::string& stateName() const { return stateName_; }
     double snowFall() const { return snowFall_; }

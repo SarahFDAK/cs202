@@ -11,5 +11,16 @@
 int main(int argc, const char * argv[]) {
     const SnowDump myTown;
     std::cout << myTown << "\n";
+    
+    SnowDump otherTown;
+    otherTown.setCity( "Anchorage" );
+    otherTown.setState( "Alaska" );
+    otherTown.setSnowFall( 2000.0 );
+    
+    std::cout << otherTown << "\n";
+    
+    SnowDump town3;
+    town3 = otherTown;
+    std::cout << town3 << "\n";
     return 0;
 }

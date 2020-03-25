@@ -22,6 +22,14 @@ void SnowDump::setSnowFall(const double newDepth){
     snowFall_ = newDepth;
 }
 
+SnowDump& SnowDump::operator=(const SnowDump& other){
+    cityName_ = other.cityName_;
+    stateName_ = other.stateName_;
+    snowFall_ = other.snowFall_;
+    return *this;
+}
+
+
 std::ostream& operator<<(std::ostream& os, const SnowDump& snowDump){
     os << "City:           " << snowDump.cityName() << "\n";
     os << "State:          " << snowDump.stateName() << "\n";
