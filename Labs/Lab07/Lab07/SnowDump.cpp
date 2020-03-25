@@ -11,6 +11,17 @@
 
 SnowDump::SnowDump(){};
 
+void SnowDump::setCity(const std::string newCity){
+    cityName_ = newCity;
+}
+
+void SnowDump::setState(const std::string newState){
+    stateName_ = newState;
+}
+void SnowDump::setSnowFall(const double newDepth){
+    snowFall_ = newDepth;
+}
+
 std::ostream& operator<<(std::ostream& os, const SnowDump& snowDump){
     return os;
 }
