@@ -16,6 +16,15 @@
 class SnowDump {
 public:
     SnowDump();
+    
+    const std::string cityName() { return cityName_; }
+    const std::string stateName() { return stateName_; }
+    const double snowFall() { return snowFall_; }
+    
+    void setCity(const std::string newCity);
+    void setState(const std::string newState);
+    void setSnowFall(const double newDepth);
+    
 private:
     std::string cityName_{ "Fairbanks" };
     std::string stateName_{ "Alaska" };
