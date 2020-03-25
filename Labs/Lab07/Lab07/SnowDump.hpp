@@ -15,11 +15,11 @@
 
 class SnowDump {
 public:
-    SnowDump(){};
+    SnowDump();
 private:
-    std::string cityName_;
-    std::string stateName_;
-    double snowFall_;
+    std::string cityName_{ "Fairbanks" };
+    std::string stateName_{ "Alaska" };
+    double snowFall_{ 8000.0 };
 };
 
 #endif /* SnowDump_hpp */

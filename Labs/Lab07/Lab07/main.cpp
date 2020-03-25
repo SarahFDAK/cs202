@@ -6,7 +6,7 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
-#include <iostream>
+#include "SnowDump.hpp"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
