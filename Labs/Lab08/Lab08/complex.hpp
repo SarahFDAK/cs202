@@ -15,10 +15,16 @@
 class Complex {
 public:
     Complex();
-    Complex(double real, double imag = 0);
+    Complex(double real, double imag);
+    
+    double realNum() const { return real_; }
+    double imagNum() const { return imag_; }
+    
 private:
     double real_{ 0 };
     double imag_{ 0 };
-}
+};
+
+std::ostream& operator<<(std::ostream& os, const Complex& c);
 
 #endif /* complex_hpp */

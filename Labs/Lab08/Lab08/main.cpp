@@ -6,10 +6,10 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
-#include <iostream>
 #include "complex.hpp"
 
 int main(int argc, const char * argv[]) {
-    Complex c;
+    std::cout << Complex() << "\n";
+    std::cout << Complex(2,3) << "\n";
     return 0;
 }

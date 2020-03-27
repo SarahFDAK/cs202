@@ -7,3 +7,18 @@
 //
 
 #include "complex.hpp"
+
+Complex::Complex() {}
+
+Complex::Complex(double real, double imag)
+: real_(real), imag_(imag)
+{
+}
+
+std::ostream& operator<<(std::ostream& os, const Complex& c){
+    os << c.realNum();
+    os << " + i ";
+    os << c.imagNum();
+    return os;
+}
+
