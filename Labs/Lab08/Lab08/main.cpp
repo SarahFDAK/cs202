@@ -11,5 +11,6 @@
 int main(int argc, const char * argv[]) {
     std::cout << Complex() << "\n";
     std::cout << Complex(2,3) << "\n";
+    std::cout << 1.0 + Complex() << "\n";
     return 0;
 }
