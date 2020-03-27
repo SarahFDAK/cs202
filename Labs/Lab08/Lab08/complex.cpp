@@ -19,6 +19,12 @@ Complex Complex::operator+(const Complex c){
     return Complex(real_ + c.realNum(), imag_ + c.imagNum());
 }
 
+Complex& Complex::operator+=(const Complex c){
+    real_ += c.real_;
+    imag_ += c.imag_;
+    return *this;
+}
+
 std::ostream& operator<<(std::ostream& os, const Complex& c){
     os << c.realNum();
     os << " + i ";

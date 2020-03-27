@@ -18,6 +18,7 @@ public:
     Complex(double real, double imag = 0);
     
     Complex operator+(const Complex c);
+    Complex& operator+=(const Complex c);
     
     double realNum() const { return real_; }
     double imagNum() const { return imag_; }
