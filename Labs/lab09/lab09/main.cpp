@@ -8,8 +8,22 @@
 
 #include <iostream>
 
+void static_Local(){
+    static int thisInt = 0;
+    if(!thisInt){
+        std::cout << __FUNCTION__ << " is not initialized\n";
+        thisInt = 1;
+    }
+    else{
+        std::cout<< __FUNCTION__ << " called " << thisInt << " times.\n";
+        thisInt++;
+    }
+}
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    static_Local();
+    static_Local();
+    static_Local();
+    static_Local();
     return 0;
 }
