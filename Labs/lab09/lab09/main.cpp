@@ -8,6 +8,21 @@
 
 #include <iostream>
 
+class IPA_ftw {
+public:
+    IPA_ftw() {
+        std::cout << count_ << " called.\n";
+    }
+    ~IPA_ftw() {
+        std::cout << count_ << " destroyed.\n";
+    }
+    
+private:
+    static int count_;
+};
+
+int IPA_ftw::count_ { 0 };
+
 void static_Local(){
     static int thisInt = 0;
     if(!thisInt){
@@ -21,6 +36,8 @@ void static_Local(){
 }
 
 int main(int argc, const char * argv[]) {
+    IPA_ftw myBeer;
+    
     static_Local();
     static_Local();
     static_Local();
