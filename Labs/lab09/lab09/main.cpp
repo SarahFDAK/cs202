@@ -11,10 +11,15 @@
 class IPA_ftw {
 public:
     IPA_ftw() {
-        std::cout << count_ << " called.\n";
+        std::cout << count_ << " bottles of beer on the wall.\n";
     }
+
     ~IPA_ftw() {
-        std::cout << count_ << " destroyed.\n";
+        std::cout << count_ << " bottles of beer destroyed.\n";
+    }
+    
+    static void printIPACount() {
+        std::cout << "Static " << count_ << " bottles of beer on the wall\n";
     }
     
 private:
@@ -37,7 +42,7 @@ void static_Local(){
 
 int main(int argc, const char * argv[]) {
     IPA_ftw myBeer;
-    
+    myBeer.printIPACount();
     static_Local();
     static_Local();
     static_Local();
