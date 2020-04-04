@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B8A9AB6243923320029A0DA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A9AB5243923320029A0DA /* main.cpp */; };
+		3BE58EA4243924560037813F /* exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BE58EA3243924550037813F /* exceptions.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		3B8A9AB2243923320029A0DA /* lab10 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lab10; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B8A9AB5243923320029A0DA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3BE58EA3243924550037813F /* exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exceptions.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 		3B8A9AB4243923320029A0DA /* lab10 */ = {
 			isa = PBXGroup;
 			children = (
-				3B8A9AB5243923320029A0DA /* main.cpp */,
+				3BE58EA3243924550037813F /* exceptions.cpp */,
 			);
 			path = lab10;
 			sourceTree = "<group>";
@@ -119,7 +119,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B8A9AB6243923320029A0DA /* main.cpp in Sources */,
+				3BE58EA4243924560037813F /* exceptions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
