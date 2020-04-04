@@ -2,7 +2,7 @@
 
 void functionC()
 {
-  //your code here
+    throw std::runtime_error("functionC() threw std::runtime_error.\n");
 }
 
 void functionB()
