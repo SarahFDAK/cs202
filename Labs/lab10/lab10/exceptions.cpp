@@ -1,5 +1,15 @@
 #include <iostream>
 
+class TestObject {
+public:
+    TestObject(){
+        std::cout << "TestObject constructed\n";
+    }
+    ~TestObject(){
+        std::cout << "TestObject destroyed. Commence bedlam.\n";
+    }
+};
+
 void functionC()
 {
     throw std::runtime_error("functionC() threw std::runtime_error.\n");
@@ -8,9 +18,10 @@ void functionC()
 void functionB()
 {
   //your code here
-  std::cout << "Starting functionB()\n";
-  functionC();
-  std::cout << "Ending functionB()\n";
+    TestObject to;
+    std::cout << "Starting functionB()\n";
+    functionC();
+    std::cout << "Ending functionB()\n";
 }
 
 void functionA()
