@@ -8,8 +8,15 @@
 
 #include <iostream>
 
+unsigned int fib(unsigned int n){
+    if(n < 2){
+        return n;
+    }
+    return fib(n-1) + fib(n-2);
+}
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    unsigned int n = 6;
+    std::cout << fib(n) << "\n";
     return 0;
 }
