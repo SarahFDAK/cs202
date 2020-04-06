@@ -61,10 +61,14 @@ unsigned int factorial_loop(unsigned int n){
 }
 
 int main(int argc, const char * argv[]) {
-    unsigned int n = 0;
+    int n = 0;
     //Get integer from user, set to n
     std::cout << "Enter a positive integer: \n";
     std::cin >> n;
+    if(n < 0){
+        std::cout << "I asked for a positive integer. Goodbye. \n";
+        return 0;
+    }
     
     //Find nth number in Fibonacci sequence
     std::cout << "Fibonacci sequence at " << n << " is " << fib(n) << "\n";
