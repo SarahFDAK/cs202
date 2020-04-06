@@ -34,9 +34,19 @@ unsigned int fib_loop(unsigned int n){
     return f2;
 }
 
+unsigned int factorial(unsigned int n){
+    if(n < 2){
+        return 1;
+    }
+    return n * factorial(n-1);
+}
+
 int main(int argc, const char * argv[]) {
     unsigned int n = 7;
-    std::cout << fib(n) << "\n";
-    std::cout << fib_loop(n) << "\n";
+    std::cout << "The number in the Fibonacci sequence at " << n << " is " <<
+        fib(n) << "\n";
+    std::cout << "The number in the non-recursive Fibonacci sequence function at "
+        << n << " is " << fib_loop(n) << "\n";
+    std::cout << n << " factorial is " << factorial(n)<< "\n";
     return 0;
 }
