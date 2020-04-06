@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B95BB2F243B98EA00B22DA1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B95BB2E243B98EA00B22DA1 /* main.cpp */; };
+		3B95BB37243B9E8500B22DA1 /* StopWatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B95BB35243B9E8500B22DA1 /* StopWatch.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		3B95BB2B243B98EA00B22DA1 /* IditarodChallenge2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IditarodChallenge2; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B95BB2E243B98EA00B22DA1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3B95BB35243B9E8500B22DA1 /* StopWatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StopWatch.cpp; sourceTree = "<group>"; };
+		3B95BB36243B9E8500B22DA1 /* StopWatch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StopWatch.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				3B95BB2E243B98EA00B22DA1 /* main.cpp */,
+				3B95BB35243B9E8500B22DA1 /* StopWatch.cpp */,
+				3B95BB36243B9E8500B22DA1 /* StopWatch.hpp */,
 			);
 			path = IditarodChallenge2;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B95BB2F243B98EA00B22DA1 /* main.cpp in Sources */,
+				3B95BB37243B9E8500B22DA1 /* StopWatch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
