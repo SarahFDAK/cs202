@@ -56,10 +56,11 @@ unsigned int factorial_loop(unsigned int n){
 }
 
 int main(int argc, const char * argv[]) {
-    unsigned int n = 7;
-    std::cout << "The number in the Fibonacci sequence at " << n << " is " <<
-        fib(n) << "\n";
-    std::cout << "The number in the non-recursive Fibonacci sequence function at "
+    unsigned int n = 0;
+    std::cout << "Enter a positive integer: \n";
+    std::cin >> n;
+    std::cout << "Fibonacci sequence at " << n << " is " << fib(n) << "\n";
+    std::cout << "Non-recursive Fibonacci sequence function at "
         << n << " is " << fib_loop(n) << "\n";
     std::cout << n << " factorial is " << factorial(n)<< "\n";
     std::cout << n << " factorial (non-recursive) is " << factorial_loop(n)
