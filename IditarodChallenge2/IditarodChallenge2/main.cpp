@@ -1,14 +1,15 @@
 //
 //  main.cpp
 //  IditarodChallenge2
-//
-//  Created by Sarah Carter on 4/6/20.
-//  Copyright © 2020 Sarah Carter. All rights reserved.
-//
+//  Sarah Carter
+//  4/6/20
+//  This program runs a recursive function to calculate Ackermann's number
+//  and times the output.
 
 #include <iostream>
 #include "StopWatch.hpp"
 
+//Recursive Ackermann's function
 int ack(int m, int n){
     if(m == 0)
         return n + 1;
@@ -17,15 +18,18 @@ int ack(int m, int n){
     return ack(m - 1, ack(m, n - 1));
 }
 
+//Calculate time elapsed and report results
 void reportResults(StopWatch myClock, const int a){
     auto myDiff = myClock.getDiff(myClock.setStop());
     double time_in_seconds = myClock.seconds(myDiff);
-    std::cout << "Calculated " << a << " in " << time_in_seconds << " seconds" << std::endl;
+    double time_in_milli = myClock.milliseconds(myDiff);
+    std::cout << "Calculated " << a << " in " << time_in_seconds << " seconds and "
+        << time_in_milli << " milliseconds." << std::endl;
 }
 
 int main(int argc, const char * argv[]) {
     StopWatch timer;
     timer.setStart();
-    reportResults(timer, ack(4,4));
+    reportResults(timer, ack(4,1));
     return 0;
 }
