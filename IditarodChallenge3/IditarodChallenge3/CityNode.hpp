@@ -18,5 +18,8 @@ public:
     ~CityNode ();
 };
 
+class CityList {
+    
+};
 
 #endif /* CityNode_hpp */
