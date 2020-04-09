@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B44C3AB243FEA9A004E574C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B44C3AA243FEA9A004E574C /* main.cpp */; };
+		3B44C3B3243FEC90004E574C /* CityNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B44C3B1243FEC90004E574C /* CityNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		3B44C3A7243FEA9A004E574C /* IditarodChallenge3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IditarodChallenge3; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B44C3AA243FEA9A004E574C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3B44C3B1243FEC90004E574C /* CityNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CityNode.cpp; sourceTree = "<group>"; };
+		3B44C3B2243FEC90004E574C /* CityNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CityNode.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				3B44C3AA243FEA9A004E574C /* main.cpp */,
+				3B44C3B1243FEC90004E574C /* CityNode.cpp */,
+				3B44C3B2243FEC90004E574C /* CityNode.hpp */,
 			);
 			path = IditarodChallenge3;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B44C3B3243FEC90004E574C /* CityNode.cpp in Sources */,
 				3B44C3AB243FEA9A004E574C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
