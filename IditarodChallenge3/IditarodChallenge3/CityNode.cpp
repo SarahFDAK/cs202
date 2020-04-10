@@ -17,3 +17,11 @@ void CityNode::setCityNode(int num, double latitude, double longitude){
 }
 
 CityNode::~CityNode(){};
+
+CityList::CityList(){};
+
+void CityList::fillList(CityNode& node){
+    cities_.push_back(node);
+}
+
+CityList::~CityList(){};

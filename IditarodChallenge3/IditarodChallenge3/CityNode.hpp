@@ -35,7 +35,7 @@ public:
     
     ~CityList();
 private:
-    std::vector<CityNode> cities;
+    std::vector<CityNode> cities_;
 };
 
 #endif /* CityNode_hpp */
