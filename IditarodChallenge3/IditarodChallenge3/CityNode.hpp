@@ -10,6 +10,7 @@
 #define CityNode_hpp
 
 #include <stdio.h>
+#include <vector>
 
 class CityNode {
 public:
@@ -27,7 +28,14 @@ private:
 };
 
 class CityList {
+public:
+    CityList();
     
+    void fillList(CityNode& node);
+    
+    ~CityList();
+private:
+    std::vector<CityNode> cities;
 };
 
 #endif /* CityNode_hpp */
