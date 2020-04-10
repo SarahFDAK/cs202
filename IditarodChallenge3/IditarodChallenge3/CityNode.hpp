@@ -15,6 +15,8 @@ class CityNode {
 public:
     CityNode ();
     
+    void setCityNode(int num, double latitude, double longitude);
+    
     ~CityNode ();
 private:
     int nodeNum_;

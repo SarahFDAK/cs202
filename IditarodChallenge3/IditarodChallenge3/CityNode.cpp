@@ -7,3 +7,13 @@
 //
 
 #include "CityNode.hpp"
+
+CityNode::CityNode(){};
+
+void CityNode::setCityNode(int num, double latitude, double longitude){
+    nodeNum_ = num;
+    nodeLat_ = latitude;
+    nodeLong_ = longitude;
+}
+
+CityNode::~CityNode(){};
