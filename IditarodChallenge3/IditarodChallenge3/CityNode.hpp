@@ -16,6 +16,12 @@ public:
     CityNode ();
     
     ~CityNode ();
+private:
+    int nodeNum_;
+    double nodeLat_;
+    double nodeLong_;
+    double graphX_;
+    double graphY_;
 };
 
 class CityList {
