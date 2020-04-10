@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 #include <vector>
+#include <iostream>
+#include <istream>
 
 class CityNode {
 public:
@@ -31,7 +33,9 @@ class CityList {
 public:
     CityList();
     
-    void fillList(CityNode& node);
+    void fillList(const CityNode& node);
+    
+    void readFile(std::istream& in, CityNode& node);
     
     ~CityList();
 private:
