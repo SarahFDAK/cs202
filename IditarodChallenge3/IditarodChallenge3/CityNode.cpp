@@ -27,12 +27,28 @@ void CityList::fillList(const CityNode& node){
     cities_.push_back(node);
 }
 
-void CityList::readFile(std::istream& in, CityNode& node){
+bool checkFile(const std::string& file){
+    std::ifstream fin(file);
+    if(!fin){
+        if(fin.eof()){
+            std::cout << "Reached end of file.\n";
+            return true;
+        }
+        std::cout << "Error opening file.\n";
+        return false;
+    }
+    return true;
+}
+
+CityNode readFile(std::string& file){
+    CityNode node;
     int num;
     double lat;
     double lng;
-    in >> num >> lat >> lng;
+    std::ifstream fin(file);
+    fin >> num >> lat >> lng;
     node.setCityNode(num, lat, lng);
+    return node;
 }
 
 CityList::~CityList(){};

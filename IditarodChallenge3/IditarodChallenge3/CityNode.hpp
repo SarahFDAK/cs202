@@ -35,7 +35,9 @@ public:
     
     void fillList(const CityNode& node);
     
-    void readFile(std::istream& in, CityNode& node);
+    bool checkFile(const std::string& file);
+    
+    CityNode readFile(std::string& file);
     
     ~CityList();
 private:
