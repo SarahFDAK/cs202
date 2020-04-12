@@ -49,16 +49,15 @@ void CityList::readFile(std::istream& fin, CityNode& node){
     double lat;
     double lng;
     while(std::getline(fin, read)){
-        if(read[0] > 48 || read[0] < 57){
+        if(isdigit(read[0])){
             std::istringstream is(read);
             is >> num >> lat >> lng;
             node.setCityNode(num, lat, lng);
+            node.getCityNode();
             fillList(node);
         }
         continue;
     }
-    for(auto a:cities_)
-        a.getCityNode();
 }
 
 CityList::~CityList(){};
