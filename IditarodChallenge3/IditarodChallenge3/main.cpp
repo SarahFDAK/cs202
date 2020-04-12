@@ -8,8 +8,21 @@
 
 #include <iostream>
 
+#include "CityNode.hpp"
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    std::string args;
+    CityList list;
+    CityNode node;
+    if(argc == 1){
+        std::cout << "Please enter a file to open.\n";
+        return 0;
+    }
+    args = argv[1];
+    std::ifstream fin(args);
+
+    while(list.checkFile(fin)){
+        list.readFile(fin, node);
+    }
     return 0;
 }

@@ -13,12 +13,17 @@
 #include <vector>
 #include <iostream>
 #include <istream>
+#include <fstream>
+#include <sstream>
+
 
 class CityNode {
 public:
     CityNode ();
     
     void setCityNode(int num, double latitude, double longitude);
+    
+    void getCityNode() const;
     
     ~CityNode ();
 private:
@@ -33,11 +38,11 @@ class CityList {
 public:
     CityList();
     
-    void fillList(const CityNode& node);
+    void fillList(CityNode& node);
     
-    bool checkFile(const std::string& file);
+    bool checkFile(std::istream& fin);
     
-    CityNode readFile(std::string& file);
+    void readFile(std::istream& fin, CityNode& node);
     
     ~CityList();
 private:
