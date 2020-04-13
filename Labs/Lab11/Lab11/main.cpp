@@ -10,8 +10,8 @@ using std::cout;
 using std::endl;
 
 // [x] A default base class object
-// [ ] A base class object using the one parameter constructor
-// [ ] A default derived class object
+// [x] A base class object using the one parameter constructor
+// [x] A default derived class object
 // [ ] A derived class object using the two parameter constructor
 
 //Base class
@@ -37,6 +37,20 @@ public:
 private:
     int ccs_;
 };
+            
+class Derived : public Base{
+public:
+    Derived()
+            : Base{ 750 }, brand_{ "Suzuki" }{
+        cout << "Constructing derived object with brand " << brand_ << endl;
+    }
+    ~Derived(){
+        cout << "Destructing derived object with brand " << brand_ << endl;
+    }
+            
+private:
+    std::string brand_;
+};
 
 int main(int argc, const char * argv[]) {
     { Base b; }
@@ -45,5 +59,7 @@ int main(int argc, const char * argv[]) {
     { Base b{ 500 };}
     cout << endl;
             
+    { Derived d; }
+    cout << endl;
     return 0;
 }
