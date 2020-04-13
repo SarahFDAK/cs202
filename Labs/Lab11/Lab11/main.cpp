@@ -9,7 +9,7 @@
 using std::cout;
 using std::endl;
 
-// [ ] A default base class object
+// [x] A default base class object
 // [ ] A base class object using the one parameter constructor
 // [ ] A default derived class object
 // [ ] A derived class object using the two parameter constructor
@@ -22,6 +22,12 @@ public:
         cout << "Constructing a default base class object with a " << ccs_
             << " cc engine" << endl;
     }
+            
+    Base(int engine)
+        : ccs_{ engine }{
+        cout << "Constructing a base class object with one parameter constructor of a "
+            << ccs_ << " cc engine." << endl;
+    }
     
     
     ~Base() {
@@ -33,8 +39,11 @@ private:
 };
 
 int main(int argc, const char * argv[]) {
-            { Base b; }
-            cout << endl;
+    { Base b; }
+    cout << endl;
+    
+    { Base b{ 500 };}
+    cout << endl;
             
     return 0;
 }
