@@ -68,7 +68,7 @@ int main(int argc, const char * argv[]) {
     { Derived d; }
     cout << endl;
             
-    { Derived d(500, "Yamaha"); }
+    { Derived d(250, "Yamaha"); }
     cout << endl;
     return 0;
 }
