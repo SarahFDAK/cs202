@@ -12,7 +12,7 @@ using std::endl;
 // [x] A default base class object
 // [x] A base class object using the one parameter constructor
 // [x] A default derived class object
-// [ ] A derived class object using the two parameter constructor
+// [x] A derived class object using the two parameter constructor
 
 //Base class
 class Base {
@@ -25,7 +25,7 @@ public:
             
     Base(int engine)
         : ccs_{ engine }{
-        cout << "Constructing a base class object with one parameter constructor of a "
+        cout << "Constructing a base class object with a "
             << ccs_ << " cc engine." << endl;
     }
     
@@ -44,6 +44,12 @@ public:
             : Base{ 750 }, brand_{ "Suzuki" }{
         cout << "Constructing derived object with brand " << brand_ << endl;
     }
+            
+    Derived(int engine, std::string brand)
+        :Base{ engine }, brand_{ brand }{
+        cout << "Constructing derived object with brand "
+            << brand_ << endl;
+            }
     ~Derived(){
         cout << "Destructing derived object with brand " << brand_ << endl;
     }
@@ -60,6 +66,9 @@ int main(int argc, const char * argv[]) {
     cout << endl;
             
     { Derived d; }
+    cout << endl;
+            
+    { Derived d(500, "Yamaha"); }
     cout << endl;
     return 0;
 }
