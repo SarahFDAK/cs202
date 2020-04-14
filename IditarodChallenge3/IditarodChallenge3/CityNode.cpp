@@ -39,6 +39,7 @@ void CityList::fillList(CityNode& node){
     cities_.push_back(node);
 }
 
+//Check if the file can be opened
 bool CityList::checkFile(std::istream& fin){
     if(!fin){
         if(fin.eof()){
@@ -51,6 +52,7 @@ bool CityList::checkFile(std::istream& fin){
     return true;
 }
 
+//Read file contents and populate vector of CityNodes
 void CityList::readFile(std::istream& fin, CityNode& node){
     std::string read;
     int num;
@@ -67,11 +69,14 @@ void CityList::readFile(std::istream& fin, CityNode& node){
     }
 }
 
+//Calculate distance between cities
 double CityList::distance(int first, int second) const{
+    //Return 0 of first and second city are the same
     if(first == second){
         std::cout << "Those are the same city.\n";
         return 0.0;
     }
+    //Return 0 if one of the city numbers is beyond the list size
     if(first > cities_.size() || second > cities_.size()){
         std::cout << "This request is out of range.\n";
         return 0.0;
@@ -81,7 +86,8 @@ double CityList::distance(int first, int second) const{
     double secondX = cities_[second - 1].getNodeLat();
     double secondY = cities_[second - 1].getNodeLong();
     double dist = std::sqrt(pow((secondX - firstX),2.0) + pow((secondY - firstY),2)) ;
-
+    //Return 0 if the distance between cities is greater than the circumference
+    //of the Earth
     if(dist > 24905){
         std::cout << "At least one of your cities isn't on the earth.\n";
         return 0.0;
