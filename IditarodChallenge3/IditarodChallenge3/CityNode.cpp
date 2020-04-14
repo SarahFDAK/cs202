@@ -73,11 +73,11 @@ void CityList::readFile(std::istream& fin, CityNode& node){
 double CityList::distance(int first, int second) const{
     if(first == second){
         std::cout << "Those are the same city.\n";
-        exit(0);
+        return 0.0;
     }
     if(first > cities_.size() || second > cities_.size()){
         std::cout << "This request is out of range.\n";
-        exit(0);
+        return 0.0;
     }
     double firstX = cities_[first - 1].getNodeLat();
     double firstY = cities_[first - 1].getNodeLong();
@@ -85,6 +85,11 @@ double CityList::distance(int first, int second) const{
     double secondY = cities_[second - 1].getNodeLong();
     double dist = std::sqrt(pow((secondX - firstX),2.0) + pow((secondY - firstY),2)) ;
 
+    if(dist > 24905){
+        std::cout << "At least one of your cities isn't on the earth.\n";
+        return 0.0;
+    }
+    
     return dist;
 }
 
