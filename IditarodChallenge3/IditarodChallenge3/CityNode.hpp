@@ -23,7 +23,11 @@ public:
     
     void setCityNode(int num, double latitude, double longitude);
     
-    void getCityNode() const;
+    int getNodeNum() const;
+    
+    double getNodeLat() const;
+    
+    double getNodeLong() const;
     
     ~CityNode ();
 private:
@@ -43,6 +47,8 @@ public:
     bool checkFile(std::istream& fin);
     
     void readFile(std::istream& fin, CityNode& node);
+    
+    double distance(int first, int second) const;
     
     ~CityList();
 private:

@@ -17,10 +17,16 @@ void CityNode::setCityNode(int num, double latitude, double longitude){
     nodeLong_ = longitude;
 }
 
-void CityNode::getCityNode() const {
-    std::cout << "Node: " << nodeNum_;
-    std::cout << "  Lat: " << nodeLat_;
-    std::cout << "  Long: " << nodeLong_ << "\n";
+int CityNode::getNodeNum() const{
+    return nodeNum_;
+}
+
+double CityNode::getNodeLat() const{
+    return nodeLat_;
+}
+
+double CityNode::getNodeLong() const{
+    return nodeLong_;
 }
 
 CityNode::~CityNode(){};
@@ -53,11 +59,27 @@ void CityList::readFile(std::istream& fin, CityNode& node){
             std::istringstream is(read);
             is >> num >> lat >> lng;
             node.setCityNode(num, lat, lng);
-            node.getCityNode();
             fillList(node);
         }
         continue;
     }
+    for(auto a:cities_)
+        a.getCityNode("Node");
 }
+
+double CityList::distance(int first, int second) const{
+    if(first == second){
+        std::cout << "Those are the same city.\n";
+        exit(0);
+    }
+    if(first > cities_.size() || second > cities_.size()){
+        std::cout << "This request is out of range.\n";
+        exit(0);
+    }
+    double dist;
+
+    return dist;
+}
+
 
 CityList::~CityList(){};
