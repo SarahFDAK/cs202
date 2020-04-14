@@ -65,9 +65,6 @@ void CityList::readFile(std::istream& fin, CityNode& node){
         }
         continue;
     }
-    for(auto a:cities_){
-        std::cout << a.getNodeNum() << " " << a.getNodeLat() << " " << a.getNodeLong() << "\n";
-    }
 }
 
 double CityList::distance(int first, int second) const{
@@ -93,8 +90,8 @@ double CityList::distance(int first, int second) const{
     return dist;
 }
 
-CityNode CityList::getCityInfo(int index) const{
-    return cities_[index];
+int CityList::getCityVectorCount() const{
+    return cities_.size();
 }
 
 

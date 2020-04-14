@@ -50,7 +50,7 @@ public:
     
     double distance(int first, int second) const;
     
-    CityNode getCityInfo(int index) const;
+    int getCityVectorCount() const;
     
     ~CityList();
 private:
