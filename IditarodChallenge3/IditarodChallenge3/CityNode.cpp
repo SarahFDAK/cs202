@@ -6,6 +6,8 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 
+#include <cmath>
+
 #include "CityNode.hpp"
 
 
@@ -63,8 +65,9 @@ void CityList::readFile(std::istream& fin, CityNode& node){
         }
         continue;
     }
-    for(auto a:cities_)
-        a.getCityNode("Node");
+    for(auto a:cities_){
+        a.getNodeNum(); std::cout << " "; a.getNodeLat(); std::cout << " "; a.getNodeLong();
+    }
 }
 
 double CityList::distance(int first, int second) const{
@@ -76,7 +79,11 @@ double CityList::distance(int first, int second) const{
         std::cout << "This request is out of range.\n";
         exit(0);
     }
-    double dist;
+    double firstX = cities_[first - 1].getNodeLat();
+    double firstY = cities_[first - 1].getNodeLong();
+    double secondX = cities_[second - 1].getNodeLat();
+    double secondY = cities_[second - 1].getNodeLong();
+    double dist = std::sqrt(pow((secondX - firstX),2.0) + pow((secondY - firstY),2)) ;
 
     return dist;
 }
