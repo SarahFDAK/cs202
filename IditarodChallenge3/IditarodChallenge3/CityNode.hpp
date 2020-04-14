@@ -50,6 +50,8 @@ public:
     
     double distance(int first, int second) const;
     
+    CityNode getCityInfo(int index) const;
+    
     ~CityList();
 private:
     std::vector<CityNode> cities_;

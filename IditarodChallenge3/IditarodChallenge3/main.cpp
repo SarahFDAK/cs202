@@ -24,5 +24,10 @@ int main(int argc, const char * argv[]) {
     while(list.checkFile(fin)){
         list.readFile(fin, node);
     }
+    
+    std::cout << list.getCityInfo(20).getNodeNum() << "\n";
+    
+    std::cout << list.distance(20, 15) << "\n";
+    
     return 0;
 }

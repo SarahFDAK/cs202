@@ -43,7 +43,7 @@ bool CityList::checkFile(std::istream& fin){
     if(!fin){
         if(fin.eof()){
             std::cout << "Reached end of file.\n";
-            exit(0);
+            return false;
         }
         std::cout << "Error opening file.\n";
         return false;
@@ -66,7 +66,7 @@ void CityList::readFile(std::istream& fin, CityNode& node){
         continue;
     }
     for(auto a:cities_){
-        a.getNodeNum(); std::cout << " "; a.getNodeLat(); std::cout << " "; a.getNodeLong();
+        std::cout << a.getNodeNum() << " " << a.getNodeLat() << " " << a.getNodeLong() << "\n";
     }
 }
 
@@ -86,6 +86,10 @@ double CityList::distance(int first, int second) const{
     double dist = std::sqrt(pow((secondX - firstX),2.0) + pow((secondY - firstY),2)) ;
 
     return dist;
+}
+
+CityNode CityList::getCityInfo(int index) const{
+    return cities_[index];
 }
 
 
