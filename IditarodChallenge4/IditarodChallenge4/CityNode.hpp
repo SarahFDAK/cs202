@@ -52,6 +52,7 @@ public:
     
     int getCityVectorCount() const;
     
+    
     ~CityList();
 private:
     std::vector<CityNode> cities_;
@@ -61,7 +62,7 @@ class CityPath{
 public:
     CityPath();
     
-    void fillPath(const int city);
+    void fillPath(const int list);
     
     int getPathSize() const;
     
@@ -70,6 +71,22 @@ public:
     ~CityPath();
 private:
     std::vector<int> path_;
+};
+
+class TSPSolver {
+public:
+    TSPSolver();
+    
+    void setBestList(const std::vector<int>& list);
+    void setBestDist(const double dist);
+    
+    double getBestDist() const;
+    void showBestList() const;
+    
+    ~TSPSolver();
+private:
+    std::vector<int> bestList_;
+    double bestDist_;
 };
 
 #endif /* CityNode_hpp */

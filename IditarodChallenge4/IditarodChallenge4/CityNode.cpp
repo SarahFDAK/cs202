@@ -121,3 +121,22 @@ bool CityPath::getPathDup(const int city) const{
 }
 
 CityPath::~CityPath(){};
+
+TSPSolver::TSPSolver(): bestDist_{ 1e12 } {};
+
+void TSPSolver::setBestList(const std::vector<int>& list){
+    bestList_ = list;
+}
+void TSPSolver::setBestDist(const double dist){
+    bestDist_ = dist;
+}
+
+double TSPSolver::getBestDist() const{
+    return bestDist_;
+}
+void TSPSolver::showBestList() const{
+    for(auto a: bestList_)
+        std::cout << a << std::endl;
+}
+
+TSPSolver::~TSPSolver(){};
