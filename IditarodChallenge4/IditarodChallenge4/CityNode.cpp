@@ -100,5 +100,12 @@ int CityList::getCityVectorCount() const{
     return cities_.size();
 }
 
-
 CityList::~CityList(){};
+
+CityPath::CityPath(){};
+
+void CityPath::fillPath(const int city){
+    path_.push_back(city);
+}
+
+CityPath::~CityPath(){};

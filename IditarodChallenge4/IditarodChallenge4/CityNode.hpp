@@ -57,4 +57,15 @@ private:
     std::vector<CityNode> cities_;
 };
 
+class CityPath{
+public:
+    CityPath();
+    
+    void fillPath(const int city);
+    
+    ~CityPath();
+private:
+    std::vector<int> path_;
+};
+
 #endif /* CityNode_hpp */
