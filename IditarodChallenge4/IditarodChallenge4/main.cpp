@@ -15,24 +15,24 @@ int main(int argc, const char * argv[]) {
     CityList list;
     CityNode node;
     //End program if user did not input a file to read
-//    if(argc == 1){
-//        std::cout << "Please enter a file to open.\n";
-//        return 0;
-//    }
-//    args = argv[1];
-    std::ifstream fin("rl1323.tsp");
+    if(argc == 1){
+        std::cout << "Please enter a file to open.\n";
+        return 0;
+    }
+    args = argv[1];
+    std::ifstream fin(args);
     //Read contents of file while checkFile tests are true
     while(list.checkFile(fin)){
         list.readFile(fin, node);
     }
     int M;
     TSPSolver solveIt;
-//    std::cout << "Enter the number of times you want to randomly solve for TSP: \n";
-//    while(!(std::cin >> M)){
-//        std::cout << "Please enter an integer: \n";
-//        std::cin.ignore();
-//    }
-//    solveIt.SolveRandomly(list, M);
+    std::cout << "Enter the number of times you want to randomly solve for TSP: \n";
+    while(!(std::cin >> M)){
+        std::cout << "Please enter an integer: \n";
+        std::cin.ignore();
+    }
+    solveIt.SolveRandomly(list, M);
     solveIt.SolveGreedy(list);
     return 0;
 }

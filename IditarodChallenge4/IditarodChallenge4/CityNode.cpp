@@ -229,7 +229,8 @@ void TSPSolver::SolveGreedy(CityList &cList){
     for(int i = 0; i < greedyList.getPathSize(); i++){
         std::cout << greedyList.getPathEntry(i) << std::endl;
     }
-    std::cout << "The total distance covered is: " << totalDist << " miles.\n";
+    std::cout << "The total distance covered is: " << totalDist <<
+                " miles, starting at node " << greedyList.getPathEntry(0) << "\n";
 }
 
 TSPSolver::~TSPSolver(){};
