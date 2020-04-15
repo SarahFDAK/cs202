@@ -66,6 +66,8 @@ public:
     
     int getPathSize() const;
     
+    int getPathEntry(const int entryNum);
+    
     bool getPathDup(const int city) const;
     
     ~CityPath();
@@ -82,6 +84,10 @@ public:
     
     double getBestDist() const;
     void showBestList() const;
+    
+    int getRandomInt(const int count) const;
+    
+    void SolveRandomly(const CityList& cList);
     
     ~TSPSolver();
 private:

@@ -7,9 +7,13 @@
 //
 
 #include <cmath>
+#include <random>
+#include <algorithm>
 
 #include "CityNode.hpp"
 
+using std::mt19937;
+using std::random_device;
 
 CityNode::CityNode(){};
 
@@ -112,6 +116,10 @@ int CityPath::getPathSize() const{
     return path_.size();
 }
 
+int CityPath::getPathEntry(const int entryNum){
+    return path_[entryNum];
+}
+
 bool CityPath::getPathDup(const int city) const{
     for(auto i = 0; i < path_.size(); i++){
         if(path_[i] == city)
@@ -122,7 +130,7 @@ bool CityPath::getPathDup(const int city) const{
 
 CityPath::~CityPath(){};
 
-TSPSolver::TSPSolver(): bestDist_{ 1e12 } {};
+TSPSolver::TSPSolver() {};
 
 void TSPSolver::setBestList(const std::vector<int>& list){
     bestList_ = list;
@@ -138,5 +146,42 @@ void TSPSolver::showBestList() const{
     for(auto a: bestList_)
         std::cout << a << std::endl;
 }
+
+int TSPSolver::getRandomInt(const int count) const{
+    random_device rd;
+    mt19937 gen(rd());
+    std::uniform_int_distribution<int> dist(0,count);
+    return dist(gen);
+}
+
+void TSPSolver::SolveRandomly(const CityList& cList){
+    int count = cList.getCityVectorCount();
+    bestDist_ = 1e12;
+    CityPath path;
+    CityPath randomList;
+    double totalDist = 0;
+    while(randomList.getPathSize() < count){
+        int randNum = getRandomInt(count);
+        if(path.getPathDup(randNum))
+            randomList.fillPath(randNum);
+        continue;
+    }
+    int a = randomList.getPathEntry(0);
+    randomList.fillPath(a);
+    for(int i = 0; i < randomList.getPathSize(); i++){
+        int first = randomList.getPathEntry(i);
+        int second = randomList.getPathEntry(i + 1);
+        double currDist = cList.distance(first, second);
+        totalDist += currDist;
+    }
+    if(bestDist_ > totalDist){
+        for(int i = 0; i < randomList.getPathSize(); i++){
+            bestList_[i] = randomList.getPathEntry(i);
+        }
+        bestDist_ = totalDist;
+    }
+}
+
+
 
 TSPSolver::~TSPSolver(){};
