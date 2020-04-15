@@ -156,29 +156,33 @@ int TSPSolver::getRandomInt(const int count) const{
 
 void TSPSolver::SolveRandomly(const CityList& cList){
     int count = cList.getCityVectorCount();
+    int M = 100;
     bestDist_ = 1e12;
     CityPath path;
     CityPath randomList;
     double totalDist = 0;
-    while(randomList.getPathSize() < count){
-        int randNum = getRandomInt(count);
-        if(path.getPathDup(randNum))
-            randomList.fillPath(randNum);
-        continue;
-    }
-    int a = randomList.getPathEntry(0);
-    randomList.fillPath(a);
-    for(int i = 0; i < randomList.getPathSize(); i++){
-        int first = randomList.getPathEntry(i);
-        int second = randomList.getPathEntry(i + 1);
-        double currDist = cList.distance(first, second);
-        totalDist += currDist;
-    }
-    if(bestDist_ > totalDist){
-        for(int i = 0; i < randomList.getPathSize(); i++){
-            bestList_[i] = randomList.getPathEntry(i);
+    while(M > 0){
+        while(randomList.getPathSize() < count){
+            int randNum = getRandomInt(count);
+            if(path.getPathDup(randNum))
+                randomList.fillPath(randNum);
+            continue;
         }
-        bestDist_ = totalDist;
+        int a = randomList.getPathEntry(0);
+        randomList.fillPath(a);
+        for(int i = 0; i < randomList.getPathSize(); i++){
+            int first = randomList.getPathEntry(i);
+            int second = randomList.getPathEntry(i + 1);
+            double currDist = cList.distance(first, second);
+            totalDist += currDist;
+        }
+        if(bestDist_ > totalDist){
+            for(int i = 0; i < randomList.getPathSize(); i++){
+                bestList_[i] = randomList.getPathEntry(i);
+            }
+            bestDist_ = totalDist;
+        }
+        M--;
     }
 }
 
