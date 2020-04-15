@@ -27,11 +27,12 @@ int main(int argc, const char * argv[]) {
     }
     int M;
     TSPSolver solveIt;
-    std::cout << "Enter the number of times you want to randomly solve for TSP: \n";
-    while(!(std::cin >> M)){
-        std::cout << "Please enter an integer: \n";
-        std::cin.ignore();
-    }
-    solveIt.SolveRandomly(list, M);
+//    std::cout << "Enter the number of times you want to randomly solve for TSP: \n";
+//    while(!(std::cin >> M)){
+//        std::cout << "Please enter an integer: \n";
+//        std::cin.ignore();
+//    }
+//    solveIt.SolveRandomly(list, M);
+    solveIt.SolveGreedy(list);
     return 0;
 }

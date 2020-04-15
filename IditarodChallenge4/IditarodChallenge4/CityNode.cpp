@@ -201,37 +201,35 @@ void TSPSolver::SolveRandomly(CityList& cList, const int M){
 void TSPSolver::SolveGreedy(CityList &cList){
     CityPath greedyList;
     int randNum =getRandomInt(cList.getCityVectorCount());
-    int shortestDist = 1e12;
     greedyList.fillPath(randNum);
+    int first;
+    int second;
+    int closestCity = 0;
+    double totalDist = 0;
     while(greedyList.getPathSize() < cList.getCityVectorCount()){
-        int first = 0;
-        int second = randNum;
-        int closestCity = 0;
-        for(int i = 0; i < randNum; i++){
-            if(greedyList.getPathDup(cList.getCityNode(i).getNodeNum()))
+        double shortestDist = 1e12;
+        int gL = greedyList.getPathSize() - 1;
+        int lastCity = greedyList.getPathEntry(gL);
+        second = lastCity;
+        for(int i = 0; i < cList.getCityVectorCount(); i++){
+            if(!greedyList.getPathDup(cList.getCityNode(i).getNodeNum()))
                 continue;
-            first = cList.getCityNode(i).getNodeNum();
-            int currDist = cList.distance(first, second);
-            if(shortestDist > currDist){
-                shortestDist = currDist;
-                closestCity = i;
+            else{
+                first = cList.getCityNode(i).getNodeNum();
+                double currDist = cList.distance(first, second);
+                if(shortestDist > currDist){
+                    shortestDist = currDist;
+                    closestCity = first;
+                }
             }
         }
-        for(int j = randNum + 1; j < cList.getCityVectorCount(); j++){
-            if(greedyList.getPathDup(cList.getCityNode(j).getNodeNum()))
-                continue;
-            first = cList.getCityNode(j).getNodeNum();
-            int currDist = cList.distance(first, second);
-            if(shortestDist > currDist){
-                shortestDist = currDist;
-                closestCity = j;
-            }
-        }
+        totalDist += shortestDist;
         greedyList.fillPath(closestCity);
     }
     for(int i = 0; i < greedyList.getPathSize(); i++){
         std::cout << greedyList.getPathEntry(i) << std::endl;
     }
+    std::cout << "The total distance covered is: " << totalDist << " miles.\n";
 }
 
 TSPSolver::~TSPSolver(){};
