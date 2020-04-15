@@ -108,4 +108,16 @@ void CityPath::fillPath(const int city){
     path_.push_back(city);
 }
 
+int CityPath::getPathSize() const{
+    return path_.size();
+}
+
+bool CityPath::getPathDup(const int city) const{
+    for(auto i = 0; i < path_.size(); i++){
+        if(path_[i] == city)
+            return false;
+    }
+    return true;
+}
+
 CityPath::~CityPath(){};

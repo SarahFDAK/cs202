@@ -63,6 +63,10 @@ public:
     
     void fillPath(const int city);
     
+    int getPathSize() const;
+    
+    bool getPathDup(const int city) const;
+    
     ~CityPath();
 private:
     std::vector<int> path_;
