@@ -281,9 +281,9 @@ void TSPSolver::SolveMyWay(CityList &cList){
     myPath.fillPath(cList.getCityNode(0).getNodeNum());
     double currDist = 0;
     double totalDist = 0;
+    double shortestDist = 1e12;
     //Run the loop while there are more permutations of the list
     do{
-        double shortestDist = 1e12;
         //Find the distance between each element
         for(int i = 0; i < myPath.getPathSize()-1; i++){
             int first = myPath.getPathEntry(i);
