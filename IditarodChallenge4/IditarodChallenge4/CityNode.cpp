@@ -273,26 +273,34 @@ void TSPSolver::SolveGreedy(CityList &cList){
 
 void TSPSolver::SolveMyWay(CityList &cList){
     CityPath myPath;
+    //Populate CityPath with CityList nodeNums
     for(int i = 0; i < cList.getCityVectorCount(); i++){
         myPath.fillPath(cList.getCityNode(i).getNodeNum());
     }
+    //Add the first entry to the end of the list to complete the loop
     myPath.fillPath(cList.getCityNode(0).getNodeNum());
     double currDist = 0;
     double totalDist = 0;
+    //Run the loop while there are more permutations of the list
     do{
         double shortestDist = 1e12;
+        //Find the distance between each element
         for(int i = 0; i < myPath.getPathSize()-1; i++){
             int first = myPath.getPathEntry(i);
             int second = myPath.getPathEntry(i + 1);
             currDist = cList.distance(first, second);
             totalDist += currDist;
         }
+        //Replace shortest distance if the new total distance is shorter
         if(shortestDist > totalDist){
             shortestDist = totalDist;
+            //Replace bestList and bestDist members with the new list and the
+            //shortest distance
             bestList_ = myPath.getPathVector();
             bestDist_ = shortestDist;
         }
     } while(std::next_permutation(myPath.getPathVector().begin(),           myPath.getPathVector().end()));
+    
     std::cout << "The shortest available distance is " << bestDist_ << " using\n";
     showBestList();
 }
