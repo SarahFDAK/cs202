@@ -128,6 +128,7 @@ int CityPath::getPathEntry(const int entryNum){
     return path_[entryNum];
 }
 
+//Check if a city node number is already in the CityPath
 bool CityPath::getPathDup(const int city) const{
     for(auto i = 0; i < path_.size(); i++){
         if(path_[i] == city)
@@ -150,11 +151,13 @@ void TSPSolver::setBestDist(const double dist){
 double TSPSolver::getBestDist() const{
     return bestDist_;
 }
+
 void TSPSolver::showBestList() const{
     for(auto a: bestList_)
         std::cout << a << std::endl;
 }
 
+//Get a PRGN
 int TSPSolver::getRandomInt(const int count) const{
     random_device rd;
     mt19937 gen(rd());
@@ -162,31 +165,41 @@ int TSPSolver::getRandomInt(const int count) const{
     return dist(gen);
 }
 
+//Solve for distance in randomly generated lists
 void TSPSolver::SolveRandomly(CityList& cList, const int M){
     int count = cList.getCityVectorCount();
     bestDist_ = 1e12;
     CityPath randomList;
+    //Initialize the bestList member with the CityList nodeNums
     for(int i = 0; i < cList.getCityVectorCount(); i++){
         bestList_.push_back((cList.getCityNode(i)).getNodeNum());
     }
     double totalDist = 0;
     int loops = 0;
+    
+    //Loop for the number of times requested by the user
     while(loops < M){
+        //Fill random path vector with randomly generated numbers
         do{
-                int randNum = getRandomInt(count);
-                if(randomList.getPathDup(randNum))
-                    randomList.fillPath(randNum);
-                else
-                    continue;
-        }while(randomList.getPathSize() < count);
+            int randNum = getRandomInt(count);
+            //Check if generated number is already in the list
+            if(randomList.getPathDup(randNum))
+                randomList.fillPath(randNum);
+            else
+                continue;
+        } while(randomList.getPathSize() < count);
+        //Fill the end of the list with the first entry
         int a = randomList.getPathEntry(0);
         randomList.fillPath(a);
+        //Calculate the total distance
         for(int i = 0; i < randomList.getPathSize()-1; i++){
             int first = randomList.getPathEntry(i);
             int second = randomList.getPathEntry(i + 1);
             double currDist = cList.distance(first, second);
             totalDist += currDist;
         }
+        //If the total distance in the new vector is shorter than the previous
+        //total, replace the bestList_ vector and the bestDist_ member
         if(bestDist_ > totalDist){
             for(int i = 0; i < randomList.getPathSize(); i++)
                 bestList_[i] = randomList.getPathEntry(i);
@@ -198,32 +211,45 @@ void TSPSolver::SolveRandomly(CityList& cList, const int M){
     " miles.\n";
 }
 
+
 void TSPSolver::SolveGreedy(CityList &cList){
     CityPath greedyList;
     int randNum =getRandomInt(cList.getCityVectorCount());
+    //Start the list with a random selection
     greedyList.fillPath(randNum);
     int first;
     int second;
     int closestCity = 0;
     double totalDist = 0;
+    
+    //Run loop while greedyList is shorter than the CityList
     while(greedyList.getPathSize() < cList.getCityVectorCount()){
         double shortestDist = 1e12;
         int gL = greedyList.getPathSize() - 1;
+        //Find the last city entered in the list and set it to the second city
+        //for the distance function
         int lastCity = greedyList.getPathEntry(gL);
         second = lastCity;
+        
+        //Cycle through all cities in CityList to check distances from last city
         for(int i = 0; i < cList.getCityVectorCount(); i++){
+            //Check if the current city is already in the list
             if(!greedyList.getPathDup(cList.getCityNode(i).getNodeNum()))
                 continue;
             else{
                 first = cList.getCityNode(i).getNodeNum();
                 double currDist = cList.distance(first, second);
+                //If the newest city is closer than the last shortest distance,
+                //replace shortestDistance and closestCity variables
                 if(shortestDist > currDist){
                     shortestDist = currDist;
                     closestCity = first;
                 }
             }
         }
+        //Add shortest distance to total distance
         totalDist += shortestDist;
+        //Add the closest city to the list
         greedyList.fillPath(closestCity);
     }
     for(int i = 0; i < greedyList.getPathSize(); i++){
