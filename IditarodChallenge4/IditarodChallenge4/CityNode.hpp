@@ -48,6 +48,8 @@ public:
     
     void readFile(std::istream& fin, CityNode& node);
     
+    CityNode getCityNode(const int index);
+    
     double distance(int first, int second) const;
     
     int getCityVectorCount() const;
@@ -63,6 +65,8 @@ public:
     CityPath();
     
     void fillPath(const int list);
+    
+    void emptyPath();
     
     int getPathSize() const;
     
@@ -87,7 +91,7 @@ public:
     
     int getRandomInt(const int count) const;
     
-    void SolveRandomly(const CityList& cList);
+    void SolveRandomly(CityList& cList);
     
     ~TSPSolver();
 private:
