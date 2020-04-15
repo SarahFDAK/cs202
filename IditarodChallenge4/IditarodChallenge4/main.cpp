@@ -1,9 +1,11 @@
 //
 //  main.cpp
 //  IditarodChallenge4
-//
-//  Created by Sarah Carter on 4/14/20.
-//  Copyright © 2020 Sarah Carter. All rights reserved.
+//  Sarah Carter
+//  CS202
+//  This program reads a tsp file of city nodes, then solves for the shortest
+//  distance using randomly generated vectors, a greedy solve technique, and
+//  the approach of all permutations of the list.
 //
 
 #include <iostream>
