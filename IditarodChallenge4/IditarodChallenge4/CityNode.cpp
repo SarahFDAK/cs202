@@ -80,10 +80,10 @@ CityNode CityList::getCityNode(const int index){
 //Calculate distance between cities
 double CityList::distance(int first, int second) const{
     //Return 0 of first and second city are the same
-    if(first == second){
-        std::cout << "Those are the same city.\n";
-        return 0.0;
-    }
+//    if(first == second){
+//        std::cout << "Those are the same city.\n";
+//        return 0.0;
+//    }
     //Return 0 if one of the city numbers is beyond the list size
     if(first > cities_.size() || second > cities_.size()){
         std::cout << "This request is out of range.\n";
@@ -162,41 +162,41 @@ int TSPSolver::getRandomInt(const int count) const{
     return dist(gen);
 }
 
-void TSPSolver::SolveRandomly(CityList& cList){
+void TSPSolver::SolveRandomly(CityList& cList, const int M){
     int count = cList.getCityVectorCount();
-    int M = 10;
     bestDist_ = 1e12;
     CityPath bestPath;
     CityPath randomList;
     for(int i = 0; i < cList.getCityVectorCount(); i++){
-        bestPath.fillPath((cList.getCityNode(i)).getNodeNum());
+        bestList_.push_back((cList.getCityNode(i)).getNodeNum());
     }
     double totalDist = 0;
-//    while(M > 0){
-        while(randomList.getPathSize() < count){
-            int randNum = getRandomInt(count);
-            if(bestPath.getPathDup(randNum))
-                randomList.fillPath(randNum);
-            continue;
-        }
+    int loops = 0;
+    while(loops < M){
+        do{
+                int randNum = getRandomInt(count);
+                if(randomList.getPathDup(randNum))
+                    randomList.fillPath(randNum);
+                else
+                    continue;
+        }while(randomList.getPathSize() < count);
         int a = randomList.getPathEntry(0);
         randomList.fillPath(a);
-        for(int i = 0; i < randomList.getPathSize(); i++){
+        for(int i = 0; i < randomList.getPathSize()-1; i++){
             int first = randomList.getPathEntry(i);
             int second = randomList.getPathEntry(i + 1);
-            std::cout << first << " " << second << "\n";
             double currDist = cList.distance(first, second);
             totalDist += currDist;
         }
         if(bestDist_ > totalDist){
-            bestPath = randomList;
+            for(int i = 0; i < randomList.getPathSize(); i++)
+                bestList_[i] = randomList.getPathEntry(i);
             bestDist_ = totalDist;
         }
-//        M--;
-//    }
+        loops++;
+    }
     std::cout << "The best route found is a distance of " << bestDist_ <<
-    " following the route: \n";
-    showBestList();
+    " miles.\n";
 }
 
 

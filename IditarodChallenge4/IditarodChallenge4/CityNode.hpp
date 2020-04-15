@@ -91,7 +91,7 @@ public:
     
     int getRandomInt(const int count) const;
     
-    void SolveRandomly(CityList& cList);
+    void SolveRandomly(CityList& cList, const int M);
     
     ~TSPSolver();
 private:

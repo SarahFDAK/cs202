@@ -25,7 +25,13 @@ int main(int argc, const char * argv[]) {
     while(list.checkFile(fin)){
         list.readFile(fin, node);
     }
+    int M;
     TSPSolver solveIt;
-    solveIt.SolveRandomly(list);
+    std::cout << "Enter the number of times you want to randomly solve for TSP: \n";
+    while(!(std::cin >> M)){
+        std::cout << "Please enter an integer: \n";
+        std::cin.ignore();
+    }
+    solveIt.SolveRandomly(list, M);
     return 0;
 }
