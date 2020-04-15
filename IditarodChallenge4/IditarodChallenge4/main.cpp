@@ -34,5 +34,6 @@ int main(int argc, const char * argv[]) {
     }
     solveIt.SolveRandomly(list, M);
     solveIt.SolveGreedy(list);
+    solveIt.SolveMyWay(list);
     return 0;
 }

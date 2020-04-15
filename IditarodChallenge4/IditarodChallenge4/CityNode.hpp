@@ -74,6 +74,8 @@ public:
     
     bool getPathDup(const int city) const;
     
+    std::vector<int>& getPathVector();
+    
     ~CityPath();
 private:
     std::vector<int> path_;
@@ -94,6 +96,8 @@ public:
     void SolveRandomly(CityList& cList, const int M);
     
     void SolveGreedy(CityList& cList);
+    
+    void SolveMyWay(CityList& cList);
     
     ~TSPSolver();
 private:

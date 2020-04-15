@@ -137,6 +137,10 @@ bool CityPath::getPathDup(const int city) const{
     return true;
 }
 
+std::vector<int>& CityPath::getPathVector(){
+    return path_;
+}
+
 CityPath::~CityPath(){};
 
 TSPSolver::TSPSolver() {};
@@ -252,11 +256,46 @@ void TSPSolver::SolveGreedy(CityList &cList){
         //Add the closest city to the list
         greedyList.fillPath(closestCity);
     }
+    //Add first entry to the end of the list to create loop
+    first = greedyList.getPathEntry(greedyList.getPathSize()-1);
+    greedyList.fillPath(randNum);
+    second = greedyList.getPathEntry(greedyList.getPathSize() - 1);
+    //Calculate total distance of loop
+    double lastDist = cList.distance(first, second);
+    totalDist += lastDist;
+    
     for(int i = 0; i < greedyList.getPathSize(); i++){
         std::cout << greedyList.getPathEntry(i) << std::endl;
     }
     std::cout << "The total distance covered is: " << totalDist <<
                 " miles, starting at node " << greedyList.getPathEntry(0) << "\n";
 }
+
+void TSPSolver::SolveMyWay(CityList &cList){
+    CityPath myPath;
+    for(int i = 0; i < cList.getCityVectorCount(); i++){
+        myPath.fillPath(cList.getCityNode(i).getNodeNum());
+    }
+    myPath.fillPath(cList.getCityNode(0).getNodeNum());
+    double currDist = 0;
+    double totalDist = 0;
+    do{
+        double shortestDist = 1e12;
+        for(int i = 0; i < myPath.getPathSize()-1; i++){
+            int first = myPath.getPathEntry(i);
+            int second = myPath.getPathEntry(i + 1);
+            currDist = cList.distance(first, second);
+            totalDist += currDist;
+        }
+        if(shortestDist > totalDist){
+            shortestDist = totalDist;
+            bestList_ = myPath.getPathVector();
+            bestDist_ = shortestDist;
+        }
+    } while(std::next_permutation(myPath.getPathVector().begin(),           myPath.getPathVector().end()));
+    std::cout << "The shortest available distance is " << bestDist_ << " using\n";
+    showBestList();
+}
+
 
 TSPSolver::~TSPSolver(){};
