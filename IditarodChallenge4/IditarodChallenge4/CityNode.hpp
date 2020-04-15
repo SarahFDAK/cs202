@@ -93,6 +93,8 @@ public:
     
     void SolveRandomly(CityList& cList, const int M);
     
+    void SolveGreedy(CityList& cList);
+    
     ~TSPSolver();
 private:
     std::vector<int> bestList_;

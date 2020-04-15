@@ -165,7 +165,6 @@ int TSPSolver::getRandomInt(const int count) const{
 void TSPSolver::SolveRandomly(CityList& cList, const int M){
     int count = cList.getCityVectorCount();
     bestDist_ = 1e12;
-    CityPath bestPath;
     CityPath randomList;
     for(int i = 0; i < cList.getCityVectorCount(); i++){
         bestList_.push_back((cList.getCityNode(i)).getNodeNum());
@@ -199,6 +198,40 @@ void TSPSolver::SolveRandomly(CityList& cList, const int M){
     " miles.\n";
 }
 
-
+void TSPSolver::SolveGreedy(CityList &cList){
+    CityPath greedyList;
+    int randNum =getRandomInt(cList.getCityVectorCount());
+    int shortestDist = 1e12;
+    greedyList.fillPath(randNum);
+    while(greedyList.getPathSize() < cList.getCityVectorCount()){
+        int first = 0;
+        int second = randNum;
+        int closestCity = 0;
+        for(int i = 0; i < randNum; i++){
+            if(greedyList.getPathDup(cList.getCityNode(i).getNodeNum()))
+                continue;
+            first = cList.getCityNode(i).getNodeNum();
+            int currDist = cList.distance(first, second);
+            if(shortestDist > currDist){
+                shortestDist = currDist;
+                closestCity = i;
+            }
+        }
+        for(int j = randNum + 1; j < cList.getCityVectorCount(); j++){
+            if(greedyList.getPathDup(cList.getCityNode(j).getNodeNum()))
+                continue;
+            first = cList.getCityNode(j).getNodeNum();
+            int currDist = cList.distance(first, second);
+            if(shortestDist > currDist){
+                shortestDist = currDist;
+                closestCity = j;
+            }
+        }
+        greedyList.fillPath(closestCity);
+    }
+    for(int i = 0; i < greedyList.getPathSize(); i++){
+        std::cout << greedyList.getPathEntry(i) << std::endl;
+    }
+}
 
 TSPSolver::~TSPSolver(){};
