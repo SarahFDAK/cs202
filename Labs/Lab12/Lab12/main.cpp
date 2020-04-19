@@ -13,7 +13,7 @@
 //[x] Test Bese pointer to Derived class object
 //[x] Test Derived pointer to Derived class object
 //[x] Test Base class reference to Base class object
-//[ ] Test Base class reference to Derived class object
+//[x] Test Base class reference to Derived class object
 //[ ] Test Derived class reference to Derived class object
 
 class Horse {
@@ -63,6 +63,11 @@ void TestClassReference() {
     { Horse& hr = z;
         hr.function1();
         hr.function2();
+    }
+    
+    { RaceHorse& rr = z;
+        rr.function1();
+        rr.function2();
     }
 }
 
