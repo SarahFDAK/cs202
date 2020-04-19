@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-//[ ] Write Base Class with two functions, one virtual
+//[x] Write Base Class with two functions, one virtual
 //[ ] Write Derived Class with two functions, one virtual
 //[ ] Test Base pointer to Base class object
 //[ ] Test Bese pointer to Derived class object
@@ -16,13 +16,13 @@
 //[ ] Test Base class reference to Derived class object
 //[ ] Test Derived class reference to Derived class object
 
-class Base {
+class Horse {
 public:
-    Base() { std::cout << "Base::Base constructor\n"; }
-    ~Base() { std::cout << "Base::~Base destructor\n"; }
+    Horse() { std::cout << "Horse::Horse constructor\n"; }
+    ~Horse() { std::cout << "Horse::~Horse destructor\n"; }
     
-    void function1() { std::cout << "Base::function1() - non virtual\n"; }
-    virtual void function2() { std::cout << "Base::function2() - virtual\n"; }
+    void function1() { std::cout << "Horse::function1() - basic horse\n"; }
+    virtual void function2() { std::cout << "Horse::function2() - fancy virtual horse!\n"; }
 };
 
 void printDivider() {
@@ -30,7 +30,7 @@ void printDivider() {
 }
 
 int main(int argc, const char * argv[]) {
-    { Base b; b.function1(); b.function2(); }
+    { Horse b; b.function1(); b.function2(); }
     printDivider();
     
     return 0;
