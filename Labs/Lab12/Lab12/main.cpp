@@ -11,7 +11,7 @@
 //[x] Write Derived Class with two functions, one virtual
 //[x] Test Base pointer to Base class object
 //[x] Test Bese pointer to Derived class object
-//[ ] Test Derived pointer to Derived class object
+//[x] Test Derived pointer to Derived class object
 //[ ] Test Base class reference to Base class object
 //[ ] Test Base class reference to Derived class object
 //[ ] Test Derived class reference to Derived class object
@@ -52,6 +52,13 @@ void TestBasePointer() {
     }
 }
 
+void TestClassReference() {
+    Horse h;
+    { Horse& hr = h;
+        hr.function1();
+        hr.function2();
+    }
+}
 
 void printDivider() {
     std::cout << "---------------------------\n";
@@ -66,5 +73,9 @@ int main(int argc, const char * argv[]) {
     
     TestBasePointer();
     printDivider();
+    
+    TestClassReference();
+    printDivider();
+    
     return 0;
 }
