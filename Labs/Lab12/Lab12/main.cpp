@@ -8,7 +8,7 @@
 #include <iostream>
 
 //[x] Write Base Class with two functions, one virtual
-//[ ] Write Derived Class with two functions, one virtual
+//[x] Write Derived Class with two functions, one virtual
 //[ ] Test Base pointer to Base class object
 //[ ] Test Bese pointer to Derived class object
 //[ ] Test Derived pointer to Derived class object
@@ -19,7 +19,7 @@
 class Horse {
 public:
     Horse() { std::cout << "Horse::Horse on a farm\n"; }
-    ~Horse() { std::cout << "Horse::~Horse left the farm\n"; }
+    virtual ~Horse() { std::cout << "Horse::~Horse left the farm\n"; }
     
     void function1() { std::cout << "Horse::function1() - basic horse\n"; }
     virtual void function2() { std::cout << "Horse::function2() - literally a carthorse\n"; }
@@ -34,6 +34,15 @@ public:
     void function2() override { std::cout << "RaceHorse::function2() - Thoroughbred\n"; }
 };
 
+void TestBasePointer() {
+    Horse pony;
+    { Horse* pp = &pony;
+        pp->function1();
+        pp->function2();
+    }
+    
+}
+
 void printDivider() {
     std::cout << "---------------------------\n";
 }
@@ -43,6 +52,9 @@ int main(int argc, const char * argv[]) {
     printDivider();
     
     { RaceHorse d; d.function1(); d.function2(); }
+    printDivider();
+    
+    TestBasePointer();
     printDivider();
     return 0;
 }
