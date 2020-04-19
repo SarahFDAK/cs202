@@ -10,7 +10,7 @@
 //[x] Write Base Class with two functions, one virtual
 //[x] Write Derived Class with two functions, one virtual
 //[x] Test Base pointer to Base class object
-//[ ] Test Bese pointer to Derived class object
+//[x] Test Bese pointer to Derived class object
 //[ ] Test Derived pointer to Derived class object
 //[ ] Test Base class reference to Base class object
 //[ ] Test Base class reference to Derived class object
@@ -46,7 +46,12 @@ void TestBasePointer() {
         pp->function2();
     }
     
+    { RaceHorse* rp = &speedy;
+        rp->function1();
+        rp->function2();
+    }
 }
+
 
 void printDivider() {
     std::cout << "---------------------------\n";
