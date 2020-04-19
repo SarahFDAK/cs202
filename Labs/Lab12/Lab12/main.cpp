@@ -18,11 +18,20 @@
 
 class Horse {
 public:
-    Horse() { std::cout << "Horse::Horse constructor\n"; }
-    ~Horse() { std::cout << "Horse::~Horse destructor\n"; }
+    Horse() { std::cout << "Horse::Horse on a farm\n"; }
+    ~Horse() { std::cout << "Horse::~Horse left the farm\n"; }
     
     void function1() { std::cout << "Horse::function1() - basic horse\n"; }
-    virtual void function2() { std::cout << "Horse::function2() - fancy virtual horse!\n"; }
+    virtual void function2() { std::cout << "Horse::function2() - literally a carthorse\n"; }
+};
+
+class RaceHorse : public Horse {
+public:
+    RaceHorse() { std::cout << "RaceHorse::RaceHorse won the Derby!\n"; }
+    ~RaceHorse() { std::cout << "RaceHorse::~RaceHorse came in tenth...\n"; }
+    
+    void function1() { std::cout << "RaceHorse::function1() - Fancy racehorse\n"; }
+    void function2() override { std::cout << "RaceHorse::function2() - Thoroughbred\n"; }
 };
 
 void printDivider() {
@@ -33,5 +42,7 @@ int main(int argc, const char * argv[]) {
     { Horse b; b.function1(); b.function2(); }
     printDivider();
     
+    { RaceHorse d; d.function1(); d.function2(); }
+    printDivider();
     return 0;
 }
