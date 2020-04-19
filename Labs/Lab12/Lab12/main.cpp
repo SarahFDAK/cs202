@@ -9,7 +9,7 @@
 
 //[x] Write Base Class with two functions, one virtual
 //[x] Write Derived Class with two functions, one virtual
-//[ ] Test Base pointer to Base class object
+//[x] Test Base pointer to Base class object
 //[ ] Test Bese pointer to Derived class object
 //[ ] Test Derived pointer to Derived class object
 //[ ] Test Base class reference to Base class object
@@ -37,6 +37,11 @@ public:
 void TestBasePointer() {
     Horse pony;
     { Horse* pp = &pony;
+        pp->function1();
+        pp->function2();
+    }
+    RaceHorse speedy;
+    { Horse* pp = &speedy;
         pp->function1();
         pp->function2();
     }
