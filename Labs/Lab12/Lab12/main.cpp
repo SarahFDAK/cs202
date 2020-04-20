@@ -14,7 +14,7 @@
 //[x] Test Derived pointer to Derived class object
 //[x] Test Base class reference to Base class object
 //[x] Test Base class reference to Derived class object
-//[ ] Test Derived class reference to Derived class object
+//[x] Test Derived class reference to Derived class object
 
 class Horse {
 public:
