@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3BB2DADB244D66A9000E89BC /* Kaltag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2DADA244D66A9000E89BC /* Kaltag.cpp */; };
 		3BB2DAE3244D6CD2000E89BC /* CityNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2DAE2244D6CD2000E89BC /* CityNode.cpp */; };
+		3BB2DAE6244D6DCD000E89BC /* SVGcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2DAE4244D6DCD000E89BC /* SVGcode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		3BB2DADA244D66A9000E89BC /* Kaltag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Kaltag.cpp; sourceTree = "<group>"; };
 		3BB2DAE1244D6CD2000E89BC /* CityNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CityNode.hpp; sourceTree = "<group>"; };
 		3BB2DAE2244D6CD2000E89BC /* CityNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CityNode.cpp; sourceTree = "<group>"; };
+		3BB2DAE4244D6DCD000E89BC /* SVGcode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SVGcode.cpp; sourceTree = "<group>"; };
+		3BB2DAE5244D6DCD000E89BC /* SVGcode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SVGcode.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				3BB2DADA244D66A9000E89BC /* Kaltag.cpp */,
+				3BB2DAE4244D6DCD000E89BC /* SVGcode.cpp */,
+				3BB2DAE5244D6DCD000E89BC /* SVGcode.hpp */,
 				3BB2DAE2244D6CD2000E89BC /* CityNode.cpp */,
 				3BB2DAE1244D6CD2000E89BC /* CityNode.hpp */,
 			);
@@ -124,6 +129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BB2DAE6244D6DCD000E89BC /* SVGcode.cpp in Sources */,
 				3BB2DAE3244D6CD2000E89BC /* CityNode.cpp in Sources */,
 				3BB2DADB244D66A9000E89BC /* Kaltag.cpp in Sources */,
 			);
