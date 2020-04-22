@@ -13,6 +13,12 @@
 
 #include "CityNode.hpp"
 
-std::string ChartPath(CityList& list, std::vector<int>& bestPath);
+double convertPoint(double xmin, double xmax, double ymin, double ymax, double dimension);
+
+std::string ChartPath(CityList& list, std::vector<int>& bestPath, double xmin, double xmax, double ymin, double ymax);
+
+std::string buildSVG(const std::string& chartData, double xmax, double ymax);
+
+void CreateFile
 
 #endif /* SVGcode_hpp */

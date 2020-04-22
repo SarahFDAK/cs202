@@ -36,11 +36,29 @@ int main(int argc, const char * argv[]) {
     std::vector<int> random;
     std::vector<int> greedy;
     std::vector<int> mine;
+    
     solveIt.SolveRandomly(list, M, random);
     solveIt.SolveGreedy(list, greedy);
-    std::string randomChartData = ChartPath(list, random);
-    std::string greedyChartData = ChartPath(list, greedy);
-    std::cout << greedyChartData << std::endl;
+    
+    double xmin = 1e12;
+    double xmax = 0.0;
+    double ymin = 1e12;
+    double ymax = 0.0;
+    
+    for(int i = 0; i < list.getCityVectorCount(); i++){
+        double currX = list.getCityNode(i).getNodeLat();
+        double currY = list.getCityNode(i).getNodeLong();
+        xmin = std::min(xmin, currX);
+        xmax = std::max(xmax, currX);
+        ymin = std::min(ymin, currY);
+        ymax = std::max(ymax, currY);
+    }
+    
+//    std::cout << xmin << ", " << xmax << ", " << ymin << ", " << ymax << std::endl;
+    
+    std::string randomChartData = ChartPath(list, random, xmin, xmax, ymin, ymax);
+    std::string greedyChartData = ChartPath(list, greedy, xmin, xmax, ymin, ymax);
+    std::cout << buildSVG(greedyChartData, xmax, ymax);
 //    solveIt.SolveMyWay(list, mine);
     return 0;
 }

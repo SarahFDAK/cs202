@@ -63,6 +63,7 @@ void CityList::readFile(std::istream& fin, CityNode& node){
     double lat;
     double lng;
     while(std::getline(fin, read)){
+//        std::cout << read << std::endl;
         if(isdigit(read[0])){
             std::istringstream is(read);
             is >> num >> lat >> lng;
@@ -71,6 +72,8 @@ void CityList::readFile(std::istream& fin, CityNode& node){
         }
         continue;
     }
+//    for(size_t i = 0; i < cities_.size(); i++)
+//        std::cout << cities_[i].getNodeNum() << ", " << cities_[i].getNodeLat() << ", " << cities_[i].getNodeLong() << std::endl;
 }
 
 CityNode CityList::getCityNode(const int index){
@@ -165,7 +168,7 @@ void TSPSolver::showBestList() const{
 int TSPSolver::getRandomInt(const int count) const{
     random_device rd;
     mt19937 gen(rd());
-    std::uniform_int_distribution<int> dist(0,count);
+    std::uniform_int_distribution<int> dist(1,count);
     return dist(gen);
 }
 
@@ -180,9 +183,7 @@ void TSPSolver::SolveRandomly(CityList& cList, const int M, std::vector<int>& ne
     bestDist_ = 1e12;
     CityPath randomList;
     //Initialize the bestList member with the CityList nodeNums
-    for(int i = 0; i < cList.getCityVectorCount(); i++){
-        bestList_.push_back((cList.getCityNode(i)).getNodeNum());
-    }
+    bestList_.resize(count);
     double totalDist = 0;
     int loops = 0;
     
@@ -216,11 +217,14 @@ void TSPSolver::SolveRandomly(CityList& cList, const int M, std::vector<int>& ne
         }
         loops++;
     }
+    bestList_.push_back(bestList_[0]);
     std::cout << "The best route found is a distance of " << bestDist_ <<
     " miles.\n";
-    for(size_t i = 0; i < bestList_.size(); i++)
-        std::cout << bestList_[i] << std::endl;
+//    for(size_t i = 0; i < bestList_.size(); i++)
+//        std::cout << bestList_[i] << std::endl;
     fillVector(newPath);
+//    for(size_t i = 0; i < newPath.size(); i++)
+//        std::cout << newPath[i] << std::endl;
 }
 
 
@@ -236,7 +240,7 @@ void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
     
     //Run loop while greedyList is shorter than the CityList
     while(greedyList.getPathSize() < cList.getCityVectorCount()){
-        double shortestDist = 1e12;
+        double bestDist_ = 1e12;
         int gL = greedyList.getPathSize() - 1;
         //Find the last city entered in the list and set it to the second city
         //for the distance function
@@ -253,14 +257,14 @@ void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
                 double currDist = cList.distance(first, second);
                 //If the newest city is closer than the last shortest distance,
                 //replace shortestDistance and closestCity variables
-                if(shortestDist > currDist){
-                    shortestDist = currDist;
+                if(bestDist_ > currDist){
+                    bestDist_ = currDist;
                     closestCity = first;
                 }
             }
         }
         //Add shortest distance to total distance
-        totalDist += shortestDist;
+        totalDist += bestDist_;
         //Add the closest city to the list
         greedyList.fillPath(closestCity);
     }
