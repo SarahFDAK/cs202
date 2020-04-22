@@ -16,28 +16,28 @@ int main(int argc, const char * argv[]) {
     CityList list;
     CityNode node;
     //End program if user did not input a file to read
-//    if(argc == 1){
-//        std::cout << "Please enter a file to open.\n";
-//        return 0;
-//    }
-//    args = argv[1];
-    std::ifstream fin("rl1304.tsp");
+    if(argc == 1){
+        std::cout << "Please enter a file to open.\n";
+        return 0;
+    }
+    args = argv[1];
+    std::ifstream fin(args);
     //Read contents of file while checkFile tests are true
     while(list.checkFile(fin)){
         list.readFile(fin, node);
     }
-    int M;
+//    int M;
     TSPSolver solveIt;
-    std::cout << "Enter the number of times you want to randomly solve for TSP: \n";
-    while(!(std::cin >> M)){
-        std::cout << "Please enter an integer: \n";
-        std::cin.ignore();
-    }
+//    std::cout << "Enter the number of times you want to randomly solve for TSP: \n";
+//    while(!(std::cin >> M)){
+//        std::cout << "Please enter an integer: \n";
+//        std::cin.ignore();
+//    }
     std::vector<int> random;
     std::vector<int> greedy;
     std::vector<int> mine;
     
-    solveIt.SolveRandomly(list, M, random);
+    solveIt.SolveRandomly(list, 25, random);
     solveIt.SolveGreedy(list, greedy);
     
     double xmin = 1e12;
@@ -54,11 +54,16 @@ int main(int argc, const char * argv[]) {
         ymax = std::max(ymax, currY);
     }
     
+    double imageWidth = 1000.0;
+    double imageHeight = 700.0;
+    
 //    std::cout << xmin << ", " << xmax << ", " << ymin << ", " << ymax << std::endl;
     
-    std::string randomChartData = ChartPath(list, random, xmin, xmax, ymin, ymax);
-    std::string greedyChartData = ChartPath(list, greedy, xmin, xmax, ymin, ymax);
-    std::cout << buildSVG(greedyChartData, xmax, ymax);
+    std::string RandomSolve = buildSVG(ChartPath(list, random, xmin, xmax, ymin, ymax), imageWidth, imageHeight);
+    std::string GreedySolve = buildSVG(ChartPath(list, greedy, xmin, xmax, ymin, ymax), imageWidth, imageHeight);
+    
+    CreateFile(RandomSolve, "Random");
+    CreateFile(GreedySolve, "Greedy");
 //    solveIt.SolveMyWay(list, mine);
     return 0;
 }

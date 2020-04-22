@@ -67,6 +67,8 @@ public:
     void fillPath(const int list);
     
     void emptyPath();
+        
+    void deleteUsed(int added);
     
     int getPathSize() const;
     

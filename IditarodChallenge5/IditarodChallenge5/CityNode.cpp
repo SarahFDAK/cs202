@@ -123,6 +123,10 @@ void CityPath::emptyPath(){
     path_.clear();
 }
 
+void CityPath::deleteUsed(int added){
+    std::remove(path_.begin(), path_.end(), added);
+}
+
 int CityPath::getPathSize() const{
     return path_.size();
 }
@@ -229,10 +233,16 @@ void TSPSolver::SolveRandomly(CityList& cList, const int M, std::vector<int>& ne
 
 
 void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
+    CityPath unused;
+    for(size_t i = 0; i < cList.getCityVectorCount(); i++){
+        unused.fillPath(cList.getCityNode(i).getNodeNum());
+    }
     CityPath greedyList;
     int randNum =getRandomInt(cList.getCityVectorCount());
     //Start the list with a random selection
     greedyList.fillPath(randNum);
+    unused.deleteUsed(randNum);
+    
     int first;
     int second;
     int closestCity = 0;
@@ -248,25 +258,26 @@ void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
         second = lastCity;
         
         //Cycle through all cities in CityList to check distances from last city
-        for(int i = 0; i < cList.getCityVectorCount(); i++){
+        for(int i = 0; i < unused.getPathSize(); i++){
             //Check if the current city is already in the list
-            if(!greedyList.getPathDup(cList.getCityNode(i).getNodeNum()))
-                continue;
-            else{
-                first = cList.getCityNode(i).getNodeNum();
-                double currDist = cList.distance(first, second);
-                //If the newest city is closer than the last shortest distance,
-                //replace shortestDistance and closestCity variables
-                if(bestDist_ > currDist){
-                    bestDist_ = currDist;
-                    closestCity = first;
-                }
+//            if(!greedyList.getPathDup(cList.getCityNode(i).getNodeNum()))
+//                continue;
+//            else{
+            first = unused.getPathEntry(i);
+            double currDist = cList.distance(first, second);
+            //If the newest city is closer than the last shortest distance,
+            //replace shortestDistance and closestCity variables
+            if(bestDist_ > currDist){
+                bestDist_ = currDist;
+                closestCity = first;
             }
+//            }
         }
         //Add shortest distance to total distance
         totalDist += bestDist_;
         //Add the closest city to the list
         greedyList.fillPath(closestCity);
+        unused.deleteUsed(closestCity);
     }
     //Add first entry to the end of the list to create loop
     first = greedyList.getPathEntry(greedyList.getPathSize()-1);
