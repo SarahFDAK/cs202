@@ -44,7 +44,7 @@ std::string ChartPath(CityList& list, std::vector<int>& bestPath, double xmin, d
         svgPath += city;
         
         point = "<circle cx=\"" + std::to_string(x) + "\" cy=\"" + std::to_string(y)
-                + "\" r=\"1\" fill=\"red\"/>\n";
+                + "\" r=\"2\" fill=\"red\"/>\n";
         svgPoints += point;
     }
     svgData = svgPath + svgPoints;

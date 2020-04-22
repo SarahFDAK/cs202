@@ -39,6 +39,7 @@ int main(int argc, const char * argv[]) {
     
     solveIt.SolveRandomly(list, 25, random);
     solveIt.SolveGreedy(list, greedy);
+    solveIt.SolveMyWay(list, mine);
     
     double xmin = 1e12;
     double xmax = 0.0;
@@ -63,10 +64,12 @@ int main(int argc, const char * argv[]) {
     
     std::string Greedy = ChartPath(list, greedy, xmin, xmax, ymin, ymax);
     std::string GreedySolve = buildSVG(Greedy, imageWidth, imageHeight);
+    
+    std::string MyWay = ChartPath(list, mine, xmin, xmax, ymin, ymax);
+    std::string MyWaySolve = buildSVG(MyWay, imageWidth, imageHeight);
 
     CreateFile(RandomSolve, "Random");
     CreateFile(GreedySolve, "Greedy");
-//    solveIt.SolveMyWay(list, mine);
     return 0;
 }
 
