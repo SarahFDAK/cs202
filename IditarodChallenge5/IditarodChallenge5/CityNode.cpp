@@ -299,36 +299,55 @@ void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
 
 void TSPSolver::SolveMyWay(CityList &cList, std::vector<int>& newPath){
     CityPath myPath;
+    std::vector<CityNode> test1;
+    for(auto i = 0; i < cList.getCityVectorCount(); i++)
+        test1.push_back(cList.getCityNode(i));
     //Populate CityPath with CityList nodeNums
     for(int i = 0; i < cList.getCityVectorCount(); i++){
         myPath.fillPath(cList.getCityNode(i).getNodeNum());
     }
+    std::sort(test1.begin(), test1.end(), [&](CityNode& a, CityNode& b)
+              {return a.getNodeLong() < b.getNodeLong();});
     //Add the first entry to the end of the list to complete the loop
     myPath.fillPath(cList.getCityNode(0).getNodeNum());
-    double currDist = 0;
+//    double currDist = 0;
     double totalDist = 0;
-    double shortestDist = 1e12;
-    //Run the loop while there are more permutations of the list
-    do{
-        //Find the distance between each element
-        for(int i = 0; i < myPath.getPathSize()-1; i++){
-            int first = myPath.getPathEntry(i);
-            int second = myPath.getPathEntry(i + 1);
-            currDist = cList.distance(first, second);
-            totalDist += currDist;
-        }
-        //Replace shortest distance if the new total distance is shorter
-        if(shortestDist > totalDist){
-            shortestDist = totalDist;
-            //Replace bestList and bestDist members with the new list and the
-            //shortest distance
-            bestList_ = myPath.getPathVector();
-            bestDist_ = shortestDist;
-        }
-    } while(std::next_permutation(myPath.getPathVector().begin(),           myPath.getPathVector().end()));
+//    double shortestDist = 1e12;
     
-    std::cout << "The shortest available distance is " << bestDist_ << " using\n";
-    showBestList();
+    for(int i = 0; i < myPath.getPathSize()-1; i++){
+        int first = myPath.getPathEntry(i);
+        int second = myPath.getPathEntry(i + 1);
+        double currDist = cList.distance(first, second);
+        totalDist += currDist;
+    }
+    //If the total distance in the new vector is shorter than the previous
+    //total, replace the bestList_ vector and the bestDist_ member
+    if(bestDist_ > totalDist){
+        for(int i = 0; i < myPath.getPathSize(); i++)
+            bestList_[i] = myPath.getPathEntry(i);
+        bestDist_ = totalDist;
+    }
+    //Run the loop while there are more permutations of the list
+//    do{
+//        //Find the distance between each element
+//        for(int i = 0; i < myPath.getPathSize()-1; i++){
+//            int first = myPath.getPathEntry(i);
+//            int second = myPath.getPathEntry(i + 1);
+//            currDist = cList.distance(first, second);
+//            totalDist += currDist;
+//        }
+//        //Replace shortest distance if the new total distance is shorter
+//        if(shortestDist > totalDist){
+//            shortestDist = totalDist;
+//            //Replace bestList and bestDist members with the new list and the
+//            //shortest distance
+//            bestList_ = myPath.getPathVector();
+//            bestDist_ = shortestDist;
+//        }
+//    } while(std::next_permutation(myPath.getPathVector().begin(),           myPath.getPathVector().end()));
+    
+//    std::cout << "The shortest available distance is " << bestDist_ << " using\n";
+//    showBestList();
     fillVector(newPath);
 }
 
