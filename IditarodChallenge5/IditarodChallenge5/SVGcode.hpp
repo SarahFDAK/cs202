@@ -13,4 +13,6 @@
 
 #include "CityNode.hpp"
 
+std::string ChartPath(CityList& list, std::vector<int>& bestPath);
+
 #endif /* SVGcode_hpp */

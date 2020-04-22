@@ -32,9 +32,12 @@ int main(int argc, const char * argv[]) {
         std::cout << "Please enter an integer: \n";
         std::cin.ignore();
     }
-    solveIt.SolveRandomly(list, M);
-    solveIt.SolveGreedy(list);
-//    solveIt.SolveMyWay(list);
+    std::vector<int> random;
+    std::vector<int> greedy;
+    std::vector<int> mine;
+    solveIt.SolveRandomly(list, M, random);
+    solveIt.SolveGreedy(list, greedy);
+//    solveIt.SolveMyWay(list, mine);
     return 0;
 }
 
