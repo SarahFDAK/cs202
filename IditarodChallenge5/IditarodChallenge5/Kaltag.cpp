@@ -16,12 +16,12 @@ int main(int argc, const char * argv[]) {
     CityList list;
     CityNode node;
     //End program if user did not input a file to read
-    if(argc == 1){
-        std::cout << "Please enter a file to open.\n";
-        return 0;
-    }
-    args = argv[1];
-    std::ifstream fin(args);
+//    if(argc == 1){
+//        std::cout << "Please enter a file to open.\n";
+//        return 0;
+//    }
+//    args = argv[1];
+    std::ifstream fin("usa13509.tsp");
     //Read contents of file while checkFile tests are true
     while(list.checkFile(fin)){
         list.readFile(fin, node);
@@ -46,22 +46,24 @@ int main(int argc, const char * argv[]) {
     double ymax = 0.0;
     
     for(int i = 0; i < list.getCityVectorCount(); i++){
-        double currX = list.getCityNode(i).getNodeLat();
-        double currY = list.getCityNode(i).getNodeLong();
+        double currY = list.getCityNode(i).getNodeLat();
+        double currX = list.getCityNode(i).getNodeLong();
         xmin = std::min(xmin, currX);
         xmax = std::max(xmax, currX);
         ymin = std::min(ymin, currY);
         ymax = std::max(ymax, currY);
     }
     
-    double imageWidth = 1000.0;
-    double imageHeight = 700.0;
+    int imageWidth = 2500;
+    int imageHeight = 2250;
     
 //    std::cout << xmin << ", " << xmax << ", " << ymin << ", " << ymax << std::endl;
+    std::string Random = ChartPath(list, random, xmin, xmax, ymin, ymax);
+    std::string RandomSolve = buildSVG(Random, imageWidth, imageHeight);
     
-    std::string RandomSolve = buildSVG(ChartPath(list, random, xmin, xmax, ymin, ymax), imageWidth, imageHeight);
-    std::string GreedySolve = buildSVG(ChartPath(list, greedy, xmin, xmax, ymin, ymax), imageWidth, imageHeight);
-    
+    std::string Greedy = ChartPath(list, greedy, xmin, xmax, ymin, ymax);
+    std::string GreedySolve = buildSVG(Greedy, imageWidth, imageHeight);
+
     CreateFile(RandomSolve, "Random");
     CreateFile(GreedySolve, "Greedy");
 //    solveIt.SolveMyWay(list, mine);

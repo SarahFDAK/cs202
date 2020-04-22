@@ -6,12 +6,13 @@
 //  Copyright © 2020 Sarah Carter. All rights reserved.
 //
 #include <fstream>
+#include <utility>
 
 #include "SVGcode.hpp"
 
-double convertPoint(const double v, double vmax, double vmin, double dimension){
+double convertPoint(const double v, double vmax, double vmin, double dimension1, double dimension2){
     double vConvert = 0.0;
-    vConvert = dimension * (v - vmin) / (vmax - vmin) + 10;
+    vConvert = dimension1 - dimension2 * (v - vmin) / (vmax - vmin);
     return vConvert;
 }
 
@@ -30,8 +31,8 @@ std::string ChartPath(CityList& list, std::vector<int>& bestPath, double xmin, d
     for(size_t i = 0; i < bestPath.size()-1; i++){
         cityData = list.getCityNode(bestPath[i]-1);
 //        std::cout << cityData.getNodeNum() << ", " << cityData.getNodeLat() << ", " << cityData.getNodeLong() << std::endl;
-        x = convertPoint(cityData.getNodeLat(), xmax, xmin,1000.0);
-        y = convertPoint(cityData.getNodeLong(), ymax, ymin,700.0);
+        y = convertPoint(cityData.getNodeLat(), ymax, ymin, 2080.0,1080.0);
+        x = convertPoint(cityData.getNodeLong(), xmax, xmin,1980.0,1920.0);
 //        std::cout << x << ", " << y << std::endl;
         
         if(i == 0)
@@ -50,9 +51,8 @@ std::string ChartPath(CityList& list, std::vector<int>& bestPath, double xmin, d
     return svgData;
 }
 
-std::string buildSVG(const std::string& chartData, double xmax, double ymax){
-    std::string svgContents = "<svg version=\"1.1\"\nbaseProfile=\"full\"\nwidth=\""
-                + std::to_string(xmax) + "\" height=\"" + std::to_string(ymax) + "\"\nxmlns=\"http://www.w3.org/2000/svg\">\n\n";
+std::string buildSVG(const std::string& chartData, double width, double height){
+    std::string svgContents = "<svg width=\"" + std::to_string(width) + "\" height=\"" + std::to_string(height)+ "\" xmlns=\"http://www.w3.org/2000/svg\">\n\n";
     svgContents += chartData;
     svgContents += "\n</svg>";
     return svgContents;
@@ -60,7 +60,6 @@ std::string buildSVG(const std::string& chartData, double xmax, double ymax){
 
 bool CreateFile(const std::string& svgData, const std::string& title){
     std::string outputFile = title + ".svg";
-    std::cout << outputFile << std::endl;
     std::ofstream fout(outputFile);
     if(!fout)
         return false;

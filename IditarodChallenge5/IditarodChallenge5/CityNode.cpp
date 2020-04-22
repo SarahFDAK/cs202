@@ -125,6 +125,7 @@ void CityPath::emptyPath(){
 
 void CityPath::deleteUsed(int added){
     std::remove(path_.begin(), path_.end(), added);
+    path_.pop_back();
 }
 
 int CityPath::getPathSize() const{
