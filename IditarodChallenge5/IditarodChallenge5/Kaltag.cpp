@@ -70,6 +70,7 @@ int main(int argc, const char * argv[]) {
 
     CreateFile(RandomSolve, "Random");
     CreateFile(GreedySolve, "Greedy");
+    CreateFile(MyWaySolve, "Mine");
     return 0;
 }
 
