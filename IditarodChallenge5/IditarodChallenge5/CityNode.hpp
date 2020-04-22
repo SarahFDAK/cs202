@@ -93,11 +93,11 @@ public:
     
     int getRandomInt(const int count) const;
     
-    CityPath SolveRandomly(CityList& cList, const int M);
+    void SolveRandomly(CityList& cList, const int M);
     
-    CityPath SolveGreedy(CityList& cList);
+    void SolveGreedy(CityList& cList);
     
-    CityPath SolveMyWay(CityList& cList);
+    void SolveMyWay(CityList& cList);
     
     ~TSPSolver();
 private:
