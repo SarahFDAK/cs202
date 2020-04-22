@@ -223,8 +223,8 @@ void TSPSolver::SolveRandomly(CityList& cList, const int M, std::vector<int>& ne
         loops++;
     }
     bestList_.push_back(bestList_[0]);
-    std::cout << "The best route found is a distance of " << bestDist_ <<
-    " miles.\n";
+//    std::cout << "The best route found is a distance of " << bestDist_ <<
+//    " miles.\n";
 //    for(size_t i = 0; i < bestList_.size(); i++)
 //        std::cout << bestList_[i] << std::endl;
     fillVector(newPath);
@@ -292,8 +292,8 @@ void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
 //    for(int i = 0; i < greedyList.getPathSize(); i++){
 //        std::cout << greedyList.getPathEntry(i) << std::endl;
 //    }
-    std::cout << "The total distance covered is: " << totalDist <<
-                " miles, starting at node " << greedyList.getPathEntry(0) << "\n";
+//    std::cout << "The total distance covered is: " << totalDist <<
+//                " miles, starting at node " << greedyList.getPathEntry(0) << "\n";
     fillVector(newPath);
 }
 
