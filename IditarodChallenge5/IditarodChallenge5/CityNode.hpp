@@ -93,11 +93,13 @@ public:
     
     int getRandomInt(const int count) const;
     
-    void SolveRandomly(CityList& cList, const int M);
+    void fillVector(std::vector<int>& newPath);
     
-    void SolveGreedy(CityList& cList);
+    void SolveRandomly(CityList& cList, const int M, std::vector<int>& newPath);
     
-    void SolveMyWay(CityList& cList);
+    void SolveGreedy(CityList& cList, std::vector<int>& newPath);
+    
+    void SolveMyWay(CityList& cList, std::vector<int>& newPath);
     
     ~TSPSolver();
 private:
