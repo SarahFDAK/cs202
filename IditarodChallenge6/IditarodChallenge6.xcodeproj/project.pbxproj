@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3BBA047124510D6D007DE9F0 /* Shaktoolik.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BBA047024510D6D007DE9F0 /* Shaktoolik.cpp */; };
+		3BBA047B24510F26007DE9F0 /* SVGcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BBA047724510F25007DE9F0 /* SVGcode.cpp */; };
+		3BBA047C24510F26007DE9F0 /* CityNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BBA047A24510F25007DE9F0 /* CityNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		3BBA046D24510D6D007DE9F0 /* IditarodChallenge6 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IditarodChallenge6; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBA047024510D6D007DE9F0 /* Shaktoolik.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shaktoolik.cpp; sourceTree = "<group>"; };
+		3BBA047724510F25007DE9F0 /* SVGcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVGcode.cpp; sourceTree = "<group>"; };
+		3BBA047824510F25007DE9F0 /* CityNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CityNode.hpp; sourceTree = "<group>"; };
+		3BBA047924510F25007DE9F0 /* SVGcode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SVGcode.hpp; sourceTree = "<group>"; };
+		3BBA047A24510F25007DE9F0 /* CityNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CityNode.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,10 @@
 		3BBA046F24510D6D007DE9F0 /* IditarodChallenge6 */ = {
 			isa = PBXGroup;
 			children = (
+				3BBA047A24510F25007DE9F0 /* CityNode.cpp */,
+				3BBA047824510F25007DE9F0 /* CityNode.hpp */,
+				3BBA047724510F25007DE9F0 /* SVGcode.cpp */,
+				3BBA047924510F25007DE9F0 /* SVGcode.hpp */,
 				3BBA047024510D6D007DE9F0 /* Shaktoolik.cpp */,
 			);
 			path = IditarodChallenge6;
@@ -119,7 +129,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BBA047C24510F26007DE9F0 /* CityNode.cpp in Sources */,
 				3BBA047124510D6D007DE9F0 /* Shaktoolik.cpp in Sources */,
+				3BBA047B24510F26007DE9F0 /* SVGcode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
