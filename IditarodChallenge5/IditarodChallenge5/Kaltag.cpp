@@ -9,18 +9,19 @@
 #include <iostream>
 
 #include "CityNode.hpp"
+#include "SVGcode.hpp"
 
 int main(int argc, const char * argv[]) {
         std::string args;
     CityList list;
     CityNode node;
     //End program if user did not input a file to read
-    if(argc == 1){
-        std::cout << "Please enter a file to open.\n";
-        return 0;
-    }
-    args = argv[1];
-    std::ifstream fin(args);
+//    if(argc == 1){
+//        std::cout << "Please enter a file to open.\n";
+//        return 0;
+//    }
+//    args = argv[1];
+    std::ifstream fin("rl1304.tsp");
     //Read contents of file while checkFile tests are true
     while(list.checkFile(fin)){
         list.readFile(fin, node);
@@ -37,6 +38,9 @@ int main(int argc, const char * argv[]) {
     std::vector<int> mine;
     solveIt.SolveRandomly(list, M, random);
     solveIt.SolveGreedy(list, greedy);
+    std::string randomChartData = ChartPath(list, random);
+    std::string greedyChartData = ChartPath(list, greedy);
+    std::cout << greedyChartData << std::endl;
 //    solveIt.SolveMyWay(list, mine);
     return 0;
 }

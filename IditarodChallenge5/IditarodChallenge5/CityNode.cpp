@@ -218,6 +218,8 @@ void TSPSolver::SolveRandomly(CityList& cList, const int M, std::vector<int>& ne
     }
     std::cout << "The best route found is a distance of " << bestDist_ <<
     " miles.\n";
+    for(size_t i = 0; i < bestList_.size(); i++)
+        std::cout << bestList_[i] << std::endl;
     fillVector(newPath);
 }
 
@@ -265,14 +267,15 @@ void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
     //Add first entry to the end of the list to create loop
     first = greedyList.getPathEntry(greedyList.getPathSize()-1);
     greedyList.fillPath(randNum);
+    bestList_ = greedyList.getPathVector();
     second = greedyList.getPathEntry(greedyList.getPathSize() - 1);
     //Calculate total distance of loop
     double lastDist = cList.distance(first, second);
     totalDist += lastDist;
     
-    for(int i = 0; i < greedyList.getPathSize(); i++){
-        std::cout << greedyList.getPathEntry(i) << std::endl;
-    }
+//    for(int i = 0; i < greedyList.getPathSize(); i++){
+//        std::cout << greedyList.getPathEntry(i) << std::endl;
+//    }
     std::cout << "The total distance covered is: " << totalDist <<
                 " miles, starting at node " << greedyList.getPathEntry(0) << "\n";
     fillVector(newPath);
