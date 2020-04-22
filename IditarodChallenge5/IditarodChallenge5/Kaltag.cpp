@@ -46,6 +46,7 @@ int main(int argc, const char * argv[]) {
     double ymin = 1e12;
     double ymax = 0.0;
     
+    //Find min and max latitude and longitude in city list
     for(int i = 0; i < list.getCityVectorCount(); i++){
         double currY = list.getCityNode(i).getNodeLat();
         double currX = list.getCityNode(i).getNodeLong();

@@ -300,14 +300,16 @@ void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
 void TSPSolver::SolveMyWay(CityList &cList, std::vector<int>& newPath){
     CityPath myPath;
     std::vector<CityNode> test1;
+    //fill test1 vector with CityNode numbers
     for(auto i = 0; i < cList.getCityVectorCount(); i++)
         test1.push_back(cList.getCityNode(i));
-    //Populate CityPath with CityList nodeNums
-    for(int i = 0; i < cList.getCityVectorCount(); i++){
-        myPath.fillPath(cList.getCityNode(i).getNodeNum());
-    }
+    //Sort test1 vector by CityNode longitude
     std::sort(test1.begin(), test1.end(), [&](CityNode& a, CityNode& b)
               {return a.getNodeLong() < b.getNodeLong();});
+    //Populate CityPath with sorted CityList nodeNums
+    for(int i = 0; i < test1.size(); i++){
+        myPath.fillPath(test1[i].getNodeNum());
+    }
     //Add the first entry to the end of the list to complete the loop
     myPath.fillPath(cList.getCityNode(0).getNodeNum());
 //    double currDist = 0;
