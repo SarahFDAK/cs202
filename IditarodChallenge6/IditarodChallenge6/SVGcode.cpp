@@ -47,20 +47,57 @@ std::string ChartPath(CityList& list, CityPath& bestPath, double xmin, double xm
         svgPath += city;
         
         //Create points
+//        point = "<circle cx=\"" + std::to_string(x) + "\" cy=\"" + std::to_string(y)
+//                + "\" r=\"2\" fill=\"red\"/>\n";
+//        //Add point information to string
+//        svgPoints += point;
+    }
+    //Concatenate path and points strings and return string
+//    svgData = svgPath + svgPoints;
+    return svgPath;
+}
+
+std::string ChartPoints(CityList& list, CityPath& bestPath, double xmin, double xmax, double ymin, double ymax){
+//    for(size_t i = 0; i < bestPath.size(); i++)
+//        std::cout << bestPath[i] << std::endl;
+    std::string svgPoints;
+//    std::string city;
+    std::string point;
+    CityNode cityData;
+    double x = 0.0;
+    double y = 0.0;
+    
+    for(size_t i = 0; i < bestPath.getPathSize()-1; i++){
+        cityData = list.getCityNode(bestPath.getPathEntry(i)-1);
+
+        y = convertPoint(cityData.getNodeLat(), ymax, ymin, 2080.0,1080.0);
+        x = convertPoint(cityData.getNodeLong(), xmax, xmin,1980.0,1920.0);
+
+        //Create paths between points
+//        if(i == 0)
+//            city = "M " + std::to_string(x) + " " + std::to_string(y) + " ";
+//        else if(i == bestPath.getPathSize()-2)
+//            city = "L " + std::to_string(x) + " " + std::to_string(y) + " Z\" fill=\"transparent\" stroke=\"blue\"/>\n\n";
+//        else
+//            city = "L " + std::to_string(x) + " " + std::to_string(y) + " ";
+//        //Add all path information to string
+//        svgPath += city;
+        
+        //Create points
         point = "<circle cx=\"" + std::to_string(x) + "\" cy=\"" + std::to_string(y)
                 + "\" r=\"2\" fill=\"red\"/>\n";
         //Add point information to string
         svgPoints += point;
     }
     //Concatenate path and points strings and return string
-    svgData = svgPath + svgPoints;
-    return svgData;
+    return svgPoints;
 }
 
 //Build entire SVG data string with image dimensions
-std::string buildSVG(const std::string& chartData, double width, double height){
+std::string buildSVG(const std::string& chartPath, const std::string& chartPoints, double width, double height){
     std::string svgContents = "<svg width=\"" + std::to_string(width) + "\" height=\"" + std::to_string(height)+ "\" xmlns=\"http://www.w3.org/2000/svg\">\n\n";
-    svgContents += chartData;
+    svgContents += chartPath;
+    svgContents += chartPoints;
     svgContents += "\n</svg>";
     return svgContents;
 }
@@ -76,20 +113,22 @@ bool CreateFile(const std::string& svgData, const std::string& title){
 }
 
 void inProgress(CityList& list, CityPath& bestPath, CityPath& tempPath){
+    bestPath.deleteUsed(bestPath.getPathEntry(bestPath.getPathSize()));
     int listLength = list.getCityVectorCount();
     int partSize = listLength/16;
     int count = 0;
+    std::string points = ChartPoints(list, bestPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
     while(listLength > partSize){
         count++;
-        for(int i = 0; i < partSize; i++){
+        for(int i = listLength; i > (listLength - partSize); i--){
             tempPath.fillPath(bestPath.getPathEntry(i));
-            bestPath.deleteUsed(tempPath.getPathEntry(i));
+            bestPath.deleteUsed(tempPath.getPathEntry(0));
         }
         std::string tName = "Greedy" + std::to_string(count);
-        CreateFile(buildSVG(ChartPath(list, tempPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), 2500, 2250), tName);
+        CreateFile(buildSVG(ChartPath(list, tempPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), points, 2500, 2250), tName);
         listLength -= partSize;
     }
-    CreateFile(buildSVG(ChartPath(list, bestPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), 2500, 2250), "GreedyLast");
+    CreateFile(buildSVG(ChartPath(list, bestPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), points, 2500, 2250), "GreedyLast");
 }
 
 

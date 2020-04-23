@@ -16,12 +16,12 @@ int main(int argc, const char * argv[]) {
     CityList list;
     CityNode node;
     //End program if user did not input a file to read
-    if(argc == 1){
-        std::cout << "Please enter a file to open.\n";
-        return 0;
-    }
-    args = argv[1];
-    std::ifstream fin(args);
+//    if(argc == 1){
+//        std::cout << "Please enter a file to open.\n";
+//        return 0;
+//    }
+//    args = argv[1];
+    std::ifstream fin("rl1323.tsp");
     //Read contents of file while checkFile tests are true
     while(list.checkFile(fin)){
         list.readFile(fin, node);
@@ -41,24 +41,26 @@ int main(int argc, const char * argv[]) {
     solveIt.SolveGreedy(list, greedy);
 //    solveIt.SolveMyWay(list, mine);
     
-    double xmin = list.getMinLong();
-    double xmax = list.getMaxLong();
-    double ymin = list.getMinLat();
-    double ymax = list.getMaxLat();
+//    double xmin = list.getMinLong();
+//    double xmax = list.getMaxLong();
+//    double ymin = list.getMinLat();
+//    double ymax = list.getMaxLat();
+//
+//
+//    int imageWidth = 2500;
+//    int imageHeight = 2250;
     
+    CityPath greedyTemp;
     
-    int imageWidth = 2500;
-    int imageHeight = 2250;
-    
-    CityPath greedyTemp = greedy;
+    inProgress(list, greedy, greedyTemp);
     
 //    std::cout << xmin << ", " << xmax << ", " << ymin << ", " << ymax << std::endl;
 //    std::string Random = ChartPath(list, random, xmin, xmax, ymin, ymax);
 //    std::string RandomSolve = buildSVG(Random, imageWidth, imageHeight);
     
-    std::string Greedy = ChartPath(list, greedy, xmin, xmax, ymin, ymax);
-    std::string GreedySolve = buildSVG(Greedy, imageWidth, imageHeight);
-    CreateFile(GreedySolve, "Greedy");
+//    std::string Greedy = ChartPath(list, greedy, xmin, xmax, ymin, ymax);
+//    std::string GreedySolve = buildSVG(Greedy, imageWidth, imageHeight);
+//    CreateFile(GreedySolve, "Greedy");
 
 //    std::string MyWay = ChartPath(list, mine, xmin, xmax, ymin, ymax);
 //    std::string MyWaySolve = buildSVG(MyWay, imageWidth, imageHeight);

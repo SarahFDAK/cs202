@@ -17,7 +17,9 @@ double convertPoint(const double v, double vmax, double vmin, double dimension1,
 
 std::string ChartPath(CityList& list, CityPath& bestPath, double xmin, double xmax, double ymin, double ymax);
 
-std::string buildSVG(const std::string& chartData, double width, double height);
+std::string ChartPoints(CityList& list, CityPath& bestPath, double xmin, double xmax, double ymin, double ymax);
+
+std::string buildSVG(const std::string& chartPath, const std::string& chartPoints, double width, double height);
 
 bool CreateFile(const std::string& svgData, const std::string& title);
 
