@@ -111,6 +111,42 @@ int CityList::getCityVectorCount() const{
     return cities_.size();
 }
 
+double CityList::getMaxLat() {
+    double maxLat = 0;
+    for(auto i = 0; i < getCityVectorCount(); i++){
+        double currentLat = getCityNode(i).getNodeLat();
+        maxLat = std::max(maxLat, currentLat);
+    }
+    return maxLat;
+}
+
+double CityList::getMinLat(){
+    double minLat = 1e12;
+    for(auto i = 0; i < getCityVectorCount(); i++){
+        double currentLat = getCityNode(i).getNodeLat();
+        minLat = std::min(minLat, currentLat);
+    }
+    return minLat;
+}
+
+double CityList::getMinLong(){
+    double minLong = 1e12;
+    for(auto i = 0; i < getCityVectorCount(); i++){
+        double currentLong = getCityNode(i).getNodeLong();
+        minLong = std::min(minLong, currentLong);
+    }
+    return minLong;
+}
+
+double CityList::getMaxLong(){
+    double maxLong = 0;
+    for(auto i = 0; i < getCityVectorCount(); i++){
+        double currentLong = getCityNode(i).getNodeLong();
+        maxLong = std::max(maxLong, currentLong);
+    }
+    return maxLong;
+}
+
 CityList::~CityList(){};
 
 CityPath::CityPath(){};
@@ -132,16 +168,9 @@ int CityPath::getPathSize() const{
     return path_.size();
 }
 
-int CityList::sectionCount(int listLength){
-    int NumberOfCities = listLength/16;
-    if(listLength > NumberOfCities)
-       listLength -= NumberOfCities;
-    else{
-        NumberOfCities = listLength;
-        listLength = 0;
-    }
-    return NumberOfCities;
-}
+//void CityPath::sectionCount(int listLength){
+//    
+//}
 
 int CityPath::getPathEntry(const int entryNum){
     return path_[entryNum];

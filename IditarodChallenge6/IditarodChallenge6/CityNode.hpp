@@ -54,6 +54,13 @@ public:
     
     int getCityVectorCount() const;
     
+    double getMaxLat();
+    
+    double getMinLat();
+    
+    double getMinLong();
+    
+    double getMaxLong();
     
     ~CityList();
 private:
@@ -74,7 +81,7 @@ public:
     
     int getPathEntry(const int entryNum);
     
-    int sectionCount(int listLength);
+    void sectionCount(int listLength);
         
     bool getPathDup(const int city) const;
     
@@ -103,7 +110,7 @@ public:
     
     void SolveGreedy(CityList& cList, CityPath& newPath);
     
-    void SolveMyWay(CityList& cList, CithPath& newPath);
+    void SolveMyWay(CityList& cList, CityPath& newPath);
     
     ~TSPSolver();
 private:
