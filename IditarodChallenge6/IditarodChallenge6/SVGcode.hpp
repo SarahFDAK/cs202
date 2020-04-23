@@ -21,4 +21,6 @@ std::string buildSVG(const std::string& chartData, double width, double height);
 
 bool CreateFile(const std::string& svgData, const std::string& title);
 
+void inProgress(CityList& list, CityPath& bestPath, CityPath& tempPath);
+
 #endif /* SVGcode_hpp */
