@@ -188,13 +188,14 @@ int TSPSolver::getRandomInt(const int count) const{
     return dist(gen);
 }
 
-void TSPSolver::fillVector(std::vector<int>& newPath){
-    newPath = bestList_;
+void TSPSolver::fillVector(CityPath& newPath){
+    for(auto i: bestList_)
+        newPath.fillPath(i);
 }
 
 
 //Solve for distance in randomly generated lists
-void TSPSolver::SolveRandomly(CityList& cList, const int M, std::vector<int>& newPath){
+void TSPSolver::SolveRandomly(CityList& cList, const int M, CityPath& newPath){
     int count = cList.getCityVectorCount();
     bestDist_ = 1e12;
     CityPath randomList;
@@ -244,7 +245,7 @@ void TSPSolver::SolveRandomly(CityList& cList, const int M, std::vector<int>& ne
 }
 
 
-void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
+void TSPSolver::SolveGreedy(CityList &cList, CityPath& newPath){
     CityPath unused;
     for(size_t i = 0; i < cList.getCityVectorCount(); i++){
         unused.fillPath(cList.getCityNode(i).getNodeNum());
@@ -308,7 +309,7 @@ void TSPSolver::SolveGreedy(CityList &cList, std::vector<int>& newPath){
     fillVector(newPath);
 }
 
-void TSPSolver::SolveMyWay(CityList &cList, std::vector<int>& newPath){
+void TSPSolver::SolveMyWay(CityList &cList, CityPath& newPath){
     CityPath myPath;
     std::vector<CityNode> test1;
     //fill test1 vector with CityNode numbers

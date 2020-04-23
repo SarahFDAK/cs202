@@ -18,7 +18,7 @@ double convertPoint(const double v, double vmax, double vmin, double dimension1,
 }
 
 //Concatenate information to be written to SVG file into a single string
-std::string ChartPath(CityList& list, std::vector<int>& bestPath, double xmin, double xmax, double ymin, double ymax){
+std::string ChartPath(CityList& list, CityPath& bestPath, double xmin, double xmax, double ymin, double ymax){
     std::string svgData;
 //    for(size_t i = 0; i < bestPath.size(); i++)
 //        std::cout << bestPath[i] << std::endl;
@@ -30,8 +30,8 @@ std::string ChartPath(CityList& list, std::vector<int>& bestPath, double xmin, d
     double x = 0.0;
     double y = 0.0;
     
-    for(size_t i = 0; i < bestPath.size()-1; i++){
-        cityData = list.getCityNode(bestPath[i]-1);
+    for(size_t i = 0; i < bestPath.getPathSize()-1; i++){
+        cityData = list.getCityNode(bestPath.getPathEntry(i)-1);
 
         y = convertPoint(cityData.getNodeLat(), ymax, ymin, 2080.0,1080.0);
         x = convertPoint(cityData.getNodeLong(), xmax, xmin,1980.0,1920.0);
@@ -39,7 +39,7 @@ std::string ChartPath(CityList& list, std::vector<int>& bestPath, double xmin, d
         //Create paths between points
         if(i == 0)
             city = "M " + std::to_string(x) + " " + std::to_string(y) + " ";
-        else if(i == bestPath.size()-2)
+        else if(i == bestPath.getPathSize()-2)
             city = "L " + std::to_string(x) + " " + std::to_string(y) + " Z\" fill=\"transparent\" stroke=\"blue\"/>\n\n";
         else
             city = "L " + std::to_string(x) + " " + std::to_string(y) + " ";

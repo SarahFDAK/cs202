@@ -15,7 +15,7 @@
 
 double convertPoint(const double v, double vmax, double vmin, double dimension1, double dimension2);
 
-std::string ChartPath(CityList& list, std::vector<int>& bestPath, double xmin, double xmax, double ymin, double ymax);
+std::string ChartPath(CityList& list, CityPath& bestPath, double xmin, double xmax, double ymin, double ymax);
 
 std::string buildSVG(const std::string& chartData, double width, double height);
 
