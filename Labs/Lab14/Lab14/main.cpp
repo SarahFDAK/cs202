@@ -8,8 +8,17 @@
 
 #include <iostream>
 
+//[ ] Write a function template 'twice'
+//[ ] Test it with an int and a double
+//[ ] Test iwth with a C++ string
+//[ ] Fix it to work with a C string
+
+template <typename T>
+T twice(const T& x){
+    return x + x;
+}
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
     return 0;
 }
