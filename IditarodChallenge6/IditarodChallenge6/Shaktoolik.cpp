@@ -49,7 +49,7 @@ int main(int argc, const char * argv[]) {
 //
 //    int imageWidth = 2500;
 //    int imageHeight = 2250;
-    
+    //Create extra CityPath to hold path data
     CityPath greedyTemp;
     
     inProgress(list, greedy, greedyTemp);

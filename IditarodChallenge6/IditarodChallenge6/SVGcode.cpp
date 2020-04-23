@@ -17,7 +17,7 @@ double convertPoint(const double v, double vmax, double vmin, double dimension1,
     return vConvert;
 }
 
-//Concatenate information to be written to SVG file into a single string
+//Get an individual string of path points
 std::string ChartPath(CityList& list, CityPath& bestPath, double xmin, double xmax, double ymin, double ymax){
     std::string svgData;
 //    for(size_t i = 0; i < bestPath.size(); i++)
@@ -57,6 +57,7 @@ std::string ChartPath(CityList& list, CityPath& bestPath, double xmin, double xm
     return svgPath;
 }
 
+//Get an individual string of chart points
 std::string ChartPoints(CityList& list, CityPath& bestPath, double xmin, double xmax, double ymin, double ymax){
 //    for(size_t i = 0; i < bestPath.size(); i++)
 //        std::cout << bestPath[i] << std::endl;
@@ -112,6 +113,7 @@ bool CreateFile(const std::string& svgData, const std::string& title){
     return true;
 }
 
+//Print SVG files as the algorithm progresses
 void inProgress(CityList& list, CityPath& bestPath, CityPath& tempPath){
     bestPath.deleteUsed(bestPath.getPathEntry(bestPath.getPathSize()));
     int listLength = list.getCityVectorCount();

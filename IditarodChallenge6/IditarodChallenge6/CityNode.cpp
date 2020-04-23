@@ -168,9 +168,6 @@ int CityPath::getPathSize() const{
     return path_.size();
 }
 
-//void CityPath::sectionCount(int listLength){
-//    
-//}
 
 int CityPath::getPathEntry(const int entryNum){
     return path_[entryNum];
