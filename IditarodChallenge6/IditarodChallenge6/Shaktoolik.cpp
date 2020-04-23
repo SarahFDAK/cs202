@@ -1,10 +1,10 @@
 //
-//  main.cpp
+//  Shaktoolik.cpp
 //  IditarodChallenge6
-//
-//  Created by Sarah Carter on 4/22/20.
-//  Copyright © 2020 Sarah Carter. All rights reserved.
-//
+//  Sarah Carter
+//  CS202
+//  Description: This program will provide in-progress files for the creation
+//  of SVG files
 
 #include <iostream>
 
@@ -33,13 +33,13 @@ int main(int argc, const char * argv[]) {
 //        std::cout << "Please enter an integer: \n";
 //        std::cin.ignore();
 //    }
-    std::vector<int> random;
+//    std::vector<int> random;
     std::vector<int> greedy;
-    std::vector<int> mine;
+//    std::vector<int> mine;
     
-    solveIt.SolveRandomly(list, 25, random);
+//    solveIt.SolveRandomly(list, 25, random);
     solveIt.SolveGreedy(list, greedy);
-    solveIt.SolveMyWay(list, mine);
+//    solveIt.SolveMyWay(list, mine);
     
     double xmin = 1e12;
     double xmax = 0.0;
@@ -60,18 +60,18 @@ int main(int argc, const char * argv[]) {
     int imageHeight = 2250;
     
 //    std::cout << xmin << ", " << xmax << ", " << ymin << ", " << ymax << std::endl;
-    std::string Random = ChartPath(list, random, xmin, xmax, ymin, ymax);
-    std::string RandomSolve = buildSVG(Random, imageWidth, imageHeight);
+//    std::string Random = ChartPath(list, random, xmin, xmax, ymin, ymax);
+//    std::string RandomSolve = buildSVG(Random, imageWidth, imageHeight);
     
     std::string Greedy = ChartPath(list, greedy, xmin, xmax, ymin, ymax);
     std::string GreedySolve = buildSVG(Greedy, imageWidth, imageHeight);
     
-    std::string MyWay = ChartPath(list, mine, xmin, xmax, ymin, ymax);
-    std::string MyWaySolve = buildSVG(MyWay, imageWidth, imageHeight);
+//    std::string MyWay = ChartPath(list, mine, xmin, xmax, ymin, ymax);
+//    std::string MyWaySolve = buildSVG(MyWay, imageWidth, imageHeight);
 
-    CreateFile(RandomSolve, "Random");
+//    CreateFile(RandomSolve, "Random");
     CreateFile(GreedySolve, "Greedy");
-    CreateFile(MyWaySolve, "Mine");
+//    CreateFile(MyWaySolve, "Mine");
     return 0;
 }
 

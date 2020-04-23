@@ -149,6 +149,17 @@ std::vector<int>& CityPath::getPathVector(){
     return path_;
 }
 
+int sectionCount(int listLength){
+    int NumberOfCities = listLength/16;
+    if(listLength > NumberOfCities)
+       listLength -= NumberOfCities;
+    else{
+        NumberOfCities = listLength;
+        listLength = 0;
+    }
+    return NumberOfCities;
+}
+
 CityPath::~CityPath(){};
 
 TSPSolver::TSPSolver() {};

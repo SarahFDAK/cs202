@@ -95,6 +95,8 @@ public:
     
     int getRandomInt(const int count) const;
     
+    int sectionCount(int listLength);
+    
     void fillVector(std::vector<int>& newPath);
     
     void SolveRandomly(CityList& cList, const int M, std::vector<int>& newPath);
