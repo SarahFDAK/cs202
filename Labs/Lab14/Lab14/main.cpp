@@ -9,7 +9,7 @@
 #include <iostream>
 
 //[x] Write a function template 'twice'
-//[ ] Test it with an int and a double
+//[x] Test it with an int and a double
 //[ ] Test iwth with a C++ string
 //[ ] Fix it to work with a C string
 
@@ -21,6 +21,7 @@ T twice(const T& x){
 int main(int argc, const char * argv[]) {
     std::cout << twice(2) << std::endl;
     std::cout << twice(4.6) << std::endl;
+    std::cout << twice(std::string("Vincent")) << std::endl;
     
     return 0;
 }
