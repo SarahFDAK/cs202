@@ -128,7 +128,7 @@ void inProgress(CityList& list, CityPath& bestPath, CityPath& tempPath){
         CreateFile(buildSVG(ChartPath(list, tempPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), points, 2500, 2250), tName);
         listLength -= partSize;
     }
-    CreateFile(buildSVG(ChartPath(list, bestPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), points, 2500, 2250), "GreedyLast");
+    CreateFile(buildSVG(ChartPath(list, tempPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), points, 2500, 2250), "GreedyLast");
 }
 
 
