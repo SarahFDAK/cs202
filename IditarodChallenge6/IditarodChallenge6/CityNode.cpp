@@ -80,6 +80,17 @@ CityNode CityList::getCityNode(const int index){
     return cities_[index];
 }
 
+int CityList::sectionCount(int listLength){
+    int NumberOfCities = listLength/16;
+    if(listLength > NumberOfCities)
+       listLength -= NumberOfCities;
+    else{
+        NumberOfCities = listLength;
+        listLength = 0;
+    }
+    return NumberOfCities;
+}
+
 //Calculate distance between cities
 double CityList::distance(int first, int second) const{
     //Return 0 of first and second city are the same
@@ -147,17 +158,6 @@ bool CityPath::getPathDup(const int city) const{
 
 std::vector<int>& CityPath::getPathVector(){
     return path_;
-}
-
-int CityPath::sectionCount(int listLength){
-    int NumberOfCities = listLength/16;
-    if(listLength > NumberOfCities)
-       listLength -= NumberOfCities;
-    else{
-        NumberOfCities = listLength;
-        listLength = 0;
-    }
-    return NumberOfCities;
 }
 
 CityPath::~CityPath(){};

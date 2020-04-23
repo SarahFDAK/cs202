@@ -54,6 +54,8 @@ public:
     
     int getCityVectorCount() const;
     
+    int sectionCount(int listLength);
+   
     
     ~CityList();
 private:
@@ -73,7 +75,7 @@ public:
     int getPathSize() const;
     
     int getPathEntry(const int entryNum);
-    
+        
     bool getPathDup(const int city) const;
     
     std::vector<int>& getPathVector();
@@ -94,9 +96,7 @@ public:
     void showBestList() const;
     
     int getRandomInt(const int count) const;
-    
-    int sectionCount(int listLength);
-    
+        
     void fillVector(std::vector<int>& newPath);
     
     void SolveRandomly(CityList& cList, const int M, std::vector<int>& newPath);
