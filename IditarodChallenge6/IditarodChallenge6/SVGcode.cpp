@@ -75,3 +75,21 @@ bool CreateFile(const std::string& svgData, const std::string& title){
     return true;
 }
 
+void inProgress(CityList& list, CityPath& bestPath, CityPath& tempPath){
+    int listLength = list.getCityVectorCount();
+    int partSize = listLength/16;
+    int count = 0;
+    while(listLength > partSize){
+        count++;
+        for(int i = 0; i < partSize; i++){
+            tempPath.fillPath(bestPath.getPathEntry(i));
+            bestPath.deleteUsed(tempPath.getPathEntry(i));
+        }
+        std::string tName = "Greedy" + std::to_string(count);
+        CreateFile(buildSVG(ChartPath(list, tempPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), 2500, 2250), tName);
+        listLength -= partSize;
+    }
+    CreateFile(buildSVG(ChartPath(list, bestPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), 2500, 2250), "GreedyLast");
+}
+
+

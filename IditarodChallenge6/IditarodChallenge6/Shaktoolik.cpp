@@ -34,30 +34,23 @@ int main(int argc, const char * argv[]) {
 //        std::cin.ignore();
 //    }
 //    std::vector<int> random;
-    std::vector<int> greedy;
+    CityPath greedy;
 //    std::vector<int> mine;
     
 //    solveIt.SolveRandomly(list, 25, random);
     solveIt.SolveGreedy(list, greedy);
 //    solveIt.SolveMyWay(list, mine);
     
-    double xmin = 1e12;
-    double xmax = 0.0;
-    double ymin = 1e12;
-    double ymax = 0.0;
+    double xmin = list.getMinLong();
+    double xmax = list.getMaxLong();
+    double ymin = list.getMinLat();
+    double ymax = list.getMaxLat();
     
-    //Find min and max latitude and longitude in city list
-    for(int i = 0; i < list.getCityVectorCount(); i++){
-        double currY = list.getCityNode(i).getNodeLat();
-        double currX = list.getCityNode(i).getNodeLong();
-        xmin = std::min(xmin, currX);
-        xmax = std::max(xmax, currX);
-        ymin = std::min(ymin, currY);
-        ymax = std::max(ymax, currY);
-    }
     
     int imageWidth = 2500;
     int imageHeight = 2250;
+    
+    CityPath greedyTemp = greedy;
     
 //    std::cout << xmin << ", " << xmax << ", " << ymin << ", " << ymax << std::endl;
 //    std::string Random = ChartPath(list, random, xmin, xmax, ymin, ymax);
@@ -65,12 +58,12 @@ int main(int argc, const char * argv[]) {
     
     std::string Greedy = ChartPath(list, greedy, xmin, xmax, ymin, ymax);
     std::string GreedySolve = buildSVG(Greedy, imageWidth, imageHeight);
-    
+    CreateFile(GreedySolve, "Greedy");
+
 //    std::string MyWay = ChartPath(list, mine, xmin, xmax, ymin, ymax);
 //    std::string MyWaySolve = buildSVG(MyWay, imageWidth, imageHeight);
 
 //    CreateFile(RandomSolve, "Random");
-    CreateFile(GreedySolve, "Greedy");
 //    CreateFile(MyWaySolve, "Mine");
     return 0;
 }
