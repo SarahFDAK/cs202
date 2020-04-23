@@ -149,7 +149,7 @@ std::vector<int>& CityPath::getPathVector(){
     return path_;
 }
 
-int sectionCount(int listLength){
+int CityPath::sectionCount(int listLength){
     int NumberOfCities = listLength/16;
     if(listLength > NumberOfCities)
        listLength -= NumberOfCities;
