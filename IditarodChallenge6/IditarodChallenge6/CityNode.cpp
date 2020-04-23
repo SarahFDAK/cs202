@@ -80,17 +80,6 @@ CityNode CityList::getCityNode(const int index){
     return cities_[index];
 }
 
-int CityList::sectionCount(int listLength){
-    int NumberOfCities = listLength/16;
-    if(listLength > NumberOfCities)
-       listLength -= NumberOfCities;
-    else{
-        NumberOfCities = listLength;
-        listLength = 0;
-    }
-    return NumberOfCities;
-}
-
 //Calculate distance between cities
 double CityList::distance(int first, int second) const{
     //Return 0 of first and second city are the same
@@ -141,6 +130,17 @@ void CityPath::deleteUsed(int added){
 
 int CityPath::getPathSize() const{
     return path_.size();
+}
+
+int CityList::sectionCount(int listLength){
+    int NumberOfCities = listLength/16;
+    if(listLength > NumberOfCities)
+       listLength -= NumberOfCities;
+    else{
+        NumberOfCities = listLength;
+        listLength = 0;
+    }
+    return NumberOfCities;
 }
 
 int CityPath::getPathEntry(const int entryNum){

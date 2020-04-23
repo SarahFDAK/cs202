@@ -54,8 +54,6 @@ public:
     
     int getCityVectorCount() const;
     
-    int sectionCount(int listLength);
-   
     
     ~CityList();
 private:
@@ -75,6 +73,8 @@ public:
     int getPathSize() const;
     
     int getPathEntry(const int entryNum);
+    
+    int sectionCount(int listLength);
         
     bool getPathDup(const int city) const;
     
