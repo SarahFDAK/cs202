@@ -12,7 +12,7 @@
 #include <vector>
 
 //[x] Test STL algorithm from algorithm header
-//[ ] Test STL algorithm from numeric header
+//[x] Test STL algorithm from numeric header
 
 void copyBackward() {
     std::vector<int> first { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -23,8 +23,17 @@ void copyBackward() {
     std::cout << std::endl;
 }
 
+void useIota(){
+    std::vector<int> FeedMeSeymour(15);
+    std::iota(FeedMeSeymour.begin(), FeedMeSeymour.end(), 2500);
+    for(auto& t: FeedMeSeymour)
+        std::cout << t << " ";
+    std::cout << std::endl;
+}
+
 int main(int argc, const char * argv[]) {
     copyBackward();
-    
+    std::cout << "\n----------------------\n" << std::endl;
+    useIota();
     return 0;
 }
