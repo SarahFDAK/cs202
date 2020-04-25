@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3BAB70E524537D1E00F4C76D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB70E424537D1E00F4C76D /* main.cpp */; };
+		3BAB70EF2454D62500F4C76D /* SVGcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB70EB2454D62500F4C76D /* SVGcode.cpp */; };
+		3BAB70F02454D62500F4C76D /* CityNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB70EC2454D62500F4C76D /* CityNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		3BAB70E124537D1E00F4C76D /* IditarodChallenge7 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IditarodChallenge7; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BAB70E424537D1E00F4C76D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3BAB70EB2454D62500F4C76D /* SVGcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVGcode.cpp; sourceTree = "<group>"; };
+		3BAB70EC2454D62500F4C76D /* CityNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CityNode.cpp; sourceTree = "<group>"; };
+		3BAB70ED2454D62500F4C76D /* CityNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CityNode.hpp; sourceTree = "<group>"; };
+		3BAB70EE2454D62500F4C76D /* SVGcode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SVGcode.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				3BAB70E424537D1E00F4C76D /* main.cpp */,
+				3BAB70EC2454D62500F4C76D /* CityNode.cpp */,
+				3BAB70ED2454D62500F4C76D /* CityNode.hpp */,
+				3BAB70EB2454D62500F4C76D /* SVGcode.cpp */,
+				3BAB70EE2454D62500F4C76D /* SVGcode.hpp */,
 			);
 			path = IditarodChallenge7;
 			sourceTree = "<group>";
@@ -119,7 +129,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BAB70F02454D62500F4C76D /* CityNode.cpp in Sources */,
 				3BAB70E524537D1E00F4C76D /* main.cpp in Sources */,
+				3BAB70EF2454D62500F4C76D /* SVGcode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
