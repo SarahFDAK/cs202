@@ -23,7 +23,7 @@ Fl_Window* CreateWindow(){
     quit = new Fl_Button(350, 350, 100, 25, "Quit");
     quit->color(FL_MAGENTA);
     quit->labelfont(FL_BOLD);
-    quit->labelfont(20);
+    quit->labelsize(20);
     
     win->end();
     return win;
