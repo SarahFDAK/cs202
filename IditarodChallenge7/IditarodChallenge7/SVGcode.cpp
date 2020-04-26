@@ -104,7 +104,7 @@ std::string buildSVG(const std::string& chartPath, const std::string& chartPoint
 }
 
 //Build SVG file
-bool CreateFile(const std::string& svgData, const std::string& title){
+bool CreateFile(const std::string& svgData, std::string& title){
     std::string outputFile = title + ".svg";
     std::ofstream fout(outputFile);
     if(!fout)

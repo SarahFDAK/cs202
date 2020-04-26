@@ -21,7 +21,7 @@ std::string ChartPoints(CityList& list, CityPath& bestPath, double xmin, double 
 
 std::string buildSVG(const std::string& chartPath, const std::string& chartPoints, double width, double height);
 
-bool CreateFile(const std::string& svgData, const std::string& title);
+bool CreateFile(const std::string& svgData, std::string& title);
 
 void inProgress(CityList& list, CityPath& bestPath, CityPath& tempPath);
 

@@ -78,6 +78,7 @@ void randomClicked_cb(Fl_Widget*, void* data){
     solution = "The shortest distance solved randomly is " + std::to_string(solveIt.getBestDist()) + " miles.";
     results -> buffer(randomBuff);
     randomBuff->text(solution.c_str());
+    solveType = "Random";
 }
 
 void greedyClicked_cb(Fl_Widget*, void* data){
@@ -88,6 +89,7 @@ void greedyClicked_cb(Fl_Widget*, void* data){
     solution = "The shortest distance solved greedily is " + std::to_string(solveIt.getBestDist()) + " miles.";
     results -> buffer(greedyBuff);
     greedyBuff->text(solution.c_str());
+    solveType = "Greedy";
 }
 
 void sortedClicked_cb(Fl_Widget*, void* data){
@@ -98,6 +100,7 @@ void sortedClicked_cb(Fl_Widget*, void* data){
     solution = "The shortest distance with longitudes sorted is " + std::to_string(solveIt.getBestDist()) + " miles.";
     results -> buffer(sortedBuff);
     sortedBuff->text(solution.c_str());
+    solveType = "MyWay";
 }
 
 //Close window when "Exit" button is clicked
@@ -107,6 +110,38 @@ void OnExitClicked_cb(Fl_Widget* w, void* data){
     win->hide();
 }
 
+void svgClicked_cb(Fl_Widget*, void* data){
+    CityPath option;
+    
+    Fl_Window* errorWin = new Fl_Window(400, 200, "Error");
+    errorWin->set_modal();
+    errorWin->align(FL_ALIGN_CENTER);
+    errorWin->color(FL_RED);
+    errorWin->begin();
+    Fl_Box* message = new Fl_Box(10, 20, 380, 70, "You didn't run any solve functions!");
+    message->labelsize(20);
+    message->box(FL_UP_BOX);
+    message->color(FL_WHITE);
+    Fl_Button* close = new Fl_Button(150, 150, 100, 30, "Close");
+    close->callback(OnExitClicked_cb, (void*)errorWin);
+    close->labelsize(16);
+    close->labelfont(FL_BOLD);
+    errorWin->end();
+    
+    if(solveType == "Random")
+        option = randomPath;
+    else if(solveType == "Greedy")
+        option = greedyPath;
+    else if(solveType == "MyWay")
+        option = sortedPath;
+    else
+        errorWin->show();
+    
+    std::string path = ChartPath(list, option, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
+    std::string points = ChartPoints(list, option, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
+    std::string build = buildSVG(path, points, 2500, 2250);
+    CreateFile(build, solveType);
+}
 
 Fl_Window* CreateWindow(){
     Fl_Window* win = new Fl_Window(800, 400, "Traveling Salesperson Problem");
@@ -126,16 +161,19 @@ Fl_Window* CreateWindow(){
     browse->callback(browseClicked);
     readFile->callback(fileReader_cb);
     
+    randomly->callback(randomClicked_cb, (void*) buff);
+    greedy->callback(greedyClicked_cb,(void*)buff);
+    sorted->callback(sortedClicked_cb, (void*)buff);
+    
+    runSVG->callback(svgClicked_cb);
+    
     quit = new Fl_Button(350, 350, 100, 25, "Quit");
     quit->color(FL_MAGENTA);
     quit->labelfont(FL_BOLD);
     quit->labelsize(20);
     
     quit->callback(OnExitClicked_cb, (void*) win);
-    
-    randomly->callback(randomClicked_cb, (void*) buff);
-    greedy->callback(greedyClicked_cb,(void*)buff);
-    sorted->callback(sortedClicked_cb, (void*)buff);
+
     
     win->end();
     return win;
