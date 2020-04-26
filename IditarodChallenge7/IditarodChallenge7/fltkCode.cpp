@@ -11,6 +11,8 @@
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Output.H>
 #include <FL/Fl_Box.H>
+#include <FL/Fl_Text_Display.H>
+#include <FL/Fl_Text_Buffer.H>
 
 #include "fltkCode.hpp"
 #include "SVGcode.hpp"
@@ -21,6 +23,11 @@ Fl_Button* randomly = nullptr;
 Fl_Button* greedy = nullptr;
 Fl_Button* sorted = nullptr;
 Fl_Output* fileChoice = nullptr;
+
+Fl_Button* runSVG = nullptr;
+Fl_Button* close = nullptr;
+Fl_Text_Display* results = nullptr;
+Fl_Text_Buffer* buff = nullptr;
 
 std::string userFile;
 
@@ -38,6 +45,20 @@ void browseClicked(Fl_Widget*, void* data){
     std::string choice = fileChoice->value();
     std::istringstream is(choice);
     is >> userFile;
+}
+
+Fl_Window* PopupWindow(){
+    Fl_Window* display = new Fl_Window(600, 300, "Results");
+    display->begin();
+    
+    results = new Fl_Text_Display(10, 30, 580, 200);
+    close = new Fl_Button(250, 275, 100, 30, "Close");
+    close->color(FL_DARK_RED);
+    close->labelsize(20);
+    close->labelfont(FL_BOLD);
+    
+    display->end();
+    return display;
 }
 
 Fl_Window* CreateWindow(){
