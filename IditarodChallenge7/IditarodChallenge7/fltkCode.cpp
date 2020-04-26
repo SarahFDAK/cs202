@@ -19,6 +19,7 @@
 
 Fl_Button* quit = nullptr;
 Fl_Button* browse = nullptr;
+Fl_Button* readFile = nullptr;
 Fl_Button* randomly = nullptr;
 Fl_Button* greedy = nullptr;
 Fl_Button* sorted = nullptr;
@@ -30,6 +31,9 @@ Fl_Text_Display* results = nullptr;
 Fl_Text_Buffer* buff = nullptr;
 
 std::string userFile;
+CityList list;
+CityNode node;
+TSPSolver solveIt;
 
 void browseClicked(Fl_Widget*, void* data){
     Fl_Native_File_Chooser fileFind;
@@ -46,6 +50,18 @@ void browseClicked(Fl_Widget*, void* data){
     std::istringstream is(choice);
     is >> userFile;
 }
+
+void fileReader_cb(Fl_Widget*, void* data) {
+    
+    std::ifstream fin(userFile);
+    
+    //Read contents of file while checkFile tests are true
+    while(list.checkFile(fin)){
+        list.readFile(fin, node);
+    }
+}
+
+
 
 //Close window when "Exit" button is clicked
 void OnExitClicked_cb(Fl_Widget* w, void* data){
@@ -77,11 +93,13 @@ Fl_Window* CreateWindow(){
     fileChoice = new Fl_Output(140, 145, 630, 30);
     
     browse = new Fl_Button(30, 150, 100, 20, "Browse Files");
-    randomly = new Fl_Button(212, 180, 125, 20, "Solve Randomly");
-    greedy = new Fl_Button(340, 180, 125, 20, "Solve Greedy");
-    sorted = new Fl_Button(468, 180, 125, 20, "Solve Sorted");
+    readFile = new Fl_Button(350, 180, 100, 20, "Read File");
+    randomly = new Fl_Button(212, 210, 125, 20, "Solve Randomly");
+    greedy = new Fl_Button(340, 210, 125, 20, "Solve Greedy");
+    sorted = new Fl_Button(468, 210, 125, 20, "Solve Sorted");
     
     browse->callback(browseClicked);
+    readFile->callback(fileReader_cb);
     
     quit = new Fl_Button(350, 350, 100, 25, "Quit");
     quit->color(FL_MAGENTA);
