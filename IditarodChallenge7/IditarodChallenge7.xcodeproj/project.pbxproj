@@ -10,8 +10,8 @@
 		3BAB70E524537D1E00F4C76D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB70E424537D1E00F4C76D /* main.cpp */; };
 		3BAB70EF2454D62500F4C76D /* SVGcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB70EB2454D62500F4C76D /* SVGcode.cpp */; };
 		3BAB70F02454D62500F4C76D /* CityNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB70EC2454D62500F4C76D /* CityNode.cpp */; };
-		3BAB70F32454D6BE00F4C76D /* libfltk.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAB70F22454D6BE00F4C76D /* libfltk.1.3.dylib */; };
 		3BAB70F62454D75300F4C76D /* fltkCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB70F42454D75300F4C76D /* fltkCode.cpp */; };
+		3BAB70F72455156100F4C76D /* libfltk.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAB70F22454D6BE00F4C76D /* libfltk.1.3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BAB70F32454D6BE00F4C76D /* libfltk.1.3.dylib in Frameworks */,
+				3BAB70F72455156100F4C76D /* libfltk.1.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +279,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/fltk/1.3.5/lib,
+					/usr/local/opt,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -298,6 +299,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/fltk/1.3.5/lib,
+					/usr/local/opt,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
