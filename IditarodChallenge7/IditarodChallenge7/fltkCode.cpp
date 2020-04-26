@@ -136,6 +136,7 @@ void OnExitClicked_cb(Fl_Widget* w, void* data){
     win->hide();
 }
 
+//Create error window to warn user when a file was not selected
 Fl_Window* ErrorWindow(){
     Fl_Window* error = new Fl_Window(400, 200, "Error");
     error->set_modal();
@@ -155,8 +156,11 @@ Fl_Window* ErrorWindow(){
 //Create an SVG file for whichever solve method was last run
 void svgClicked_cb(Fl_Widget* w, void* data){
     CityPath option;
+    
+    //Create error window in case no file has been chosen
     Fl_Window* noFile = (Fl_Window*)w;
     noFile = ErrorWindow();
+    
     //Create error window to let user know they haven't run a solve method yet
     Fl_Window* errorWin = new Fl_Window(400, 200, "Error");
     errorWin->set_modal();
@@ -179,20 +183,24 @@ void svgClicked_cb(Fl_Widget* w, void* data){
         option = greedyPath;
     else if(solveType == "MyWay")
         option = sortedPath;
+    //Show no file chosen error window if CityList is empty
     else if(list.getCityVectorCount() == 0){
         noFile->show();
         return;
     }
+    //Show no solve performed error window if solveType is not filled
     else{
         errorWin->show();
         return;
     }
     
+    //Create SVG file using the last solve type run
     std::string path = ChartPath(list, option, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
     std::string points = ChartPoints(list, option, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
     std::string build = buildSVG(path, points, 2500, 2250);
     CreateFile(build, solveType);
     
+    //Create window to confirm that file is created
     Fl_Window* done = new Fl_Window(200, 100, "Completed");
     done->set_modal();
     done->begin();
