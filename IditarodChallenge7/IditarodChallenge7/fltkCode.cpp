@@ -138,7 +138,7 @@ void OnExitClicked_cb(Fl_Widget* w, void* data){
 
 //Create error window to warn user when a file was not selected
 Fl_Window* ErrorWindow(){
-    Fl_Window* error = new Fl_Window(400, 200, "Error");
+    Fl_Window* error = new Fl_Window(400, 200, "File Selection Error");
     error->set_modal();
     
     error->begin();
@@ -162,7 +162,7 @@ void svgClicked_cb(Fl_Widget* w, void* data){
     noFile = ErrorWindow();
     
     //Create error window to let user know they haven't run a solve method yet
-    Fl_Window* errorWin = new Fl_Window(400, 200, "Error");
+    Fl_Window* errorWin = new Fl_Window(400, 200, "SVG Creation Error");
     errorWin->set_modal();
     errorWin->align(FL_ALIGN_CENTER);
     errorWin->color(FL_RED);
