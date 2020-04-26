@@ -10,5 +10,8 @@
 #define fltkCode_hpp
 
 #include <stdio.h>
+#include <FL/Fl_Window.H>
+
+Fl_Window* CreateWindow();
 
 #endif /* fltkCode_hpp */
