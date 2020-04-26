@@ -70,7 +70,7 @@ void randomClicked_cb(Fl_Widget*, void* data){
     solution.clear();
     
     solveIt.SolveRandomly(list, 25, randomPath);
-    solution = "The shortest distance is " + std::to_string(solveIt.getBestDist()) + " miles.";
+    solution = "The shortest distance solved randomly is " + std::to_string(solveIt.getBestDist()) + " miles.";
     results -> buffer(randomBuff);
     randomBuff->text(solution.c_str());
 }
@@ -80,9 +80,19 @@ void greedyClicked_cb(Fl_Widget*, void* data){
     solution.clear();
     
     solveIt.SolveGreedy(list, greedyPath);
-    solution = "The shortest distance is " + std::to_string(solveIt.getBestDist()) + " miles.";
+    solution = "The shortest distance solved greedily is " + std::to_string(solveIt.getBestDist()) + " miles.";
     results -> buffer(greedyBuff);
     greedyBuff->text(solution.c_str());
+}
+
+void sortedClicked_cb(Fl_Widget*, void* data){
+    Fl_Text_Buffer* sortedBuff = (Fl_Text_Buffer*)data;
+    solution.clear();
+    
+    solveIt.SolveMyWay(list, sortedPath);
+    solution = "The shortest distance with longitudes sorted is " + std::to_string(solveIt.getBestDist()) + " miles.";
+    results -> buffer(sortedBuff);
+    sortedBuff->text(solution.c_str());
 }
 
 //Close window when "Exit" button is clicked
@@ -133,6 +143,7 @@ Fl_Window* CreateWindow(){
     
     randomly->callback(randomClicked_cb, (void*) buff);
     greedy->callback(greedyClicked_cb,(void*)buff);
+    sorted->callback(sortedClicked_cb, (void*)buff);
     
     win->end();
     return win;

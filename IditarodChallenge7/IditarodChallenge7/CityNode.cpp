@@ -351,7 +351,7 @@ void TSPSolver::SolveMyWay(CityList &cList, CityPath& newPath){
     }
     //Add the first entry to the end of the list to complete the loop
     myPath.fillPath(cList.getCityNode(0).getNodeNum());
-//    double currDist = 0;
+    bestDist_ = 1e12;
     double totalDist = 0;
 //    double shortestDist = 1e12;
     
@@ -365,7 +365,7 @@ void TSPSolver::SolveMyWay(CityList &cList, CityPath& newPath){
     //total, replace the bestList_ vector and the bestDist_ member
     if(bestDist_ > totalDist){
         for(int i = 0; i < myPath.getPathSize(); i++)
-            bestList_[i] = myPath.getPathEntry(i);
+            bestList_.push_back(myPath.getPathEntry(i));
         bestDist_ = totalDist;
     }
     //Run the loop while there are more permutations of the list

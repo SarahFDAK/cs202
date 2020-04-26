@@ -114,23 +114,23 @@ bool CreateFile(const std::string& svgData, const std::string& title){
 }
 
 //Print SVG files as the algorithm progresses
-void inProgress(CityList& list, CityPath& bestPath, CityPath& tempPath){
-    bestPath.deleteUsed(bestPath.getPathEntry(bestPath.getPathSize()));
-    int listLength = list.getCityVectorCount();
-    int partSize = listLength/16;
-    int count = 0;
-    std::string points = ChartPoints(list, bestPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
-    while(listLength > partSize){
-        count++;
-        for(int i = listLength; i > (listLength - partSize); i--){
-            tempPath.fillPath(bestPath.getPathEntry(i));
-            bestPath.deleteUsed(tempPath.getPathEntry(0));
-        }
-        std::string tName = "Greedy" + std::to_string(count);
-        CreateFile(buildSVG(ChartPath(list, tempPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), points, 2500, 2250), tName);
-        listLength -= partSize;
-    }
-    CreateFile(buildSVG(ChartPath(list, tempPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), points, 2500, 2250), "GreedyLast");
-}
+//void inProgress(CityList& list, CityPath& bestPath, CityPath& tempPath){
+//    bestPath.deleteUsed(bestPath.getPathEntry(bestPath.getPathSize()));
+//    int listLength = list.getCityVectorCount();
+//    int partSize = listLength/16;
+//    int count = 0;
+//    std::string points = ChartPoints(list, bestPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
+//    while(listLength > partSize){
+//        count++;
+//        for(int i = listLength; i > (listLength - partSize); i--){
+//            tempPath.fillPath(bestPath.getPathEntry(i));
+//            bestPath.deleteUsed(tempPath.getPathEntry(0));
+//        }
+//        std::string tName = "Greedy" + std::to_string(count);
+//        CreateFile(buildSVG(ChartPath(list, tempPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), points, 2500, 2250), tName);
+//        listLength -= partSize;
+//    }
+//    CreateFile(buildSVG(ChartPath(list, tempPath, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat()), points, 2500, 2250), "GreedyLast");
+//}
 
 
