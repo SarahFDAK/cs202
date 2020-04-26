@@ -79,7 +79,7 @@ void greedyClicked_cb(Fl_Widget*, void* data){
     Fl_Text_Buffer* greedyBuff = (Fl_Text_Buffer*)data;
     solution.clear();
     
-    solveIt.SolveRandomly(list, 25, randomPath);
+    solveIt.SolveGreedy(list, greedyPath);
     solution = "The shortest distance is " + std::to_string(solveIt.getBestDist()) + " miles.";
     results -> buffer(greedyBuff);
     greedyBuff->text(solution.c_str());
@@ -92,20 +92,20 @@ void OnExitClicked_cb(Fl_Widget* w, void* data){
     win->hide();
 }
 
-Fl_Window* PopupWindow(){
-    Fl_Window* display = new Fl_Window(600, 300, "Results");
-    display->begin();
-    
-    close = new Fl_Button(250, 250, 100, 30, "Close");
-    close->color(FL_DARK_RED);
-    close->labelsize(20);
-    close->labelfont(FL_BOLD);
-    
-    close->callback(OnExitClicked_cb, (void*) display);
-    
-    display->end();
-    return display;
-}
+//Fl_Window* PopupWindow(){
+//    Fl_Window* display = new Fl_Window(600, 300, "Results");
+//    display->begin();
+//
+//    close = new Fl_Button(250, 250, 100, 30, "Close");
+//    close->color(FL_DARK_RED);
+//    close->labelsize(20);
+//    close->labelfont(FL_BOLD);
+//
+//    close->callback(OnExitClicked_cb, (void*) display);
+//
+//    display->end();
+//    return display;
+//}
 
 Fl_Window* CreateWindow(){
     Fl_Window* win = new Fl_Window(800, 400, "Traveling Salesperson Problem");
@@ -132,6 +132,7 @@ Fl_Window* CreateWindow(){
     quit->callback(OnExitClicked_cb, (void*) win);
     
     randomly->callback(randomClicked_cb, (void*) buff);
+    greedy->callback(greedyClicked_cb,(void*)buff);
     
     win->end();
     return win;
