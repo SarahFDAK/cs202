@@ -32,6 +32,7 @@ Fl_Text_Buffer* buff = nullptr;
 
 std::string userFile;
 std::string solution;
+std::string solveType;
 CityList list;
 CityNode node;
 TSPSolver solveIt;
@@ -111,15 +112,16 @@ Fl_Window* CreateWindow(){
     Fl_Window* win = new Fl_Window(800, 400, "Traveling Salesperson Problem");
     win->begin();
     
-    fileChoice = new Fl_Output(140, 145, 630, 30);
+    fileChoice = new Fl_Output(140, 25, 630, 30);
     
-    browse = new Fl_Button(30, 150, 100, 20, "Browse Files");
-    readFile = new Fl_Button(350, 180, 100, 20, "Read File");
-    randomly = new Fl_Button(212, 210, 125, 20, "Solve Randomly");
-    greedy = new Fl_Button(340, 210, 125, 20, "Solve Greedy");
-    sorted = new Fl_Button(468, 210, 125, 20, "Solve Sorted");
+    browse = new Fl_Button(30, 30, 100, 20, "Browse Files");
+    readFile = new Fl_Button(325, 60, 150, 30, "Import Selected File");
+    randomly = new Fl_Button(205, 130, 125, 30, "Solve Randomly");
+    greedy = new Fl_Button(340, 130, 125, 30, "Solve Greedy");
+    sorted = new Fl_Button(475, 130, 125, 30, "Solve Sorted");
     buff = new Fl_Text_Buffer();
-    results = new Fl_Text_Display(10, 250, 780, 50);
+    results = new Fl_Text_Display(10, 170, 780, 50);
+    runSVG = new Fl_Button(325, 270, 150, 30, "Create SVG File");
     
     browse->callback(browseClicked);
     readFile->callback(fileReader_cb);
