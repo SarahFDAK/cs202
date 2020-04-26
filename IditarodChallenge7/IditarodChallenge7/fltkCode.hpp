@@ -16,6 +16,4 @@
 
 Fl_Window* CreateWindow();
 
-Fl_Window* PopupWindow();
-
 #endif /* fltkCode_hpp */

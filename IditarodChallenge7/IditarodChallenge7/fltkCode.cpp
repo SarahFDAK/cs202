@@ -39,9 +39,11 @@ CityPath randomPath;
 CityPath greedyPath;
 CityPath sortedPath;
 
+//Open file browser for user to select a file to process
 void browseClicked(Fl_Widget*, void* data){
     Fl_Native_File_Chooser fileFind;
     fileFind.title("Select File to Analyze");
+    fileFind.filter("*.tsp");
     fileFind.type(Fl_Native_File_Chooser::BROWSE_FILE);
     switch( fileFind.show() ){
         case -1: fprintf(stderr, "ERROR: %s\n", fileFind.errmsg()); break;    // ERROR
@@ -51,10 +53,12 @@ void browseClicked(Fl_Widget*, void* data){
           break;
     }
     std::string choice = fileChoice->value();
+    //Assign file path to userFile string
     std::istringstream is(choice);
     is >> userFile;
 }
 
+//Run readFile function
 void fileReader_cb(Fl_Widget*, void* data) {
     
     std::ifstream fin(userFile);
@@ -102,20 +106,6 @@ void OnExitClicked_cb(Fl_Widget* w, void* data){
     win->hide();
 }
 
-//Fl_Window* PopupWindow(){
-//    Fl_Window* display = new Fl_Window(600, 300, "Results");
-//    display->begin();
-//
-//    close = new Fl_Button(250, 250, 100, 30, "Close");
-//    close->color(FL_DARK_RED);
-//    close->labelsize(20);
-//    close->labelfont(FL_BOLD);
-//
-//    close->callback(OnExitClicked_cb, (void*) display);
-//
-//    display->end();
-//    return display;
-//}
 
 Fl_Window* CreateWindow(){
     Fl_Window* win = new Fl_Window(800, 400, "Traveling Salesperson Problem");

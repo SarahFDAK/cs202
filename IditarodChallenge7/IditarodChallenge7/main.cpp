@@ -1,9 +1,10 @@
 //
 //  main.cpp
 //  IditarodChallenge7
-//
-//  Created by Sarah Carter on 4/24/20.
-//  Copyright © 2020 Sarah Carter. All rights reserved.
+//  Sarah Carter
+//  CS202
+//  This program creates a GUI via FLTK for user interaction with the Traveling
+//  Salesperson Problem program I created for previous homeworks.
 //
 
 #include <iostream>
