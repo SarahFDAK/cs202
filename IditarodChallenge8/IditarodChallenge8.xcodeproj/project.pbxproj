@@ -12,6 +12,7 @@
 		3B05267D24560F79008CDDF9 /* Hazards.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B05267924560F79008CDDF9 /* Hazards.cpp */; };
 		3B05267E24560F79008CDDF9 /* Wumpus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B05267A24560F79008CDDF9 /* Wumpus.cpp */; };
 		3B05267F24560F79008CDDF9 /* Explorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B05267B24560F79008CDDF9 /* Explorer.cpp */; };
+		3B05268224560FDD008CDDF9 /* fltkCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B05268024560FDD008CDDF9 /* fltkCode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,8 @@
 		3B05267924560F79008CDDF9 /* Hazards.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hazards.cpp; sourceTree = "<group>"; };
 		3B05267A24560F79008CDDF9 /* Wumpus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wumpus.cpp; sourceTree = "<group>"; };
 		3B05267B24560F79008CDDF9 /* Explorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Explorer.cpp; sourceTree = "<group>"; };
+		3B05268024560FDD008CDDF9 /* fltkCode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fltkCode.cpp; sourceTree = "<group>"; };
+		3B05268124560FDD008CDDF9 /* fltkCode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = fltkCode.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				3B05266D24560A93008CDDF9 /* main.cpp */,
+				3B05268024560FDD008CDDF9 /* fltkCode.cpp */,
+				3B05268124560FDD008CDDF9 /* fltkCode.hpp */,
 				3B05267724560F78008CDDF9 /* Cave.cpp */,
 				3B05267824560F79008CDDF9 /* Cave.hpp */,
 				3B05267B24560F79008CDDF9 /* Explorer.cpp */,
@@ -144,6 +149,7 @@
 				3B05267C24560F79008CDDF9 /* Cave.cpp in Sources */,
 				3B05266E24560A93008CDDF9 /* main.cpp in Sources */,
 				3B05267D24560F79008CDDF9 /* Hazards.cpp in Sources */,
+				3B05268224560FDD008CDDF9 /* fltkCode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
