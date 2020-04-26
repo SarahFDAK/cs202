@@ -15,5 +15,6 @@
 #include <FL/Fl_Widget.H>
 
 Fl_Window* CreateWindow();
+Fl_Window* ErrorWindow();
 
 #endif /* fltkCode_hpp */

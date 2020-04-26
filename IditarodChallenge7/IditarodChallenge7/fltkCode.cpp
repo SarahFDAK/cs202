@@ -70,7 +70,13 @@ void fileReader_cb(Fl_Widget*, void* data) {
     }
 }
 
-void randomClicked_cb(Fl_Widget*, void* data){
+void randomClicked_cb(Fl_Widget* w, void* data){
+    Fl_Window* win = (Fl_Window*)w;
+    win = ErrorWindow();
+    if(list.getCityVectorCount() == 0){
+        win->show();
+        return;
+    }
     Fl_Text_Buffer* randomBuff = (Fl_Text_Buffer*)data;
     solution.clear();
     
@@ -81,7 +87,14 @@ void randomClicked_cb(Fl_Widget*, void* data){
     solveType = "Random";
 }
 
-void greedyClicked_cb(Fl_Widget*, void* data){
+void greedyClicked_cb(Fl_Widget* w, void* data){
+    Fl_Window* win = (Fl_Window*)w;
+    win = ErrorWindow();
+    if(list.getCityVectorCount() == 0){
+        win->show();
+        return;
+    }
+    
     Fl_Text_Buffer* greedyBuff = (Fl_Text_Buffer*)data;
     solution.clear();
     
@@ -92,7 +105,14 @@ void greedyClicked_cb(Fl_Widget*, void* data){
     solveType = "Greedy";
 }
 
-void sortedClicked_cb(Fl_Widget*, void* data){
+void sortedClicked_cb(Fl_Widget* w, void* data){
+    Fl_Window* win = (Fl_Window*)w;
+    win = ErrorWindow();
+    if(list.getCityVectorCount() == 0){
+        win->show();
+        return;
+    }
+    
     Fl_Text_Buffer* sortedBuff = (Fl_Text_Buffer*)data;
     solution.clear();
     
@@ -110,9 +130,28 @@ void OnExitClicked_cb(Fl_Widget* w, void* data){
     win->hide();
 }
 
-void svgClicked_cb(Fl_Widget*, void* data){
-    CityPath option;
+Fl_Window* ErrorWindow(){
+    Fl_Window* error = new Fl_Window(400, 200, "Error");
+    error->set_modal();
     
+    error->begin();
+    Fl_Box* msg = new Fl_Box(10, 20, 380, 70, "No file selected for analysis.");
+    msg->labelsize(18);
+    Fl_Button* close = new Fl_Button(150, 150, 100, 30, "Close");
+    close->callback(OnExitClicked_cb, (void*)error);
+    close->labelsize(16);
+    close->labelfont(FL_BOLD);
+    error->end();
+    
+    return error;
+}
+
+//Create an SVG file for whichever solve method was last run
+void svgClicked_cb(Fl_Widget* w, void* data){
+    CityPath option;
+    Fl_Window* noFile = (Fl_Window*)w;
+    noFile = ErrorWindow();
+    //Create error window to let user know they haven't run a solve method yet
     Fl_Window* errorWin = new Fl_Window(400, 200, "Error");
     errorWin->set_modal();
     errorWin->align(FL_ALIGN_CENTER);
@@ -134,8 +173,14 @@ void svgClicked_cb(Fl_Widget*, void* data){
         option = greedyPath;
     else if(solveType == "MyWay")
         option = sortedPath;
-    else
+    else if(list.getCityVectorCount() == 0){
+        noFile->show();
+        return;
+    }
+    else{
         errorWin->show();
+        return;
+    }
     
     std::string path = ChartPath(list, option, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
     std::string points = ChartPoints(list, option, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
