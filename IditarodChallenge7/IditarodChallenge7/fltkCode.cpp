@@ -19,10 +19,13 @@ Fl_Button* browse = nullptr;
 Fl_Button* randomly = nullptr;
 Fl_Button* greedy = nullptr;
 Fl_Button* sorted = nullptr;
+Fl_Output* fileChoice = nullptr;
 
 Fl_Window* CreateWindow(){
     Fl_Window* win = new Fl_Window(800, 400, "Traveling Salesperson Problem");
     win->begin();
+    
+    fileChoice = new Fl_Output(140, 145, 630, 30);
     
     browse = new Fl_Button(30, 150, 100, 20, "Browse Files");
     randomly = new Fl_Button(212, 180, 125, 20, "Solve Randomly");
