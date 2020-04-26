@@ -47,6 +47,13 @@ void browseClicked(Fl_Widget*, void* data){
     is >> userFile;
 }
 
+//Close window when "Exit" button is clicked
+void OnExitClicked_cb(Fl_Widget* w, void* data){
+    if(!data) return;
+    Fl_Window* win = (Fl_Window*)data;
+    win->hide();
+}
+
 Fl_Window* PopupWindow(){
     Fl_Window* display = new Fl_Window(600, 300, "Results");
     display->begin();
@@ -56,6 +63,8 @@ Fl_Window* PopupWindow(){
     close->color(FL_DARK_RED);
     close->labelsize(20);
     close->labelfont(FL_BOLD);
+    
+    close->callback(OnExitClicked_cb, (void*) display);
     
     display->end();
     return display;
@@ -78,6 +87,8 @@ Fl_Window* CreateWindow(){
     quit->color(FL_MAGENTA);
     quit->labelfont(FL_BOLD);
     quit->labelsize(20);
+    
+    quit->callback(OnExitClicked_cb, (void*) win);
     
     win->end();
     return win;
