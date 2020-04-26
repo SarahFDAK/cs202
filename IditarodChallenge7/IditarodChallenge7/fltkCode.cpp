@@ -34,6 +34,7 @@ std::string userFile;
 CityList list;
 CityNode node;
 TSPSolver solveIt;
+CityPath newPath;
 
 void browseClicked(Fl_Widget*, void* data){
     Fl_Native_File_Chooser fileFind;
@@ -61,7 +62,16 @@ void fileReader_cb(Fl_Widget*, void* data) {
     }
 }
 
-
+void randomClicked_cb(Fl_Widget*, void* data){
+    Fl_Window* win = (Fl_Window*)data;
+    win->show();
+    
+    solveIt.SolveRandomly(list, 25, newPath);
+    std::string solution = "The shortest distance is " + std::to_string(solveIt.getBestDist()) + " miles.";
+    buff = new Fl_Text_Buffer();
+    results -> buffer(buff);
+    buff->text(solution.c_str());
+}
 
 //Close window when "Exit" button is clicked
 void OnExitClicked_cb(Fl_Widget* w, void* data){
@@ -75,7 +85,7 @@ Fl_Window* PopupWindow(){
     display->begin();
     
     results = new Fl_Text_Display(10, 30, 580, 200);
-    close = new Fl_Button(250, 275, 100, 30, "Close");
+    close = new Fl_Button(250, 250, 100, 30, "Close");
     close->color(FL_DARK_RED);
     close->labelsize(20);
     close->labelfont(FL_BOLD);
@@ -107,6 +117,8 @@ Fl_Window* CreateWindow(){
     quit->labelsize(20);
     
     quit->callback(OnExitClicked_cb, (void*) win);
+    
+    randomly->callback(randomClicked_cb, (void*) PopupWindow());
     
     win->end();
     return win;
