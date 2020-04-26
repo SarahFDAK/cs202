@@ -31,10 +31,13 @@ Fl_Text_Display* results = nullptr;
 Fl_Text_Buffer* buff = nullptr;
 
 std::string userFile;
+std::string solution;
 CityList list;
 CityNode node;
 TSPSolver solveIt;
-CityPath newPath;
+CityPath randomPath;
+CityPath greedyPath;
+CityPath sortedPath;
 
 void browseClicked(Fl_Widget*, void* data){
     Fl_Native_File_Chooser fileFind;
@@ -63,14 +66,23 @@ void fileReader_cb(Fl_Widget*, void* data) {
 }
 
 void randomClicked_cb(Fl_Widget*, void* data){
-    Fl_Window* win = (Fl_Window*)data;
-    win->show();
+    Fl_Text_Buffer* randomBuff = (Fl_Text_Buffer*)data;
+    solution.clear();
     
-    solveIt.SolveRandomly(list, 25, newPath);
-    std::string solution = "The shortest distance is " + std::to_string(solveIt.getBestDist()) + " miles.";
-    buff = new Fl_Text_Buffer();
-    results -> buffer(buff);
-    buff->text(solution.c_str());
+    solveIt.SolveRandomly(list, 25, randomPath);
+    solution = "The shortest distance is " + std::to_string(solveIt.getBestDist()) + " miles.";
+    results -> buffer(randomBuff);
+    randomBuff->text(solution.c_str());
+}
+
+void greedyClicked_cb(Fl_Widget*, void* data){
+    Fl_Text_Buffer* greedyBuff = (Fl_Text_Buffer*)data;
+    solution.clear();
+    
+    solveIt.SolveRandomly(list, 25, randomPath);
+    solution = "The shortest distance is " + std::to_string(solveIt.getBestDist()) + " miles.";
+    results -> buffer(greedyBuff);
+    greedyBuff->text(solution.c_str());
 }
 
 //Close window when "Exit" button is clicked
@@ -84,7 +96,6 @@ Fl_Window* PopupWindow(){
     Fl_Window* display = new Fl_Window(600, 300, "Results");
     display->begin();
     
-    results = new Fl_Text_Display(10, 30, 580, 200);
     close = new Fl_Button(250, 250, 100, 30, "Close");
     close->color(FL_DARK_RED);
     close->labelsize(20);
@@ -107,6 +118,8 @@ Fl_Window* CreateWindow(){
     randomly = new Fl_Button(212, 210, 125, 20, "Solve Randomly");
     greedy = new Fl_Button(340, 210, 125, 20, "Solve Greedy");
     sorted = new Fl_Button(468, 210, 125, 20, "Solve Sorted");
+    buff = new Fl_Text_Buffer();
+    results = new Fl_Text_Display(10, 250, 780, 50);
     
     browse->callback(browseClicked);
     readFile->callback(fileReader_cb);
@@ -118,7 +131,7 @@ Fl_Window* CreateWindow(){
     
     quit->callback(OnExitClicked_cb, (void*) win);
     
-    randomly->callback(randomClicked_cb, (void*) PopupWindow());
+    randomly->callback(randomClicked_cb, (void*) buff);
     
     win->end();
     return win;

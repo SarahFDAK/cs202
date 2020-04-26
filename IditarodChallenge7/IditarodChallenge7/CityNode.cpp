@@ -326,6 +326,7 @@ void TSPSolver::SolveGreedy(CityList &cList, CityPath& newPath){
     //Calculate total distance of loop
     double lastDist = cList.distance(first, second);
     totalDist += lastDist;
+    bestDist_ = totalDist;
     
 //    for(int i = 0; i < greedyList.getPathSize(); i++){
 //        std::cout << greedyList.getPathEntry(i) << std::endl;
