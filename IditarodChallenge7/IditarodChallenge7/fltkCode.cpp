@@ -60,7 +60,13 @@ void browseClicked(Fl_Widget*, void* data){
 }
 
 //Run readFile function
-void fileReader_cb(Fl_Widget*, void* data) {
+void fileReader_cb(Fl_Widget* w, void* data) {
+    Fl_Window* win = (Fl_Window*)w;
+    win = ErrorWindow();
+    if(userFile.empty()){
+        win->show();
+        return;
+    }
     
     std::ifstream fin(userFile);
     
@@ -186,6 +192,18 @@ void svgClicked_cb(Fl_Widget* w, void* data){
     std::string points = ChartPoints(list, option, list.getMinLong(), list.getMaxLong(), list.getMinLat(), list.getMaxLat());
     std::string build = buildSVG(path, points, 2500, 2250);
     CreateFile(build, solveType);
+    
+    Fl_Window* done = new Fl_Window(200, 100, "Completed");
+    done->set_modal();
+    done->begin();
+    Fl_Box* msg = new Fl_Box(20, 10, 160, 40, "SVG File Created!");
+    msg->labelsize(18);
+    Fl_Button* close2 = new Fl_Button(50, 60, 100, 30, "Close");
+    close2->callback(OnExitClicked_cb, (void*)done);
+    close2->labelsize(16);
+    close2->labelfont(FL_BOLD);
+    done->end();
+    done->show();
 }
 
 Fl_Window* CreateWindow(){
